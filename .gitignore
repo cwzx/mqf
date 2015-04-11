@@ -1,0 +1,15 @@
+bin/
+lib/
+
+*.csv
+
+# Visual Studio 2013 stuff
+*.suo
+*.sdf
+*.opensdf
+*.psess
+*.vsp
+build/*/mqf/x64
+build/*/mqf/Win32
+build/*/examples/*/x64
+build/*/examples/*/Win32
