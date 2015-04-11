@@ -2,7 +2,6 @@
 #define INCLUDED_MQF_TIME_SERIES_SHIFT
 #include <utility>
 #include <iterator>
-#include "../data/range.h"
 
 namespace mqf {
 

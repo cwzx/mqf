@@ -1,5 +1,5 @@
-#ifndef MQF_STATS_DESCRIPTIVE
-#define MQF_STATS_DESCRIPTIVE
+#ifndef INCLUDED_MQF_STATS_DESCRIPTIVE
+#define INCLUDED_MQF_STATS_DESCRIPTIVE
 #include <limits>
 
 namespace mqf {

@@ -1,5 +1,5 @@
-#ifndef MQF_GREGORIAN
-#define MQF_GREGORIAN
+#ifndef INCLUDED_MQF_GREGORIAN
+#define INCLUDED_MQF_GREGORIAN
 #include "chrono.h"
 
 namespace mqf {

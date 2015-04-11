@@ -1,5 +1,5 @@
-#ifndef MQF_BONDS
-#define MQF_BONDS
+#ifndef INCLUDED_MQF_BONDS
+#define INCLUDED_MQF_BONDS
 #include "cashflow.h"
 #include <cstdint>
 

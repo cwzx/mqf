@@ -1,5 +1,5 @@
-#ifndef MQF_DAY_COUNT
-#define MQF_DAY_COUNT
+#ifndef INCLUDED_MQF_DAY_COUNT
+#define INCLUDED_MQF_DAY_COUNT
 #include "gregorian.h"
 #include <algorithm>
 
