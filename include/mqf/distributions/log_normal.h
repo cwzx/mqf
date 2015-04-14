@@ -28,17 +28,20 @@ namespace Distributions {
 		}
 
 		double operator()( double x ) const {
+			if( x <= 0.0 ) return 0.0;
 			double y = std::log(x) - mu;
-			return std::exp(-0.5*y*y/sigma2) / (x*sqrt(2.0*Pi*sigma2));
+			return std::exp(-0.5*y*y/sigma2) / (x*std::sqrt(2.0*Pi*sigma2));
 		}
 
 		double derivative( double x ) const {
+			if( x <= 0.0 ) return 0.0;
 			double y = std::log(x) - mu;
-			return std::exp(-0.5*y*y/sigma2) / (x*sqrt(2.0*Pi*sigma2));
+			return std::exp(-0.5*y*y/sigma2) / (x*std::sqrt(2.0*Pi*sigma2));
 		}
 
 		double cumulative( double x ) const {
-			return 0.5 * ( 1.0 + std::erf( (std::log(x) - mu) / sqrt( 2.0 * sigma2 ) ) );
+			if( x <= 0.0 ) return 0.0;
+			return 0.5 * ( 1.0 + std::erf( (std::log(x) - mu) / std::sqrt( 2.0 * sigma2 ) ) );
 		}
 
 		std::lognormal_distribution<Value> distribution() const {
@@ -67,16 +70,19 @@ namespace Distributions {
 		}
 
 		double operator()( double x ) const {
+			if( x <= 0.0 ) return 0.0;
 			double y = std::log(x);
 			return std::exp(-0.5*y*y) / (x*sqrt(2.0*Pi));
 		}
 
 		double derivative( double x ) const {
+			if( x <= 0.0 ) return 0.0;
 			double y = std::log(x);
 			return std::exp(-0.5*y*y) / (x*sqrt(2.0*Pi));
 		}
 
 		double cumulative( double x ) const {
+			if( x <= 0.0 ) return 0.0;
 			return 0.5 * ( 1.0 + std::erf( std::log(x) / sqrt( 2.0 ) ) );
 		}
 

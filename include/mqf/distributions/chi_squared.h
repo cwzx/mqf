@@ -9,7 +9,7 @@ namespace Distributions {
 	struct ChiSquared : Density<> {
 		double k;
 
-		explicit ChiSquared( double dof = 1 ) : k(dof) {}
+		explicit ChiSquared( double dof = 2 ) : k(dof) {}
 
 		double mean() const {
 			return k;

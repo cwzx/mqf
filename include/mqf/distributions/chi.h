@@ -9,7 +9,7 @@ namespace Distributions {
 	struct Chi : Density<> {
 		double k;
 
-		explicit Chi( double dof = 1 ) : k(dof) {}
+		explicit Chi( double dof = 2 ) : k(dof) {}
 
 		double mean() const {
 			return std::sqrt(2.0) * std::tgamma( (k+1)*0.5 ) / std::tgamma(k*0.5);
@@ -26,6 +26,7 @@ namespace Distributions {
 		}
 
 		double operator()( double x ) const {
+			if( x < 0.0 ) return 0.0;
 			return ( 2.0 * std::pow(x,k-1) * std::exp(-0.5*x*x) )
 			     / ( std::pow( std::sqrt(2.0), k ) * std::tgamma(0.5*k) );
 		}

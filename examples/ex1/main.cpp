@@ -4,6 +4,7 @@
 #include <mqf/processes/trinomial_tree.h>
 #include <mqf/sde/milstein.h>
 #include <mqf/regression/least_squares.h>
+#include <mqf/processes/square_root.h>
 #include <iostream>
 #include <fstream>
 
@@ -12,33 +13,21 @@ using namespace mqf;
 
 int main() {
 
-	auto tree = Processes::TrinomialTree<>::MakeBoyle( 0.1, 0.3, 1.0/360 );
-	tree.writeStateTree( 1.0, 30, "trinomial.csv" );
-	tree.writeProbabilityTree( 30, "trinomialp.csv" );
-	return 0;
-
-	auto model = Processes::TrinomialTree<>::MakeBoyle(0.1,0.3,1.0/360);
+	auto model = Processes::SquareRoot(1.0,1.0,0.3);
 
 	Milstein<decltype(model)> milstein(model);
 
 	double t = 0.0,
-		   tMax = 1.0,
+		   tMax = 10.0,
 	       dt = 1.0/360;
 
 	double x = 1.0;
 
-	cout << model.up << endl;
-	cout << model.down << endl;
-
-	for( auto p : model.dist.param().probabilities() )
-		cout << p << endl;
-
 	ofstream out("test.csv");
 
-	
 	while( t < tMax ) {
 		out << t << "," << x << endl;
-		x = model.advance(x);
+		x = milstein.advance( x, dt );
 		t += dt;
 	}
 
