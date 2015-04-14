@@ -29,8 +29,8 @@ namespace Processes {
 			return theta * ( mu - X );
 		}
 
-		Value driftD( const Value& X ) const {
-			return -theta * X;
+		Value driftD( const Value& ) const {
+			return -theta;
 		}
 
 		Value diffusion( const Value& ) const {
@@ -44,10 +44,6 @@ namespace Processes {
 		RV<Normal> solution( Value initial, Time t ) const {
 			double y = std::exp( -theta * t );
 			return initial * y + mu * (1.0-y) + sigma * MakeRV( Normal( 0, (1.0-y*y)/(2.0*theta) ) );
-		}
-
-		RV<Normal> solutionLimit() const {
-			return mu + sigma * MakeRV( Normal( 0, 0.5/theta ) );
 		}
 
 		double expectation( Value initial, Time t ) const {
@@ -65,7 +61,21 @@ namespace Processes {
 			return sigma*sigma *  ( 1.0 - std::exp(-twotheta*t) ) / twotheta;
 		}
 
+		RV<Normal> solutionLimit() const {
+			return mu + sigma * MakeRV( Normal( 0, 0.5/theta ) );
+		}
+
+		double expectationLimit() const {
+			return mu;
+		}
+
+		double varianceLimit() const {
+			return sigma*sigma / ( 2.0 * theta );
+		}
+
 	};
+
+	using Vasicek = OrnsteinUhlenbeck;
 		
 }
 }

@@ -27,19 +27,19 @@ namespace Processes {
 		{}
 
 		Value drift( const Value& X ) const {
-			return k * ( theta - X );
+			return ( k * ( theta - std::log(X) ) + 0.5*sigma*sigma ) * X;
 		}
 
 		Value driftD( const Value& X ) const {
-			return -k * X;
+			return k * ( theta - 1.0 - std::log(X) ) + 0.5*sigma*sigma;
 		}
 
-		Value diffusion( const Value& ) const {
-			return sigma;
+		Value diffusion( const Value& X ) const {
+			return sigma * X;
 		}
 
 		Value diffusionD( const Value& ) const {
-			return 0.0;
+			return sigma;
 		}
 
 		RV<LogNormal> solution( Value initial, Time t ) const {
@@ -47,10 +47,6 @@ namespace Processes {
 			return exp( std::log(initial) * y
 			          + theta * (1.0-y)
 			          + sigma * MakeRV( Normal( 0, (1.0-y*y)/(2.0*k) ) ) );
-		}
-
-		RV<LogNormal> solutionLimit() const {
-			return exp( theta + sigma * MakeRV( Normal( 0, 0.5/k ) ) );
 		}
 
 		double expectation( Value initial, Time t ) const {
@@ -64,6 +60,19 @@ namespace Processes {
 			double E = expectation( initial, t );
 			double y = std::exp( -k * t );
 			return E*E * ( std::exp( sigma*sigma * ( 1.0 - y*y ) / (2.0*k) ) - 1.0 );
+		}
+
+		RV<LogNormal> solutionLimit() const {
+			return exp( theta + sigma * MakeRV( Normal( 0, 0.5/k ) ) );
+		}
+
+		double expectationLimit() const {
+			return std::exp( theta + sigma*sigma / (4.0*k) );
+		}
+
+		double varianceLimit() const {
+			double y = std::exp( sigma*sigma / (2.0*k) );
+			return std::exp( 2.0 * theta ) * y * ( y - 1.0 );
 		}
 
 	};

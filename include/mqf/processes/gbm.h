@@ -43,6 +43,15 @@ namespace Processes {
 			return initial * exp( (mu - 0.5*sigma*sigma)*t + sigma * MakeRV(Normal(0,t)) );
 		}
 
+		double expectation( Value inital, Time t ) const {
+			return initial * std::exp( mu * t );
+		}
+
+		double variance( Value inital, Time t ) const {
+			double y = initial * std::exp( mu * t );
+			return y*y * ( std::exp( sigma*sigma * t ) - 1.0 );
+		}
+
 	};
 		
 }

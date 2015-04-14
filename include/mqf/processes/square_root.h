@@ -27,8 +27,8 @@ namespace Processes {
 			return theta * ( mu - X );
 		}
 
-		double driftD( double X ) const {
-			return -theta * X;
+		double driftD( double ) const {
+			return -theta;
 		}
 
 		double diffusion( double X ) const {
