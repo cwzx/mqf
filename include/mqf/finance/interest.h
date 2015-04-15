@@ -5,16 +5,9 @@
 
 namespace mqf {
 
-	enum Compounding {
-		Period,
-		Continuous
-	};
-
-	template<Compounding = Continuous>
-	struct InterestRate;
-
-	template<>
-	struct InterestRate<Continuous> {
+	struct PeriodInterestRate;
+	
+	struct InterestRate {
 		double rate;
 
 		explicit InterestRate( double rate = 0.0 ) : rate(rate) {}
@@ -27,20 +20,15 @@ namespace mqf {
 			return std::exp( -rate * dt );
 		}
 
-		InterestRate<Period> convertToPeriod( Time newPeriod ) const {
-			return InterestRate<Period>(
-				( std::exp( rate * newPeriod ) - 1.0 ) / newPeriod,
-				newPeriod );
-		}
+		PeriodInterestRate convertToPeriod( Time newPeriod ) const;
 
 	};
 
-	template<>
-	struct InterestRate<Period> {
+	struct PeriodInterestRate {
 		double rate;
 		Time period;
 
-		explicit InterestRate( double rate = 0.0, Time period = 1 ) : rate(rate), period(period) {}
+		explicit PeriodInterestRate( double rate = 0.0, Time period = 1 ) : rate(rate), period(period) {}
 
 		double accumulationFactor( Time dt ) const {
 			return std::pow( 1.0 + rate * period, dt / period );
@@ -50,19 +38,25 @@ namespace mqf {
 			return 1.0 / accumulationFactor( dt );
 		}
 
-		InterestRate<Period> convertToPeriod( Time newPeriod ) const {
-			return InterestRate<Period>(
+		PeriodInterestRate convertToPeriod( Time newPeriod ) const {
+			return PeriodInterestRate(
 				( std::pow( 1.0 + period * rate, newPeriod / period ) - 1.0 ) / newPeriod,
 				newPeriod );
 		}
 
-		InterestRate<Continuous> convertToContinuous() const {
-			return InterestRate<Continuous>( std::log( 1.0 + period * rate ) / period );
+		InterestRate convertToContinuous() const {
+			return InterestRate( std::log( 1.0 + period * rate ) / period );
 		}
 
 	};
 
-	double CAGR( double x1, double x2, Time dt ) {
+	inline PeriodInterestRate InterestRate::convertToPeriod( Time newPeriod ) const {
+		return PeriodInterestRate(
+			( std::exp( rate * newPeriod ) - 1.0 ) / newPeriod,
+			newPeriod );
+	}
+
+	inline double CAGR( double x1, double x2, Time dt ) {
 		return std::pow( x2/x1, 1.0/dt ) - 1.0;
 	}
 

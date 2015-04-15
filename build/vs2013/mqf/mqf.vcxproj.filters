@@ -246,5 +246,23 @@
     <ClInclude Include="..\..\..\include\mqf\distribution.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\nelson_siegel.h">
+      <Filter>Header Files\Finance</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\svensson.h">
+      <Filter>Header Files\Finance</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\finance\zcb.h">
+      <Filter>Header Files\Finance</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\finance\fixed_coupon_bond.h">
+      <Filter>Header Files\Finance</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\finance\floating_rate_note.h">
+      <Filter>Header Files\Finance</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\finance\flat_yield_curve.h">
+      <Filter>Header Files\Finance</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

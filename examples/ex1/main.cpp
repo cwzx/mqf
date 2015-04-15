@@ -1,11 +1,9 @@
-#include <mqf/processes/gbm.h>
-#include <mqf/processes/ornstein_uhlenbeck.h>
-#include <mqf/processes/binomial_tree.h>
-#include <mqf/processes/trinomial_tree.h>
 #include <mqf/sde/milstein.h>
-#include <mqf/regression/least_squares.h>
 #include <mqf/processes/square_root.h>
 #include <mqf/processes/exponential_vasicek.h>
+#include <mqf/finance/fixed_coupon_bond.h>
+#include <mqf/finance/floating_rate_note.h>
+#include <mqf/finance/zcb.h>
 #include <iostream>
 #include <fstream>
 
@@ -13,6 +11,10 @@ using namespace std;
 using namespace mqf;
 
 int main() {
+
+	FixedCouponBond<> fcb;
+	FRN<10> frn;
+	ZCB<> zcb;
 
 	auto model = Processes::ExponentialVasicek(std::log(0.1),1.0,0.3);
 

@@ -5,9 +5,6 @@ namespace mqf {
 
 	using Time = double;
 
-	template<typename Calendar = struct Gregorian>
-	struct Date;
-
 }
 
 #endif

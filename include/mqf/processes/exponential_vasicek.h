@@ -18,10 +18,10 @@ namespace Processes {
 
 		double k, theta, sigma;
 
-		explicit ExponentialVasicek( double mean = 1.0,
+		explicit ExponentialVasicek( double logMean = 1.0,
 			                         double reversion = 1.0,
 			                         double volatility = 1.0 ) :
-			theta(mean),
+			theta(logMean),
 			k(reversion),
 			sigma(volatility)
 		{}

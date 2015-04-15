@@ -7,19 +7,6 @@
 namespace mqf {
 namespace Options {
 
-	struct CallTag {};
-	struct PutTag {};
-
-	// A European option can be exercised only at expiry
-	struct EuropeanTag {};
-
-	// An american option can be exercised at any time prior to expiry
-	struct AmericanTag {};
-
-
-	struct VanillaTag {};
-
-
 	struct VanillaCallPayoff {
 		double strike;
 
@@ -41,15 +28,11 @@ namespace Options {
 		}
 	};
 	
-
-	struct EuropeanOption {
+	template<typename Date>
+	struct VanillaOption {
 		double strike;
-		Time expiry;
+		Date expiry;
 	};
-
-	struct EuropeanCall : EuropeanOption {};
-
-	struct EuropeanPut : EuropeanOption {};
 
 	struct BlackScholes {
 		

@@ -45,19 +45,6 @@ namespace mqf {
 		return std::lgamma(x) + std::lgamma(y) - std::lgamma(x+y);
 	}
 
-	template<typename T,typename F>
-	void plot( const char* filename, T lower, T upper, uint32_t N, F&& f ) {
-		std::ofstream out(filename);
-
-		T delta = ( upper - lower ) / ( N - 1 );
-		T x = lower;
-		for(uint32_t i=0;i<N;++i) {
-			out << x << "," << std::forward<F>(f)(x) << endl;
-			x += delta;
-		}
-		
-	}
-
 }
 
 #endif

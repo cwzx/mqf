@@ -1,27 +1,28 @@
 #ifndef INCLUDED_MQF_CASHFLOW
 #define INCLUDED_MQF_CASHFLOW
 #include "interest.h"
+#include "../gregorian.h"
 
 namespace mqf {
 
-	template<typename Calendar = Gregorian>
+	template<typename Date = Gregorian::Date>
 	struct Cashflow {
 		double amount;
-		Date<Calendar> date;
+		Date date;
 
 		Cashflow() = default;
-		Cashflow( double amount, const Date<Calendar>& date ) : amount(amount), date(date) {}
+		Cashflow( double amount, const Date& date ) : amount(amount), date(date) {}
 	};
 
-	template<typename Calendar,Compounding C>
-	double PresentValue( const Cashflow<Calendar>& cashflow,
-	                     const InterestRate<C>& interest,
-						 const Date<Calendar>& presentDate ) {
+	template<typename Date,typename Interest>
+	double PresentValue( const Cashflow<Date>& cashflow,
+	                     const Interest& interest,
+						 const Date& presentDate ) {
 		return cashflow.amount * interest.discountFactor( Duration( presentDate, cashflow.date ) );
 	}
 
-	template<typename Container,typename Calendar,Compounding C>
-	double NetPresentValue( const Container& cashflows, const InterestRate<C>& interest, const Date<Calendar>& presentDate ) {
+	template<typename Container,typename Date,typename Interest>
+	double NetPresentValue( const Container& cashflows, const Interest& interest, const Date& presentDate ) {
 		double sum = 0.0;
 		for( auto&& cf : cashflows ) {
 			sum += PresentValue( cf, interest, presentDate );

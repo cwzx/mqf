@@ -30,16 +30,6 @@ namespace mqf {
 		return max_dd;
 	}
 
-	template<typename Seq>
-	double RiskReturnRatio( const Seq& seq, size_t N ) {
-		return Return( seq, N ) / MaxDrawDown( seq, N );
-	}
-
-	template<typename Seq>
-	double SharpeRatio( const Seq& seq, size_t N ) {
-		return Return( seq, N ) / Variance( seq, N );
-	}
-
 }
 
 #endif

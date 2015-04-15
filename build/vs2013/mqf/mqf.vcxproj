@@ -57,10 +57,15 @@
     <ClInclude Include="..\..\..\include\mqf\finance\cashflow.h" />
     <ClInclude Include="..\..\..\include\mqf\finance\drawdown.h" />
     <ClInclude Include="..\..\..\include\mqf\finance\european_option.h" />
+    <ClInclude Include="..\..\..\include\mqf\finance\fixed_coupon_bond.h" />
+    <ClInclude Include="..\..\..\include\mqf\finance\floating_rate_note.h" />
     <ClInclude Include="..\..\..\include\mqf\finance\interest.h" />
     <ClInclude Include="..\..\..\include\mqf\finance\utility_function.h" />
+    <ClInclude Include="..\..\..\include\mqf\finance\flat_yield_curve.h" />
+    <ClInclude Include="..\..\..\include\mqf\finance\zcb.h" />
     <ClInclude Include="..\..\..\include\mqf\functions.h" />
     <ClInclude Include="..\..\..\include\mqf\gregorian.h" />
+    <ClInclude Include="..\..\..\include\mqf\nelson_siegel.h" />
     <ClInclude Include="..\..\..\include\mqf\pde\pde.h" />
     <ClInclude Include="..\..\..\include\mqf\process.h" />
     <ClInclude Include="..\..\..\include\mqf\processes\bessel.h" />
@@ -84,6 +89,7 @@
     <ClInclude Include="..\..\..\include\mqf\stats\conjugate_priors.h" />
     <ClInclude Include="..\..\..\include\mqf\stats\descriptive.h" />
     <ClInclude Include="..\..\..\include\mqf\stats\likelihood.h" />
+    <ClInclude Include="..\..\..\include\mqf\svensson.h" />
     <ClInclude Include="..\..\..\include\mqf\time_series\arma.h" />
     <ClInclude Include="..\..\..\include\mqf\time_series\shift.h" />
     <ClInclude Include="..\..\..\include\mqf\types.h" />

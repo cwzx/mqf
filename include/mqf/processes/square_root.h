@@ -58,6 +58,10 @@ namespace Processes {
 			return 0.5 * mu * sigma*sigma / theta;
 		}
 
+		bool isPositive() const {
+			return sigma*sigma < 2.0 * mu * theta;
+		}
+
 	};
 
 	using CIR = SquareRoot;

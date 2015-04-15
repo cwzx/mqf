@@ -89,6 +89,12 @@ Work in progress.
 ### Finance
 
 * Black--Scholes pricing for European calls and puts
+* Zero Coupon Bond
+* Fixed Coupon Bond
+* Floating Rate Note
+* Flat Yield Curve
+* Nelson--Siegel Curve
+* Svensson Curve
 * Drawdown
 * Max Drawdown
 
