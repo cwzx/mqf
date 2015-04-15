@@ -1,9 +1,9 @@
 #ifndef INCLUDED_MQF_DISTRIBUTIONS_GAMMA
 #define INCLUDED_MQF_DISTRIBUTIONS_GAMMA
-#include "../random_variable.h"
-#include "../distribution.h"
 #include <cassert>
 #include <cmath>
+#include <random>
+#include "../distribution.h"
 
 namespace mqf {
 namespace Distributions {

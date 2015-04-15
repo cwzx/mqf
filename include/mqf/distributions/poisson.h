@@ -1,6 +1,6 @@
 #ifndef INCLUDED_MQF_DISTRIBUTIONS_POISSON
 #define INCLUDED_MQF_DISTRIBUTIONS_POISSON
-#include "../random_variable.h"
+#include <random>
 #include "../distribution.h"
 #include "../functions.h"
 

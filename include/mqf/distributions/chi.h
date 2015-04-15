@@ -1,7 +1,6 @@
 #ifndef INCLUDED_MQF_DISTRIBUTIONS_CHI
 #define INCLUDED_MQF_DISTRIBUTIONS_CHI
 #include "chi_squared.h"
-#include <cassert>
 
 namespace mqf {
 namespace Distributions {
@@ -28,6 +27,12 @@ namespace Distributions {
 		double operator()( double x ) const {
 			if( x < 0.0 ) return 0.0;
 			return ( 2.0 * std::pow(x,k-1) * std::exp(-0.5*x*x) )
+			     / ( std::pow( std::sqrt(2.0), k ) * std::tgamma(0.5*k) );
+		}
+
+		double derivative( double x ) const {
+			if( x < 0.0 ) return 0.0;
+			return ( 2.0 * std::pow(x,k-2) * std::exp(-0.5*x*x) * ( k - 1.0 - x*x ) )
 			     / ( std::pow( std::sqrt(2.0), k ) * std::tgamma(0.5*k) );
 		}
 

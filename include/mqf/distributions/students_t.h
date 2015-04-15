@@ -1,9 +1,10 @@
 #ifndef INCLUDED_MQF_DISTRIBUTIONS_STUDENTS_T
 #define INCLUDED_MQF_DISTRIBUTIONS_STUDENTS_T
-#include "../random_variable.h"
-#include "../distribution.h"
 #include <cassert>
 #include <cmath>
+#include <random>
+#include "../distribution.h"
+#include "../constants.h"
 
 namespace mqf {
 namespace Distributions {
@@ -74,7 +75,7 @@ namespace Distributions {
 		double operator()( double x ) const {
 			double p = (nu + 1.0) * 0.5;
 			double y = (x - mu) / sigma;
-			return std::tgamma( p ) / ( sqrt(nu * Pi) * sigma * std::tgamma( 0.5 * nu ) ) * std::pow( 1.0 + y*y / nu, -p );
+			return std::tgamma( p ) / ( std::sqrt(nu * Pi) * sigma * std::tgamma( 0.5 * nu ) ) * std::pow( 1.0 + y*y / nu, -p );
 		}
 
 	};

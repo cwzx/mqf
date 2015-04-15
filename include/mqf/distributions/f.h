@@ -1,9 +1,9 @@
 #ifndef INCLUDED_MQF_DISTRIBUTIONS_F
 #define INCLUDED_MQF_DISTRIBUTIONS_F
-#include "../random_variable.h"
-#include "../distribution.h"
-#include <cmath>
 #include <cassert>
+#include <random>
+#include "../distribution.h"
+#include "../functions.h"
 
 namespace mqf {
 namespace Distributions {
@@ -47,6 +47,13 @@ namespace Distributions {
 			double halfd2 = 0.5 * d2;
 			double r = d1 / d2;
 			return std::exp( (halfd1 - 1.0)*std::log(x) - (halfd1+halfd2)*std::log(1.0 + r*x) - logBeta( halfd1, halfd2 ) + halfd1 * std::log(r) );
+		}
+
+		double derivative( double x ) const {
+			double halfd1 = 0.5 * d1;
+			double halfd2 = 0.5 * d2;
+			double r = d1 / d2;
+			return std::exp( (halfd1 - 1.0)*std::log(x) - (halfd1+halfd2)*std::log(1.0 + r*x) - logBeta( halfd1, halfd2 ) + halfd1 * std::log(r) ) * ( (halfd1 - 1.0)/x - (halfd1+halfd2)*r/(1.0 + r*x) );
 		}
 
 		std::fisher_f_distribution<Value> distribution() const {

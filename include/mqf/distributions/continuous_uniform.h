@@ -1,5 +1,6 @@
 #ifndef INCLUDED_MQF_DISTRIBUTIONS_CONTINUOUS_UNIFORM
 #define INCLUDED_MQF_DISTRIBUTIONS_CONTINUOUS_UNIFORM
+#include <random>
 #include "../distribution.h"
 
 namespace mqf {

@@ -1,8 +1,8 @@
 #ifndef INCLUDED_MQF_DISTRIBUTIONS_TRIANGULAR
 #define INCLUDED_MQF_DISTRIBUTIONS_TRIANGULAR
-#include "../random_variable.h"
-#include "../distribution.h"
 #include <cmath>
+#include <random>
+#include "../distribution.h"
 
 namespace mqf {
 namespace Distributions {

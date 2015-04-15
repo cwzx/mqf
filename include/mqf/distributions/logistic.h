@@ -1,8 +1,9 @@
 #ifndef INCLUDED_MQF_DISTRIBUTIONS_LOGISTIC
 #define INCLUDED_MQF_DISTRIBUTIONS_LOGISTIC
-#include "../random_variable.h"
-#include "../distribution.h"
 #include <cmath>
+#include "../distribution.h"
+#include "../random_variable.h"
+#include "../constants.h"
 
 namespace mqf {
 namespace Distributions {

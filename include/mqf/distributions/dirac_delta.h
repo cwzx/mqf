@@ -1,8 +1,8 @@
 #ifndef INCLUDED_MQF_DISTRIBUTIONS_DIRAC_DELTA
 #define INCLUDED_MQF_DISTRIBUTIONS_DIRAC_DELTA
+#include <cassert>
 #include "../distribution.h"
 #include "../random_variable.h"
-#include <cassert>
 
 namespace mqf {
 namespace Distributions {

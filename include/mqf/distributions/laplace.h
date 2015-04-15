@@ -1,8 +1,8 @@
 #ifndef INCLUDED_MQF_DISTRIBUTIONS_LAPLACE
 #define INCLUDED_MQF_DISTRIBUTIONS_LAPLACE
-#include "../random_variable.h"
-#include "../distribution.h"
 #include <cmath>
+#include "../distribution.h"
+#include "../random_variable.h"
 
 namespace mqf {
 namespace Distributions {

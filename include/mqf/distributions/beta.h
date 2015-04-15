@@ -1,8 +1,8 @@
 #ifndef INCLUDED_MQF_DISTRIBUTIONS_BETA
 #define INCLUDED_MQF_DISTRIBUTIONS_BETA
-#include "../distribution.h"
 #include <cassert>
 #include <cmath>
+#include "../distribution.h"
 
 namespace mqf {
 namespace Distributions {
@@ -10,7 +10,7 @@ namespace Distributions {
 	struct Beta : Density<> {
 		double alpha, beta;
 
-		Beta( double alpha = 1.0, double beta = 1.0 ) : alpha(alpha), beta(beta) {}
+		explicit Beta( double alpha = 1.0, double beta = 1.0 ) : alpha(alpha), beta(beta) {}
 
 		double mean() const {
 			return alpha / ( alpha + beta );

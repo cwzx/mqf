@@ -1,8 +1,8 @@
 #ifndef INCLUDED_MQF_DISTRIBUTIONS_RAYLEIGH
 #define INCLUDED_MQF_DISTRIBUTIONS_RAYLEIGH
-#include "../random_variable.h"
-#include "../distribution.h"
 #include <cmath>
+#include "../distribution.h"
+#include "../constants.h"
 
 namespace mqf {
 namespace Distributions {

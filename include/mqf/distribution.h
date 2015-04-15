@@ -1,7 +1,5 @@
 #ifndef INCLUDED_MQF_DISTRIBUTION
 #define INCLUDED_MQF_DISTRIBUTION
-#include <random>
-#include "constants.h"
 
 namespace mqf {
 

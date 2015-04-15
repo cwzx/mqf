@@ -1,8 +1,9 @@
 #ifndef INCLUDED_MQF_DISTRIBUTIONS_MAXWELL_BOLTZMANN
 #define INCLUDED_MQF_DISTRIBUTIONS_MAXWELL_BOLTZMANN
-#include "../random_variable.h"
-#include "../distribution.h"
 #include <cmath>
+#include "../distribution.h"
+#include "../random_variable.h"
+#include "../constants.h"
 
 namespace mqf {
 namespace Distributions {

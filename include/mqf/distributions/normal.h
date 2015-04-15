@@ -1,8 +1,10 @@
 #ifndef INCLUDED_MQF_DISTRIBUTIONS_NORMAL
 #define INCLUDED_MQF_DISTRIBUTIONS_NORMAL
-#include "../random_variable.h"
-#include "../distribution.h"
 #include <cmath>
+#include <random>
+#include "../distribution.h"
+#include "../random_variable.h"
+#include "../constants.h"
 
 namespace mqf {
 namespace Distributions {

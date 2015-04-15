@@ -1,8 +1,8 @@
 #ifndef INCLUDED_MQF_DISTRIBUTIONS_MULTINOMIAL
 #define INCLUDED_MQF_DISTRIBUTIONS_MULTINOMIAL
+#include <initializer_list>
 #include "../distribution.h"
 #include "../functions.h"
-#include <initializer_list>
 
 namespace mqf {
 namespace Distributions {

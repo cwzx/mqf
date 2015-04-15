@@ -1,6 +1,5 @@
 #ifndef INCLUDED_MQF_RANDOM_VARIABLE
 #define INCLUDED_MQF_RANDOM_VARIABLE
-#include "distribution.h"
 
 namespace mqf {
 

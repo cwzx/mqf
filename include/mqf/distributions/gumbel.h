@@ -1,8 +1,9 @@
 #ifndef INCLUDED_MQF_DISTRIBUTIONS_GUMBEL
 #define INCLUDED_MQF_DISTRIBUTIONS_GUMBEL
-#include "../random_variable.h"
-#include "../distribution.h"
 #include <cmath>
+#include <random>
+#include "../distribution.h"
+#include "../constants.h"
 
 namespace mqf {
 namespace Distributions {
