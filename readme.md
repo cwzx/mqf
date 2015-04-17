@@ -90,6 +90,12 @@ Work in progress.
 * Geometric Mean
 * Harmonic Mean
 
+### Polynomials
+
+* Chebyshev
+* Hermite
+* Legendre
+
 ### Regression
 
 * Ordinary Least Squares

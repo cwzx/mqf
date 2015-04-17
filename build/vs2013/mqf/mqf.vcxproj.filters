@@ -40,6 +40,9 @@
     <Filter Include="Header Files\Copulas">
       <UniqueIdentifier>{8da87ff8-832b-4c8e-96eb-33a97e851870}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Polynomials">
+      <UniqueIdentifier>{78e78a25-874b-4627-ab25-3deb15755224}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\mqf\chrono.h">
@@ -305,6 +308,21 @@
     </ClInclude>
     <ClInclude Include="..\..\..\include\mqf\copulas\countermonotonicity.h">
       <Filter>Header Files\Copulas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\copulas\gaussian.h">
+      <Filter>Header Files\Copulas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\polynomials\hermite.h">
+      <Filter>Header Files\Polynomials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\polynomials\chebyshev.h">
+      <Filter>Header Files\Polynomials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\polynomials\legendre.h">
+      <Filter>Header Files\Polynomials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\assert.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

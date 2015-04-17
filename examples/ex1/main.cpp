@@ -1,9 +1,6 @@
 #include <mqf/sde/milstein.h>
 #include <mqf/processes/square_root.h>
 #include <mqf/processes/exponential_vasicek.h>
-#include <mqf/finance/fixed_coupon_bond.h>
-#include <mqf/finance/floating_rate_note.h>
-#include <mqf/finance/zcb.h>
 #include <mqf/copulas/ali_mikhail_haq.h>
 #include <mqf/utility.h>
 #include <iostream>
@@ -14,13 +11,9 @@ using namespace mqf;
 
 int main() {
 
-	FixedCouponBond<> fcb;
-	FRN<10> frn;
-	ZCB<> zcb;
-
 	Copulas::AliMikhailHaq c(0.8);
 
-	plot2D("test2.csv",0.0,1.0,0.0,1.0,100,100,[&](double x,double y){return c.density(x,y);});
+	plot2D("copula_density.csv",0.0,1.0,0.0,1.0,100,100,[&](double x,double y){return c.density(x,y);});
 
 	auto model = Processes::ExponentialVasicek(std::log(0.1),1.0,0.3);
 
@@ -32,7 +25,7 @@ int main() {
 
 	double x = 0.1;
 
-	ofstream out("test.csv");
+	ofstream out("sde.csv");
 
 	while( t < tMax ) {
 		out << t << "," << x << endl;
