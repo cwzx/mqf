@@ -1,49 +1,33 @@
 #ifndef INCLUDED_MQF_PDE
 #define INCLUDED_MQF_PDE
 #include <Eigen/Core>
-#include <cstdint>
+#include "grid.h"
 
 using namespace Eigen;
 
 namespace mqf {
-
-	template<typename T,int N>
-	struct Grid;
+	
+	template<typename Domain>
+	struct Laplacian;
 
 	template<typename T>
-	struct Grid<T,1> {
-		using Index = uint32_t;
-		using Real = T;
-		using Position = Real;
+	struct Laplacian<Grid<T,1>> {
 
-		Position offset = 0.0,
-		         delta = 1.0;
-		Index size = 32;
+		double delta;
 
-		Position operator()( Index index ) const {
-			return offset + delta * Real(index);
-		}
+		explicit Laplacian( double delta = 1.0 ) : delta(delta) {}
 
-		explicit Grid( Index size ) : size(size) {}
-
-		Grid( Index size, Position delta ) : size(size), delta(delta) {}
-
-		Grid( Index size, Position delta, Position offset ) : size(size), delta(delta), offset(offset) {}
-
-		template<typename Derived>
-		Array<typename Derived::Scalar,-1,1> gradient( const ArrayBase<Derived>& field ) const {
-			Array<Derived::Scalar,-1,1> grad(size);
-		
-			grad[0] = field[1] - field[size-1];
-			for(uint32_t i=1;i<size-1;++i)
-				grad[i] = field[i+1] - field[i-1];
-			grad[size-1] = field[0] - field[size-2];
-
-			return grad * ( 1.0 / delta );
+		template<typename F>
+		auto operator()( F&& f ) const {
+			return [&]( auto i ) {
+				return ( f(i+1) - 2.0 * f(i) + f(i-1) )
+				     / ( delta * delta );
+			};
 		}
 
 		template<typename Derived>
-		Array<typename Derived::Scalar,-1,1> laplacian( const ArrayBase<Derived>& field ) const {
+		Array<typename Derived::Scalar,-1,1> operator()( const ArrayBase<Derived>& field ) const {
+			auto size = field.size();
 			Array<Derived::Scalar,-1,1> lap(size);
 		
 			lap[0] = field[1] - 2.0 * field[0] + field[size-1];
@@ -54,7 +38,25 @@ namespace mqf {
 			return lap * ( 1.0 / (delta*delta) );
 		}
 
+
+
 	};
+
+	
+
+
+	/*
+	template<typename Derived>
+	Array<typename Derived::Scalar,-1,1> gradient( const ArrayBase<Derived>& field ) const {
+		Array<Derived::Scalar,-1,1> grad(size);
+		
+		grad[0] = field[1] - field[size-1];
+		for(uint32_t i=1;i<size-1;++i)
+			grad[i] = field[i+1] - field[i-1];
+		grad[size-1] = field[0] - field[size-2];
+
+		return grad * ( 1.0 / delta );
+	}
 
 	template<typename T>
 	struct Grid<T,2> {
@@ -153,7 +155,7 @@ namespace mqf {
 		}
 
 	};
-
+	*/
 }
 
 #endif

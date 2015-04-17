@@ -81,6 +81,8 @@
     <ClInclude Include="..\..\..\include\mqf\functions.h" />
     <ClInclude Include="..\..\..\include\mqf\gregorian.h" />
     <ClInclude Include="..\..\..\include\mqf\nelson_siegel.h" />
+    <ClInclude Include="..\..\..\include\mqf\pde\grid.h" />
+    <ClInclude Include="..\..\..\include\mqf\pde\multi_index.h" />
     <ClInclude Include="..\..\..\include\mqf\pde\pde.h" />
     <ClInclude Include="..\..\..\include\mqf\polynomials\chebyshev.h" />
     <ClInclude Include="..\..\..\include\mqf\polynomials\hermite.h" />

@@ -104,16 +104,6 @@ namespace mqf {
 		return max( std::forward<T>(x), max( std::forward<Ts>(xs)... ) );
 	}
 
-	template<typename T>
-	size_t count( T&& x ) {
-		return 1;
-	}
-
-	template<typename T,typename... Ts>
-	size_t count( T&& x, Ts&&... xs ) {
-		return size_t(1) + count( std::forward<Ts>(xs)... );
-	}
-
 }
 
 #endif
