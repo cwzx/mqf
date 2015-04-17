@@ -22,6 +22,33 @@ namespace mqf {
 		
 	}
 
+	template<typename T,typename F>
+	void plot2D( const char* filename, T lower1, T upper1,  T lower2, T upper2, uint32_t N1, uint32_t N2, F&& f ) {
+		std::ofstream out(filename);
+
+		T delta1 = ( upper1 - lower1 ) / ( N1 - 1 );
+		T delta2 = ( upper2 - lower2 ) / ( N2 - 1 );
+		
+		out << ",";
+		for(uint32_t j=0;j<N2;++j) {
+			out << lower2 + delta2*j << ",";
+		}
+		out << endl;
+
+		T x = lower1;
+		for(uint32_t i=0;i<N1;++i) {
+			out << x << ",";
+			T y = lower2;
+			for(uint32_t j=0;j<N2;++j) {
+				out << std::forward<F>(f)(x,y) << ",";
+				y += delta2;
+			}
+			out << endl;
+			x += delta1;
+		}
+		
+	}
+
 }
 
 #endif

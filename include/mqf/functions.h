@@ -2,6 +2,7 @@
 #define INCLUDED_MQF_FUNCTIONS
 #include <cstdint>
 #include <cmath>
+#include <utility>
 
 namespace mqf {
 
@@ -43,6 +44,74 @@ namespace mqf {
 
 	inline double logBeta( double x, double y ) {
 		return std::lgamma(x) + std::lgamma(y) - std::lgamma(x+y);
+	}
+
+	template<typename T,typename... Ts>
+	auto product( T&& x, Ts&&... xs ) {
+		return std::forward<T>(x) * product( std::forward<Ts>(xs)... );
+	}
+
+	template<typename T>
+	auto product( T&& x ) {
+		return x;
+	}
+
+	template<typename T,typename... Ts>
+	auto sum( T&& x, Ts&&... xs ) {
+		return std::forward<T>(x) + sum( std::forward<Ts>(xs)... );
+	}
+
+	template<typename T>
+	auto sum( T&& x ) {
+		return x;
+	}
+
+	template<typename T>
+	auto min( T&& x ) {
+		return x;
+	}
+
+	template<typename T1,typename T2>
+	auto min( T1&& x, T2&& y ) {
+		return (x<y)?x:y;
+	}
+
+	inline double min( double x, double y ) {
+		return std::fmin(x,y);
+	}
+
+	template<typename T,typename... Ts>
+	auto min( T&& x, Ts&&... xs ) {
+		return min( std::forward<T>(x), min( std::forward<Ts>(xs)... ) );
+	}
+
+	template<typename T>
+	auto max( T&& x ) {
+		return x;
+	}
+
+	template<typename T1,typename T2>
+	auto max( T1&& x, T2&& y ) {
+		return (x>y)?x:y;
+	}
+
+	inline double max( double x, double y ) {
+		return std::fmax(x,y);
+	}
+
+	template<typename T,typename... Ts>
+	auto max( T&& x, Ts&&... xs ) {
+		return max( std::forward<T>(x), max( std::forward<Ts>(xs)... ) );
+	}
+
+	template<typename T>
+	size_t count( T&& x ) {
+		return 1;
+	}
+
+	template<typename T,typename... Ts>
+	size_t count( T&& x, Ts&&... xs ) {
+		return size_t(1) + count( std::forward<Ts>(xs)... );
 	}
 
 }

@@ -38,6 +38,22 @@ Work in progress.
 * Wald
 * Weibull
 
+### Copulas
+
+* Ali--Mikhail--Haq
+* Clayton
+* Comonotonicity
+* Countermonotonicity
+* Farlie--Gumbel--Morgenstern
+* Frank
+* Galambos
+* Gumbel
+* Husler--Reiss
+* Independent
+* Joe
+* Marshall--Olkin
+* Plackett
+
 ### Stochastic Processes
 
 * Wiener

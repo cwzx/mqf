@@ -37,6 +37,9 @@
     <Filter Include="Header Files\SDE">
       <UniqueIdentifier>{dd366043-d822-4d93-bfbc-819615a5a3c2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Copulas">
+      <UniqueIdentifier>{8da87ff8-832b-4c8e-96eb-33a97e851870}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\mqf\chrono.h">
@@ -263,6 +266,45 @@
     </ClInclude>
     <ClInclude Include="..\..\..\include\mqf\finance\flat_yield_curve.h">
       <Filter>Header Files\Finance</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\copulas\independent.h">
+      <Filter>Header Files\Copulas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\copulas\clayton.h">
+      <Filter>Header Files\Copulas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\copulas\ali_mikhail_haq.h">
+      <Filter>Header Files\Copulas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\copulas\gumbel.h">
+      <Filter>Header Files\Copulas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\copulas\frank.h">
+      <Filter>Header Files\Copulas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\copulas\joe.h">
+      <Filter>Header Files\Copulas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\copulas\galambos.h">
+      <Filter>Header Files\Copulas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\copulas\farlie_gumbel_morgenstern.h">
+      <Filter>Header Files\Copulas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\copulas\husler_reiss.h">
+      <Filter>Header Files\Copulas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\copulas\marshall_olkin.h">
+      <Filter>Header Files\Copulas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\copulas\plackett.h">
+      <Filter>Header Files\Copulas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\copulas\comonotonicity.h">
+      <Filter>Header Files\Copulas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\copulas\countermonotonicity.h">
+      <Filter>Header Files\Copulas</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

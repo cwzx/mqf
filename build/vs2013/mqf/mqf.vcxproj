@@ -21,6 +21,19 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\include\mqf\chrono.h" />
     <ClInclude Include="..\..\..\include\mqf\constants.h" />
+    <ClInclude Include="..\..\..\include\mqf\copulas\ali_mikhail_haq.h" />
+    <ClInclude Include="..\..\..\include\mqf\copulas\clayton.h" />
+    <ClInclude Include="..\..\..\include\mqf\copulas\comonotonicity.h" />
+    <ClInclude Include="..\..\..\include\mqf\copulas\countermonotonicity.h" />
+    <ClInclude Include="..\..\..\include\mqf\copulas\farlie_gumbel_morgenstern.h" />
+    <ClInclude Include="..\..\..\include\mqf\copulas\frank.h" />
+    <ClInclude Include="..\..\..\include\mqf\copulas\galambos.h" />
+    <ClInclude Include="..\..\..\include\mqf\copulas\gumbel.h" />
+    <ClInclude Include="..\..\..\include\mqf\copulas\husler_reiss.h" />
+    <ClInclude Include="..\..\..\include\mqf\copulas\independent.h" />
+    <ClInclude Include="..\..\..\include\mqf\copulas\joe.h" />
+    <ClInclude Include="..\..\..\include\mqf\copulas\marshall_olkin.h" />
+    <ClInclude Include="..\..\..\include\mqf\copulas\plackett.h" />
     <ClInclude Include="..\..\..\include\mqf\day_count.h" />
     <ClInclude Include="..\..\..\include\mqf\distribution.h" />
     <ClInclude Include="..\..\..\include\mqf\distributions\bernoulli.h" />
