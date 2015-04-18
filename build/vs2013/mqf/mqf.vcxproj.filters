@@ -234,9 +234,6 @@
     <ClInclude Include="..\..\..\include\mqf\pde\pde.h">
       <Filter>Header Files\PDE</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\mqf\sde\fokker_planck.h">
-      <Filter>Header Files\SDE</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\mqf\sde\milstein.h">
       <Filter>Header Files\SDE</Filter>
     </ClInclude>
@@ -328,6 +325,15 @@
       <Filter>Header Files\PDE</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\mqf\pde\grid.h">
+      <Filter>Header Files\PDE</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\pde\aabb.h">
+      <Filter>Header Files\PDE</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\pde\black_scholes.h">
+      <Filter>Header Files\PDE</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\pde\fokker_planck.h">
       <Filter>Header Files\PDE</Filter>
     </ClInclude>
   </ItemGroup>

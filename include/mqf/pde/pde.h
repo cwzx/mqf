@@ -6,8 +6,31 @@
 using namespace Eigen;
 
 namespace mqf {
+	/*
+	 * Heat equation
+	 *
+	 * \partial_t f = \nabla^2 f
+	 *
+	 */
+	struct HeatEquation {
+		template<typename F>
+		auto operator()( F&& f ) const {
+			return laplacian( std::forward<F>(f) );
+		}
+	};
+
+	struct DirichletTag {};
+	struct NeumannTag {};
+
+	template<typename F,int M,int N>
+	struct Partial;
 	
-	template<typename Domain>
+	template<typename F,int M,int N>
+	Partial<F,M,N> partial( F&& f ) {
+		return Partial<F,M,N>( std::forward<F>(f) );
+	}
+
+	template<typename F>
 	struct Laplacian;
 
 	template<typename T>
@@ -38,12 +61,7 @@ namespace mqf {
 			return lap * ( 1.0 / (delta*delta) );
 		}
 
-
-
 	};
-
-	
-
 
 	/*
 	template<typename Derived>

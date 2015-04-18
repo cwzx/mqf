@@ -1,6 +1,7 @@
 #ifndef INCLUDED_MQF_UTILITY
 #define INCLUDED_MQF_UTILITY
 #include <numeric>
+#include <cstdint>
 
 namespace mqf {
 
