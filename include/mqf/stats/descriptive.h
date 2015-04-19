@@ -1,88 +1,112 @@
 #ifndef INCLUDED_MQF_STATS_DESCRIPTIVE
 #define INCLUDED_MQF_STATS_DESCRIPTIVE
 #include <limits>
+#include <algorithm>
+#include <numeric>
 
 namespace mqf {
 
-	template<typename Seq>
-	double SampleMean( const Seq& data ) {
+	template<typename It>
+	double sum( It p1, It p2 ) {
+		return std::accumulate( p1, p2, 0.0 );
+	}
+
+	template<typename It>
+	double product( It p1, It p2 ) {
+		return std::accumulate( p1, p2, 1.0, std::multiplies<>() );
+	}
+
+	template<typename It>
+	double sampleMean( It p1, It p2 ) {
+		return sum(p1,p2) / std::distance(p1,p2);
+	}
+
+	template<typename It>
+	double geometricMean( It p1, It p2 ) {
+		return std::pow( product(p1,p2), 1.0 / std::distance(p1,p2) );
+	}
+
+	template<typename It>
+	double harmonicMean( It p1, It p2 ) {
+		auto recip = []( double total, double x ) {
+			return total + 1.0 / x;
+		}
+		return double(std::distance(p1,p2)) / std::accumulate( p1, p2, 0.0, recip );
+	}
+
+	template<typename It>
+	auto min( It p1, It p2 ) {
+		return *std::min_element(p1,p2);
+	}
+
+	template<typename It>
+	auto max( It p1, It p2 ) {
+		return *std::max_element(p1,p2);
+	}
+
+	template<typename It>
+	auto range( It p1, It p2 ) {
+		auto mm = std::minmax(p1,p2);
+		return mm.second - mm.first;
+	}
+
+	template<typename It>
+	double biasedSampleVariance( It p1, It p2 ) {
+		auto mean = sampleMean(p1,p2);
+		auto squares = [mean]( double total, double x ) {
+			double r = x - mean;
+			return total + r*r;
+		}
+		return std::accumulate(p1,p2,0.0,squares) / std::distance(p1,p2);
+	}
+
+	template<typename It>
+	double unbiasedSampleVariance( It p1, It p2 ) {
+		auto mean = sampleMean(p1,p2);
+		auto squares = [mean]( double total, double x ) {
+			double r = x - mean;
+			return total + r*r;
+		}
+		return std::accumulate(p1,p2,0.0,squares) / ( std::distance(p1,p2) - 1 );
+	}
+
+	inline double Return( double x0, double x1 ) {
+		return (x1 - x0) / x0;
+	}
+
+	inline double logReturn( double x0, double x1 ) {
+		return std::log( x1 / x0 );
+	}
+
+	template<typename It>
+	double averageReturn( It p1, It p2 ) {
 		double sum = 0.0;
-		for( auto&& x : data ) {
-			sum += x;
+		size_t count = 0;
+		double current = *p1;
+		while( p1 != p2 ) {
+			double previous = current;
+			current = *++p1;
+			sum += Return( previous, current );
+			++count;
 		}
-		return x / data.size();
+		return sum / count;
 	}
 
-	template<typename Seq>
-	double GeometricMean( const Seq& data ) {
-		double prod = 1.0;
-		for( auto&& x : data ) {
-			prod *= x;
-		}
-		return std::pow( prod, 1.0/data.size() );
-	}
-
-	template<typename Seq>
-	double HarmonicMean( const Seq& data ) {
+	template<typename It>
+	double averageLogReturn( It p1, It p2 ) {
 		double sum = 0.0;
-		for( auto&& x : data ) {
-			sum += 1.0 / x;
+		size_t count = 0;
+		double current = *p1;
+		while( p1 != p2 ) {
+			double previous = current;
+			current = *++p1;
+			sum += logReturn( previous, current );
+			++count;
 		}
-		return double(data.size()) / sum;
+		return sum / count; 
 	}
 
-	template<typename Seq>
-	double Min( const Seq& data ) {
-		double currentMin = data.front();
-		for( auto&& x : data ) {
-			if( x < currentMin )
-				currentMin = x;
-		}
-		return currentMin;
-	}
 
-	template<typename Seq>
-	double Max( const Seq& data ) {
-		double currentMax = data.front();
-		for( auto&& x : data ) {
-			if( x > currentMax )
-				currentMax = x;
-		}
-		return currentMax;
-	}
-
-	template<typename Seq>
-	double Range( const Seq& data ) {
-		double currentMin = data.front();
-		double currentMax = data.front();
-		for( auto&& x : data ) {
-			if( x < currentMin )
-				currentMin = x;
-			else if( x > currentMax )
-				currentMax = x;
-		}
-		return currentMax - currentMin;
-	}
-
-	template<typename Seq>
-	double BiasedSampleVariance( const Seq& data ) {
-		double mean = SampleMean( data );
-		double sum2 = 0.0;
-		for( auto&& x : data ) {
-			sum2 += x - mean;
-		}
-		return x / data.size();
-	}
-
-	template<typename Seq>
-	double UnbiasedSampleVariance( const Seq& data ) {
-		double mean = SampleMean( data );
-		double sum2 = 0.0;
-		for( auto&& x : data ) {
-			sum2 += x - mean;
-		}
-		return x / ( data.size() - 1 );
-	}
 
 }
 

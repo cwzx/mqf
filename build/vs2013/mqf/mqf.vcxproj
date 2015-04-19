@@ -113,6 +113,7 @@
     <ClInclude Include="..\..\..\include\mqf\stats\likelihood.h" />
     <ClInclude Include="..\..\..\include\mqf\svensson.h" />
     <ClInclude Include="..\..\..\include\mqf\time_series\arma.h" />
+    <ClInclude Include="..\..\..\include\mqf\time_series\moving_average.h" />
     <ClInclude Include="..\..\..\include\mqf\time_series\shift.h" />
     <ClInclude Include="..\..\..\include\mqf\types.h" />
     <ClInclude Include="..\..\..\include\mqf\utility.h" />

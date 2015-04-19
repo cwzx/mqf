@@ -75,10 +75,10 @@ Work in progress.
 
 ### Numerical Methods for PDEs
 
-* Rectangular discretization in 1D and 2D
-* Partial Derivatives
-* Gradient
-* Laplacian
+* Rectangular grid in n-dimensions
+* Finite differences for partial derivatives, laplacian
+* Fokker--Planck equation
+* Black--Scholes equation
 
 ### Descriptive Statistics
 
