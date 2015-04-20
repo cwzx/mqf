@@ -1,6 +1,7 @@
 #ifndef INCLUDED_MQF_MOVING_AVERAGE
 #define INCLUDED_MQF_MOVING_AVERAGE
 #include <vector>
+#include <mqf/stats/descriptive.h>
 
 namespace mqf {
 
@@ -11,8 +12,8 @@ namespace mqf {
 
 		template<typename It>
 		std::vector<double> compute( It p1, It p2 ) const {
-			auto count = std::distance(p1,p2);
-			size_t N = (count + 1) - period;
+			int count = std::distance(p1,p2);
+			int N = (count + 1) - period;
 			if( N < 1 )
 				return {};
 

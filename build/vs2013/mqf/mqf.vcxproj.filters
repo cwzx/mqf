@@ -43,6 +43,9 @@
     <Filter Include="Header Files\Polynomials">
       <UniqueIdentifier>{78e78a25-874b-4627-ab25-3deb15755224}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Trading">
+      <UniqueIdentifier>{ab18645e-e1e4-482c-b198-fd88ff696f80}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\mqf\chrono.h">
