@@ -342,5 +342,17 @@
     <ClInclude Include="..\..\..\include\mqf\time_series\moving_average.h">
       <Filter>Header Files\Time Series</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\finance\capm.h">
+      <Filter>Header Files\Finance</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\trading\pairs.h">
+      <Filter>Header Files\Trading</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\trading\action.h">
+      <Filter>Header Files\Trading</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\trading\momentum.h">
+      <Filter>Header Files\Trading</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

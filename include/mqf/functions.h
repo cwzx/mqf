@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <cmath>
 #include <utility>
+#include <limits>
 
 namespace mqf {
 
@@ -102,6 +103,39 @@ namespace mqf {
 	template<typename T,typename... Ts>
 	auto max( T&& x, Ts&&... xs ) {
 		return max( std::forward<T>(x), max( std::forward<Ts>(xs)... ) );
+	}
+
+	inline double hyperGeometric21( double a, double b, double c, double z, double eps = 0.0 ) {
+		double an = a,
+		       bn = b,
+		       cn = c,
+		       zn = z,
+		       fn = 1.0,
+		       sum = 1.0,
+			   delta = DBL_MAX,
+			   deltaOld,
+			   sumOld;
+		uint32_t i = 1;
+		do {
+			deltaOld = delta;
+			delta = ( an * bn * zn ) / ( cn * fn );
+
+			// check for divergence
+			if( std::fabs( delta ) > std::fabs( deltaOld ) ) {
+				return std::numeric_limits<double>::infinity();
+			}
+
+			sumOld = sum;
+			sum += delta;
+			an *= a + i;
+			bn *= b + i;
+			cn *= c + i;
+			fn *= 1 + i;
+			zn *= z;
+			++i;
+		} while( std::fabs(sum - sumOld) > eps );
+
+		return sum;
 	}
 
 }

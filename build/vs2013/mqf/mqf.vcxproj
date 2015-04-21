@@ -69,6 +69,7 @@
     <ClInclude Include="..\..\..\include\mqf\distributions\weibull.h" />
     <ClInclude Include="..\..\..\include\mqf\eigen_pinv.h" />
     <ClInclude Include="..\..\..\include\mqf\finance\bonds.h" />
+    <ClInclude Include="..\..\..\include\mqf\finance\capm.h" />
     <ClInclude Include="..\..\..\include\mqf\finance\cashflow.h" />
     <ClInclude Include="..\..\..\include\mqf\finance\drawdown.h" />
     <ClInclude Include="..\..\..\include\mqf\finance\european_option.h" />
@@ -115,6 +116,9 @@
     <ClInclude Include="..\..\..\include\mqf\time_series\arma.h" />
     <ClInclude Include="..\..\..\include\mqf\time_series\moving_average.h" />
     <ClInclude Include="..\..\..\include\mqf\time_series\shift.h" />
+    <ClInclude Include="..\..\..\include\mqf\trading\action.h" />
+    <ClInclude Include="..\..\..\include\mqf\trading\momentum.h" />
+    <ClInclude Include="..\..\..\include\mqf\trading\pairs.h" />
     <ClInclude Include="..\..\..\include\mqf\types.h" />
     <ClInclude Include="..\..\..\include\mqf\utility.h" />
   </ItemGroup>

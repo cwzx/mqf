@@ -1,9 +1,6 @@
 #ifndef INCLUDED_MQF_FOKKERPLANCK
 #define INCLUDED_MQF_FOKKERPLANCK
-#include <valarray>
 #include <cstdint>
-
-using std::valarray;
 
 namespace mqf {
 
