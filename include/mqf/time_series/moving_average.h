@@ -1,7 +1,7 @@
 #ifndef INCLUDED_MQF_MOVING_AVERAGE
 #define INCLUDED_MQF_MOVING_AVERAGE
 #include <vector>
-#include <mqf/stats/descriptive.h>
+#include "../stats/descriptive.h"
 
 namespace mqf {
 
