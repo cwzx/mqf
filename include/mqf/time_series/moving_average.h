@@ -12,7 +12,7 @@ namespace mqf {
 
 		template<typename It>
 		std::vector<double> compute( It p1, It p2 ) const {
-			int count = std::distance(p1,p2);
+			int count = (int)std::distance(p1,p2);
 			int N = (count + 1) - period;
 			if( N < 1 )
 				return {};

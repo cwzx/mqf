@@ -1,6 +1,5 @@
 #ifndef INCLUDED_MQF_TRADING_ACTION
 #define INCLUDED_MQF_TRADING_ACTION
-#include <mqf/stats/descriptive.h>
 
 namespace mqf {
 

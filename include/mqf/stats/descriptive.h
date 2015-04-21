@@ -66,7 +66,7 @@ namespace mqf {
 		auto squares = [mean]( double total, double x ) {
 			double r = x - mean;
 			return total + r*r;
-		}
+		};
 		return std::accumulate(p1,p2,0.0,squares) / ( std::distance(p1,p2) - 1 );
 	}
 
