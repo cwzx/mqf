@@ -30,7 +30,7 @@ namespace mqf {
 	double harmonicMean( It p1, It p2 ) {
 		auto recip = []( double total, double x ) {
 			return total + 1.0 / x;
-		}
+		};
 		return double(std::distance(p1,p2)) / std::accumulate( p1, p2, 0.0, recip );
 	}
 
@@ -56,7 +56,7 @@ namespace mqf {
 		auto squares = [mean]( double total, double x ) {
 			double r = x - mean;
 			return total + r*r;
-		}
+		};
 		return std::accumulate(p1,p2,0.0,squares) / std::distance(p1,p2);
 	}
 

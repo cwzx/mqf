@@ -7,7 +7,7 @@ namespace mqf {
 		enum actionType { Hold, Buy, Sell } type;
 		double amount;
 
-		explicit Action( actionType type = Hold, double amount = 0.0 ) : type(type), amount(amount) {}
+		explicit Action( actionType type = Hold, double amount = 1.0 ) : type(type), amount(amount) {}
 	};
 
 }

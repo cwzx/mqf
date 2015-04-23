@@ -13,9 +13,10 @@ namespace mqf {
 		template<typename It>
 		std::vector<double> compute( It p1, It p2 ) const {
 			int count = (int)std::distance(p1,p2);
-			int N = (count + 1) - period;
-			if( N < 1 )
+			if( count < period )
 				return {};
+
+			size_t N = (count + 1) - period;
 
 			std::vector<double> sma(N);
 
@@ -52,9 +53,10 @@ namespace mqf {
 		template<typename It>
 		std::vector<double> compute( It p1, It p2 ) const {
 			auto count = std::distance(p1,p2);
-			size_t N = (count + 1) - period;
-			if( N < 1 )
+			if( count < period )
 				return {};
+
+			size_t N = (count + 1) - period;
 
 			std::vector<double> wma(N);
 			
@@ -75,6 +77,24 @@ namespace mqf {
 		}
 	};
 
+	struct ExponentialMovingAverage {
+		double alpha;
+
+		explicit ExponentialMovingAverage( double alpha = 0.1 ) : alpha(alpha) {}
+
+		template<typename It>
+		std::vector<double> compute( It p1, It p2 ) const {
+			auto N = std::distance(p1,p2);
+
+			std::vector<double> ema(N);
+
+			ema[0] = *p1;
+			for(size_t i=1;i<N;++i) {
+				ema[i] = (1.0-alpha) * ema[i-1] + alpha * (*++p1);
+			}
+			return ema;
+		}
+	};
 }
 
 #endif

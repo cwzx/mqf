@@ -19,14 +19,13 @@ namespace mqf {
 		};
 
 		template<typename It>
-		TestResult runTest( It p1, It p2 ) {
+		TestResult runTest( const char* file, It p1, It p2 ) {
 
 			TestResult result = {};
-			ofstream out("test.csv");
+			ofstream out(file);
 			double portfolio = 0.0;
 			double investment = 10000.0;
 			double cash = investment;
-			double volume = investment * 10;
 			double t = 0, dt = 1.0/252;
 			for(auto q = p1; q != p2; ++q) {
 
@@ -34,7 +33,7 @@ namespace mqf {
 		
 				auto action = strategy.compute( p1, std::next(q) );
 				if( action.type == Action::Buy ) {
-					double buy = std::fmin( x * volume, cash ) / x;
+					double buy = std::fmin( cash * action.amount, cash ) / x;
 					cash -= x * buy;
 					portfolio += buy;
 				}

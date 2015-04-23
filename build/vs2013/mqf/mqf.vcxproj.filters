@@ -46,6 +46,9 @@
     <Filter Include="Header Files\Trading">
       <UniqueIdentifier>{ab18645e-e1e4-482c-b198-fd88ff696f80}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Trading\Strategies">
+      <UniqueIdentifier>{74899a7c-eb94-4a62-b6fc-d2a415e9d87d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\mqf\chrono.h">
@@ -365,6 +368,15 @@
     </ClInclude>
     <ClInclude Include="..\..\..\include\mqf\trading\portfolio.h">
       <Filter>Header Files\Trading</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\trading\strategies\simple.h">
+      <Filter>Header Files\Trading\Strategies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\trading\strategies\moving_average.h">
+      <Filter>Header Files\Trading\Strategies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\trading\strategies\cw1.h">
+      <Filter>Header Files\Trading\Strategies</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

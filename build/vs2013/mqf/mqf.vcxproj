@@ -123,6 +123,9 @@
     <ClInclude Include="..\..\..\include\mqf\trading\momentum.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\pairs.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\portfolio.h" />
+    <ClInclude Include="..\..\..\include\mqf\trading\strategies\moving_average.h" />
+    <ClInclude Include="..\..\..\include\mqf\trading\strategies\simple.h" />
+    <ClInclude Include="..\..\..\include\mqf\trading\strategies\cw1.h" />
     <ClInclude Include="..\..\..\include\mqf\types.h" />
     <ClInclude Include="..\..\..\include\mqf\utility.h" />
   </ItemGroup>
