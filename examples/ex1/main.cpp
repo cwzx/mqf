@@ -7,17 +7,18 @@
 #include <fstream>
 #include <mqf/trading/strategies/cw1.h>
 #include <mqf/trading/strategies/moving_average.h>
-#include <mqf/trading/strategies/simple.h>
+#include <mqf/trading/strategies/stripes.h>
 #include <mqf/trading/backtest.h>
 #include <mqf/chrono.h>
+#include <mqf/fibonacci.h>
 
 using namespace std;
 using namespace mqf;
 
 int main() {
 
-	double drift = 0.0;
-	double vol = 0.1;
+	double drift = 0.00;
+	double vol = 0.05;
 	auto model = Processes::GBM<>(drift+0.5*vol*vol,vol);
 
 	Milstein<decltype(model)> milstein(model);
@@ -27,7 +28,7 @@ int main() {
 	       dt = 1.0/252;
 
 	double x = 1.0;
-	for(int i=0;i<100;++i)
+	for(int i=0;i<0;++i)
 		milstein.advance( x, dt );
 	
 	std::vector<double> timeseries;
@@ -45,9 +46,9 @@ int main() {
 		bt.runTest( "strat-1.csv", timeseries.begin(), timeseries.end() );
 	}
 	{
-		SimpleStrategy strat;
-		Backtest<SimpleStrategy> bt(strat);
-		bt.runTest( "strat-simple.csv", timeseries.begin(), timeseries.end() );
+		Stripes strat;
+		Backtest<Stripes> bt(strat);
+		bt.runTest( "strat-stripes.csv", timeseries.begin(), timeseries.end() );
 	}
 	{
 		MAStrategy strat;

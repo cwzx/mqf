@@ -36,7 +36,7 @@ namespace mqf {
 			auto count = std::distance(p1,p2);
 			
 			if( count < period )
-				return Action( Action::Hold );
+				return Action( Action::Hold, 0 );
 
 			auto logRet = logReturns(std::next(p2,-period),p2);
 			Distributions::Normal N;
@@ -45,12 +45,12 @@ namespace mqf {
 
 			double h = N.mu / std::sqrt( N.sigma2 );
 			if( h > buyLimit ) {
-				return Action( Action::Buy );
+				return Action( Action::Buy, h );
 			}
 			if( h < sellLimit ) {
-				return Action( Action::Sell );
+				return Action( Action::Sell, h );
 			}
-			return Action( Action::Hold );
+			return Action( Action::Hold, h );
 		}
 
 	};

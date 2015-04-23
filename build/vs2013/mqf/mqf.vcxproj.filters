@@ -378,5 +378,11 @@
     <ClInclude Include="..\..\..\include\mqf\trading\strategies\cw1.h">
       <Filter>Header Files\Trading\Strategies</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\fibonacci.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\trading\strategies\stripes.h">
+      <Filter>Header Files\Trading\Strategies</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
