@@ -8,8 +8,8 @@ namespace mqf {
 	struct MAStrategy {
 		int shortPeriod, longPeriod;
 
-		explicit MAStrategy( int shortPeriod = 15,
-							 int longPeriod = 30 ) :
+		explicit MAStrategy( int shortPeriod = 30,
+							 int longPeriod = 60 ) :
 			shortPeriod(shortPeriod),
 			longPeriod(longPeriod)
 		{}
