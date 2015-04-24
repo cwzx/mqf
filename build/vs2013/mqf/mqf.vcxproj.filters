@@ -219,9 +219,6 @@
     <ClInclude Include="..\..\..\include\mqf\finance\utility_function.h">
       <Filter>Header Files\Finance</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\mqf\finance\drawdown.h">
-      <Filter>Header Files\Finance</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\mqf\finance\interest.h">
       <Filter>Header Files\Finance</Filter>
     </ClInclude>
@@ -383,6 +380,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\include\mqf\trading\strategies\stripes.h">
       <Filter>Header Files\Trading\Strategies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\time_series\drawdown.h">
+      <Filter>Header Files\Time Series</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -72,7 +72,6 @@
     <ClInclude Include="..\..\..\include\mqf\finance\bonds.h" />
     <ClInclude Include="..\..\..\include\mqf\finance\capm.h" />
     <ClInclude Include="..\..\..\include\mqf\finance\cashflow.h" />
-    <ClInclude Include="..\..\..\include\mqf\finance\drawdown.h" />
     <ClInclude Include="..\..\..\include\mqf\finance\european_option.h" />
     <ClInclude Include="..\..\..\include\mqf\finance\fixed_coupon_bond.h" />
     <ClInclude Include="..\..\..\include\mqf\finance\floating_rate_note.h" />
@@ -116,6 +115,7 @@
     <ClInclude Include="..\..\..\include\mqf\stats\likelihood.h" />
     <ClInclude Include="..\..\..\include\mqf\svensson.h" />
     <ClInclude Include="..\..\..\include\mqf\time_series\arma.h" />
+    <ClInclude Include="..\..\..\include\mqf\time_series\drawdown.h" />
     <ClInclude Include="..\..\..\include\mqf\time_series\moving_average.h" />
     <ClInclude Include="..\..\..\include\mqf\time_series\shift.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\action.h" />

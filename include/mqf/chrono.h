@@ -7,14 +7,14 @@
 namespace mqf {
 
 	struct FormattedTime {
-		int64_t hour, minute, second, milli, micro, nano;
+		uint16_t hour, minute, second, milli, micro, nano;
 
-		explicit FormattedTime( int64_t hour   = 0,
-		                        int64_t minute = 0,
-		                        int64_t second = 0,
-		                        int64_t milli  = 0,
-		                        int64_t micro  = 0,
-		                        int64_t nano   = 0 ) :
+		explicit FormattedTime( uint16_t hour   = 0,
+		                        uint16_t minute = 0,
+		                        uint16_t second = 0,
+		                        uint16_t milli  = 0,
+		                        uint16_t micro  = 0,
+		                        uint16_t nano   = 0 ) :
 			hour(hour),
 			minute(minute),
 			second(second), 
@@ -87,22 +87,22 @@ namespace mqf {
 			
 			int64_t remain = nanoseconds;
 			
-			f.hour = remain / nanoPerHour;
+			f.hour = uint16_t(remain / nanoPerHour);
 			remain -= f.hour * nanoPerHour;
 			
-			f.minute = remain / nanoPerMinute;
+			f.minute = uint16_t(remain / nanoPerMinute);
 			remain -= f.minute * nanoPerMinute;
 
-			f.second = remain / nanoPerSecond;
+			f.second = uint16_t(remain / nanoPerSecond);
 			remain -= f.second * nanoPerSecond;
 
-			f.milli = remain / nanoPerMilli;
+			f.milli = uint16_t(remain / nanoPerMilli);
 			remain -= f.milli * nanoPerMilli;
 
-			f.micro = remain / nanoPerMicro;
+			f.micro = uint16_t(remain / nanoPerMicro);
 			remain -= f.micro * nanoPerMicro;
 
-			f.nano = remain;
+			f.nano = uint16_t(remain);
 
 			return f;
 		}
