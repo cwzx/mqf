@@ -5,15 +5,12 @@
 
 namespace mqf {
 
-	template<typename F,typename T>
+	template<typename T,typename F>
 	struct ShiftedFunction {
-		F f;
 		T shift;
-
-		ShiftedFunction( const F& f, const T& shift ) :
-			f( f ),
-			shift( shift )
-		{}
+		F f;
+		
+		ShiftedFunction( const T& shift, const F& f ) : shift( shift ), f( f ) {}
 		
 		template<typename A>
 		auto operator()( A&& x ) const {
@@ -22,12 +19,12 @@ namespace mqf {
 
 	};
 
-	template<typename F,typename T>
-	ShiftedFunction<F,T> MakeShifted( F&& f, T&& shift ) {
-		return ShiftedFunction<F,T>( std::forward<F>(f), std::forward<T>(shift) );
+	template<typename T,typename F>
+	ShiftedFunction<T,F> MakeShifted( T&& shift, F&& f ) {
+		return ShiftedFunction<T,F>( std::forward<T>(shift), std::forward<F>(f) );
 	}
 
-	template<typename T = int>
+	template<typename T>
 	struct ShiftOperator {
 		T shift;
 
@@ -42,25 +39,24 @@ namespace mqf {
 		
 		// apply shift
 		template<typename F>
-		ShiftedFunction<F,T> operator()( F&& f ) const {
-			return ShiftedFunction<F,T>( std::forward<F>(f), shift );
-		}
-
-		// apply shift -- alternate notation
-		template<typename F>
-		ShiftedFunction<F,T> operator*( F&& f ) const {
-			return ShiftedFunction<F,T>( std::forward<F>(f), shift );
+		ShiftedFunction<T,F> operator()( F&& f ) const {
+			return ShiftedFunction<T,F>( shift, std::forward<F>(f) );
 		}
 
 		ShiftOperator<T> inverse() const {
 			return ShiftOperator<T>( -shift );
 		}
 
-		ShiftOperator<T> identity() const {
+		static ShiftOperator<T> identity() {
 			return ShiftOperator<T>();
 		}
 
 	};
+
+	template<typename T>
+	ShiftOperator<T> MakeShifted( T&& shift ) {
+		return ShiftOperator<T>( std::forward<T>(shift) );
+	}
 
 }
 

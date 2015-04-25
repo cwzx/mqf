@@ -67,8 +67,8 @@ namespace mqf {
 
 		uint32_t repeats = 1000;
 
-		StochasticBacketest() = default;
-		StochasticBacketest( const Strat& strat, const SDE& sde ) : strategy(strat), dynamics(sde) {}
+		StochasticBacktest() = default;
+		StochasticBacktest( const Strat& strat, const SDE& sde ) : strategy(strat), dynamics(sde) {}
 
 		Milstein<SDE> dynamics;
 		Strat strategy;

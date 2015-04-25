@@ -116,6 +116,7 @@
     <ClInclude Include="..\..\..\include\mqf\svensson.h" />
     <ClInclude Include="..\..\..\include\mqf\time_series\arma.h" />
     <ClInclude Include="..\..\..\include\mqf\time_series\drawdown.h" />
+    <ClInclude Include="..\..\..\include\mqf\time_series\finite_difference.h" />
     <ClInclude Include="..\..\..\include\mqf\time_series\moving_average.h" />
     <ClInclude Include="..\..\..\include\mqf\time_series\shift.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\action.h" />
@@ -130,6 +131,9 @@
     <ClInclude Include="..\..\..\include\mqf\trading\strategies\stripes.h" />
     <ClInclude Include="..\..\..\include\mqf\types.h" />
     <ClInclude Include="..\..\..\include\mqf\utility.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\include\mqf\finance\efficient_frontier.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{05A5A8EE-DE3F-430A-B808-C7D250DE1537}</ProjectGuid>

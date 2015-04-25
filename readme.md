@@ -2,7 +2,7 @@
 
 Mathematics for quantitative finance.
 
-Work in progress.
+For educational purposes only. Work in progress.
 
 ## Features
 
@@ -77,6 +77,7 @@ Work in progress.
 
 * Rectangular grid in n-dimensions
 * Finite differences for partial derivatives, laplacian
+* Multi-Index
 * Fokker--Planck equation
 * Black--Scholes equation
 
@@ -89,6 +90,16 @@ Work in progress.
 * Range
 * Geometric Mean
 * Harmonic Mean
+
+### Time Series
+
+* Drawdown
+* Max Drawdown
+* Simple Moving Average
+* Weighted Moving Average
+* Exponential Moving Average
+* Shift Operator
+* Finite Difference Operators
 
 ### Polynomials
 
@@ -108,6 +119,14 @@ Work in progress.
 * Discount factor
 * Conversion between oontinuous and non-continuous conversion periods.
 
+### Trading and Investment
+
+* Portfolios
+* Efficient Frontier
+* Capital Asset Pricing Model (CAPM)
+* Backtest
+* Stochastic Backtest
+
 ### Finance
 
 * Black--Scholes pricing for European calls and puts
@@ -117,8 +136,6 @@ Work in progress.
 * Flat Yield Curve
 * Nelson--Siegel Curve
 * Svensson Curve
-* Drawdown
-* Max Drawdown
 
 ### Utility Functions
 
@@ -132,7 +149,7 @@ Work in progress.
 
 * Gregorian calendar
 * Day count conventions
-
+* Time of day in nanoseconds
 
 ## Dependencies
 
