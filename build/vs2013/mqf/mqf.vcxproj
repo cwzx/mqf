@@ -72,6 +72,7 @@
     <ClInclude Include="..\..\..\include\mqf\finance\bonds.h" />
     <ClInclude Include="..\..\..\include\mqf\finance\capm.h" />
     <ClInclude Include="..\..\..\include\mqf\finance\cashflow.h" />
+    <ClInclude Include="..\..\..\include\mqf\finance\efficient_frontier.h" />
     <ClInclude Include="..\..\..\include\mqf\finance\european_option.h" />
     <ClInclude Include="..\..\..\include\mqf\finance\fixed_coupon_bond.h" />
     <ClInclude Include="..\..\..\include\mqf\finance\floating_rate_note.h" />
@@ -131,9 +132,6 @@
     <ClInclude Include="..\..\..\include\mqf\trading\strategies\stripes.h" />
     <ClInclude Include="..\..\..\include\mqf\types.h" />
     <ClInclude Include="..\..\..\include\mqf\utility.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\..\include\mqf\finance\efficient_frontier.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{05A5A8EE-DE3F-430A-B808-C7D250DE1537}</ProjectGuid>

@@ -387,10 +387,8 @@
     <ClInclude Include="..\..\..\include\mqf\time_series\finite_difference.h">
       <Filter>Header Files\Time Series</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\..\include\mqf\finance\efficient_frontier.cpp">
+    <ClInclude Include="..\..\..\include\mqf\finance\efficient_frontier.h">
       <Filter>Header Files\Finance</Filter>
-    </ClCompile>
+    </ClInclude>
   </ItemGroup>
 </Project>
