@@ -19,13 +19,11 @@ namespace mqf {
 		return results;
 	}
 
-	
-
 	struct CW1 {
 		double sellLimit, buyLimit;
 		int period;
 
-		explicit CW1( double sellLimit = -0.1,
+		explicit CW1( double sellLimit = 0.05,
 		              double buyLimit = 0.1,
 					  int period = 40 ) :
 			sellLimit(sellLimit),

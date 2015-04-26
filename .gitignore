@@ -1,9 +1,13 @@
 bin/
 lib/
 
-*.csv
+include/mqf/trading/strategies/cw1.h
 
-# Visual Studio 2013 stuff
+examples/*/*.csv
+examples/*/*.txt
+
+
+# Visual Studio stuff
 *.suo
 *.sdf
 *.opensdf
@@ -13,3 +17,4 @@ build/*/mqf/x64
 build/*/mqf/Win32
 build/*/examples/*/x64
 build/*/examples/*/Win32
+

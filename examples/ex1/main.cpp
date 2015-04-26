@@ -8,6 +8,7 @@
 #include <mqf/trading/strategies/moving_average.h>
 #include <mqf/trading/strategies/stripes.h>
 #include <mqf/trading/backtest.h>
+#include <string>
 
 using namespace std;
 using namespace mqf;
@@ -21,7 +22,9 @@ int main() {
 	std::vector<double> timeseries;
 	timeseries.reserve( 10000 );
 
-	ifstream in("ftse.txt");
+	string ticker = "aapl";
+
+	ifstream in(ticker + ".txt");
 	while( !in.eof() ) {
 		double x = 0.0;
 		in >> x;
@@ -29,7 +32,7 @@ int main() {
 	}
 	std::reverse( timeseries.begin(), timeseries.end() );
 
-	{
+	/*{
 		CW1 strat;
 		StochasticBacktest<CW1,decltype(model)> bt(strat,model);
 		bt.repeats = 100000;
@@ -41,21 +44,27 @@ int main() {
 		bt.repeats = 100000;
 		bt.run( "strat-ma.csv" );
 	}
-	/*{
+	{
+		Stripes strat;
+		StochasticBacktest<Stripes,decltype(model)> bt(strat,model);
+		bt.repeats = 10000;
+		bt.run( "strat-stripes.csv" );
+	}*/
+	{
 		CW1 strat;
 		Backtest<CW1> bt(strat);
-		bt.runTest( "strat-1.csv", timeseries.begin(), timeseries.end() );
+		bt.runTest( ("strat-1-" + ticker + ".csv").c_str(), timeseries.begin(), timeseries.end() );
 	}
 	{
 		MAStrategy strat;
 		Backtest<MAStrategy> bt(strat);
-		bt.runTest( "strat-ma.csv", timeseries.begin(), timeseries.end() );
-	}*/
-	/*{
+		bt.runTest( ("strat-ma-" + ticker + ".csv").c_str(), timeseries.begin(), timeseries.end() );
+	}
+	{
 		Stripes strat;
 		Backtest<Stripes> bt(strat);
-		bt.runTest( "strat-stripes.csv", timeseries.begin(), timeseries.end() );
-	}*/
+		bt.runTest( ("strat-stripes-" + ticker + ".csv").c_str(), timeseries.begin(), timeseries.end() );
+	}
 	
 
 	cout << "Press enter to continue . . . "; cin.get();

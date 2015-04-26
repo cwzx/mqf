@@ -49,6 +49,9 @@
     <Filter Include="Header Files\Trading\Strategies">
       <UniqueIdentifier>{74899a7c-eb94-4a62-b6fc-d2a415e9d87d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Data">
+      <UniqueIdentifier>{8e9b4f48-178e-43d7-afa0-e79240508dd5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\mqf\chrono.h">
