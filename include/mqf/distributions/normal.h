@@ -52,6 +52,9 @@ namespace Distributions {
 			return std::normal_distribution<Value>( mu, std::sqrt(sigma2) );
 		}
 
+		struct Mean {};
+		struct Variance {};
+
 	};
 
 	struct StdNormal : Density<> {

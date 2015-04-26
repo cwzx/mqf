@@ -25,6 +25,7 @@ namespace mqf {
 		return OLS( Y, D );
 	}
 
+
 }
 
 #endif

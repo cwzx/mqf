@@ -83,7 +83,7 @@ namespace mqf {
 		auto betaOLS = OLS(Y,X);
 		auto residuals = Y - X * betaOLS;
 		auto Omega = covarianceEstimator( betaOLS, residuals ); // todo
-		return GLS( Y, X, Omega.inverse() );
+		return GLS( Y, X, pseudoInverse( Omega ) );
 	}
 
 

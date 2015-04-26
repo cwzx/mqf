@@ -114,8 +114,6 @@ namespace mqf {
 		return logReturn( *p1, *--p2 ) / ( count - 1 ); 
 	}
 
-
-
 }
 
 #endif

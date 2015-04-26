@@ -93,6 +93,7 @@
     <ClInclude Include="..\..\..\include\mqf\polynomials\chebyshev.h" />
     <ClInclude Include="..\..\..\include\mqf\polynomials\hermite.h" />
     <ClInclude Include="..\..\..\include\mqf\polynomials\legendre.h" />
+    <ClInclude Include="..\..\..\include\mqf\polynomials\polynomial.h" />
     <ClInclude Include="..\..\..\include\mqf\process.h" />
     <ClInclude Include="..\..\..\include\mqf\processes\bessel.h" />
     <ClInclude Include="..\..\..\include\mqf\processes\binomial_tree.h" />
@@ -113,7 +114,8 @@
     <ClInclude Include="..\..\..\include\mqf\sde\stochastic_rk1.h" />
     <ClInclude Include="..\..\..\include\mqf\stats\conjugate_priors.h" />
     <ClInclude Include="..\..\..\include\mqf\stats\descriptive.h" />
-    <ClInclude Include="..\..\..\include\mqf\stats\likelihood.h" />
+    <ClInclude Include="..\..\..\include\mqf\stats\mle.h" />
+    <ClInclude Include="..\..\..\include\mqf\stats\mvue.h" />
     <ClInclude Include="..\..\..\include\mqf\svensson.h" />
     <ClInclude Include="..\..\..\include\mqf\time_series\arma.h" />
     <ClInclude Include="..\..\..\include\mqf\time_series\drawdown.h" />
