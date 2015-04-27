@@ -144,8 +144,8 @@ namespace Gregorian {
 
 }
 
-	inline Time Duration( const Gregorian::Date& d1, const Gregorian::Date& d2 ) {
-		return Time( Gregorian::Days(d1,d2) ) / Gregorian::daysPerYearAverage;
+	inline double yearFraction( const Gregorian::Date& d1, const Gregorian::Date& d2 ) {
+		return double( Gregorian::Days(d1,d2) ) / Gregorian::daysPerYearAverage;
 	}
 
 }

@@ -9,6 +9,7 @@
 #include <mqf/trading/strategies/stripes.h>
 #include <mqf/trading/backtest.h>
 #include <string>
+#include <mqf/data/yahoo.h>
 
 using namespace std;
 using namespace mqf;
@@ -19,18 +20,18 @@ int main() {
 	double vol = 0.1;
 	auto model = Processes::GBM<>(drift+0.5*vol*vol,vol);
 
-	std::vector<double> timeseries;
-	timeseries.reserve( 10000 );
-
 	string ticker = "aapl";
 
-	ifstream in(ticker + ".txt");
-	while( !in.eof() ) {
-		double x = 0.0;
-		in >> x;
-		timeseries.push_back( x );
-	}
-	std::reverse( timeseries.begin(), timeseries.end() );
+	auto data = Yahoo::load((ticker + ".csv").c_str());
+
+	auto start = std::find_if( data.begin(), data.end(), [](auto&& x){return x.date.year >= 1900;});
+	
+	std::vector<double> timeseries;
+	timeseries.reserve( data.size() );
+	std::transform( start,
+					data.end(),
+					std::back_inserter(timeseries),
+					[](auto& x){ return x.close; } );
 
 	/*{
 		CW1 strat;
@@ -60,11 +61,11 @@ int main() {
 		Backtest<MAStrategy> bt(strat);
 		bt.runTest( ("strat-ma-" + ticker + ".csv").c_str(), timeseries.begin(), timeseries.end() );
 	}
-	{
+	/*{
 		Stripes strat;
 		Backtest<Stripes> bt(strat);
 		bt.runTest( ("strat-stripes-" + ticker + ".csv").c_str(), timeseries.begin(), timeseries.end() );
-	}
+	}*/
 	
 
 	cout << "Press enter to continue . . . "; cin.get();

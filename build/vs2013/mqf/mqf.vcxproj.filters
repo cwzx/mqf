@@ -399,5 +399,8 @@
     <ClInclude Include="..\..\..\include\mqf\stats\mle.h">
       <Filter>Header Files\Statistics</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\data\yahoo.h">
+      <Filter>Header Files\Data</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
