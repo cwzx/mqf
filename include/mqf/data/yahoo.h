@@ -4,6 +4,10 @@
 #include <vector>
 #include <fstream>
 
+/*
+ * Parsing stock price data from Yahoo Finance
+ *
+ */
 namespace mqf {
 namespace Yahoo {
 
@@ -31,6 +35,10 @@ namespace Yahoo {
 		return date;
 	}
 
+	/*
+	 * Load .csv files produced by real-chart.finance.yahoo.com/table.csv
+	 *
+	 */
 	std::vector<DailyData> load( const char* file ) {
 		std::vector<DailyData> timeseries;
 		std::ifstream in(file);
@@ -46,7 +54,6 @@ namespace Yahoo {
 			DailyData daily;
 			
 			in.getline(buf,buf_size,',');
-
 			daily.date = parseDate( buf );
 
 			in.getline(buf,buf_size,',');
@@ -73,9 +80,6 @@ namespace Yahoo {
 		std::reverse( timeseries.begin(), timeseries.end() );
 		return timeseries;
 	}
-
-
-
 
 }
 }

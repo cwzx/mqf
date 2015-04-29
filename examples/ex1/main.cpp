@@ -31,7 +31,7 @@ int main() {
 	std::transform( start,
 					data.end(),
 					std::back_inserter(timeseries),
-					[](auto& x){ return x.close; } );
+					[](auto&& x){ return x.close; } );
 
 	/*{
 		CW1 strat;
@@ -44,12 +44,6 @@ int main() {
 		StochasticBacktest<MAStrategy,decltype(model)> bt(strat,model);
 		bt.repeats = 100000;
 		bt.run( "strat-ma.csv" );
-	}
-	{
-		Stripes strat;
-		StochasticBacktest<Stripes,decltype(model)> bt(strat,model);
-		bt.repeats = 10000;
-		bt.run( "strat-stripes.csv" );
 	}*/
 	{
 		CW1 strat;
@@ -61,12 +55,7 @@ int main() {
 		Backtest<MAStrategy> bt(strat);
 		bt.runTest( ("strat-ma-" + ticker + ".csv").c_str(), timeseries.begin(), timeseries.end() );
 	}
-	/*{
-		Stripes strat;
-		Backtest<Stripes> bt(strat);
-		bt.runTest( ("strat-stripes-" + ticker + ".csv").c_str(), timeseries.begin(), timeseries.end() );
-	}*/
-	
+
 
 	cout << "Press enter to continue . . . "; cin.get();
 }

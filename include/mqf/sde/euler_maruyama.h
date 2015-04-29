@@ -7,7 +7,7 @@ namespace mqf {
 	template<typename ItoSDE>
 	struct EulerMaruyama {
 		using Time = double;
-		using State = typename ItoSDE::State;
+		using Value = typename ItoSDE::Value;
 
 		ItoSDE sde;
 		std::mt19937 mt;
@@ -16,7 +16,7 @@ namespace mqf {
 
 		explicit EulerMaruyama( const ItoSDE& sde ) : sde(sde) {}
 
-		State advance( const State& X, Time dt ) {
+		Value advance( const Value& X, Time dt ) {
 			std::normal_distribution<> normal( 0.0, dt );
 			return X + sde.drift(X) * dt + sde.diffusion(X) * normal(mt);
 		}

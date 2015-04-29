@@ -24,7 +24,7 @@ namespace mqf {
 		double s2 = 0.0;
 		int N = bond.N;
 		for(uint32_t i=0;i<N;++i) {
-			auto p = Price( ZCB<Calendar>( bond.getDate(i) ), yieldCurve, now );
+			auto p = Price( ZCB<Date>( bond.getDate(i) ), yieldCurve, now );
 			s1 += p * i;
 			s2 += p;
 		}

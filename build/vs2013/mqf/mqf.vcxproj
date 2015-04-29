@@ -126,8 +126,6 @@
     <ClInclude Include="..\..\..\include\mqf\trading\action.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\backtest.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\market.h" />
-    <ClInclude Include="..\..\..\include\mqf\trading\momentum.h" />
-    <ClInclude Include="..\..\..\include\mqf\trading\pairs.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\portfolio.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\strategies\moving_average.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\strategies\simple.h" />

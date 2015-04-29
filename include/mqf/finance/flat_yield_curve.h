@@ -10,17 +10,17 @@ namespace mqf {
 
 		explicit FlatYieldCurve( double rate = 0.0 ) : rate(rate) {}
 		
-		double zcb( Time T ) const {
+		double zcb( double T ) const {
 			return std::exp( -rate * T );
 		}
 
-		double simpleSpotRate( Time T ) const {
+		double simpleSpotRate( double T ) const {
 			auto P = zcb(T);
 			return ( 1.0 - P ) / ( T * P );
 		}
 
 		// spot rate
-		double operator()( Time ) const {
+		double operator()( double ) const {
 			return rate;
 		}
 
@@ -28,15 +28,15 @@ namespace mqf {
 			return rate;
 		}
 
-		double simpleForwardRate( Time T, Time S ) const {
+		double simpleForwardRate( double T, double S ) const {
 			return ( std::exp( -rate * (S - T) ) - 1.0 ) / (S - T);
 		}
 
-		double forwardRate( Time, Time ) const {
+		double forwardRate( double, double ) const {
 			return rate;
 		}
 
-		double instantaneousForwardRate( Time ) const {
+		double instantaneousForwardRate( double ) const {
 			return rate;
 		}
 

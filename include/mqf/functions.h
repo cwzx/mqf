@@ -137,6 +137,14 @@ namespace mqf {
 
 		return sum;
 	}
+	
+	inline double logit( double p ) {
+		return std::log( p / ( p - 1.0 ) );
+	}
+
+	inline double logistic( double alpha ) {
+		return 1.0 / ( 1.0 + std::exp(-alpha) );
+	}
 
 }
 
