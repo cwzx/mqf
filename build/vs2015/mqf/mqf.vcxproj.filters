@@ -1,0 +1,400 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Distributions">
+      <UniqueIdentifier>{6f34799f-9bf4-4291-ba75-1da4ea8ae5f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Processes">
+      <UniqueIdentifier>{9390ad8e-6640-4f0b-9a05-d47b746e1117}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Time Series">
+      <UniqueIdentifier>{a6b97eae-4e2a-4da2-813d-bb282c127e81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Finance">
+      <UniqueIdentifier>{fadbc694-0c38-4884-82d6-fac8fedf290b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Statistics">
+      <UniqueIdentifier>{440fbcc5-b131-459b-91ec-031e3675b634}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Regression">
+      <UniqueIdentifier>{4924cfd2-7ab9-4b8d-b43f-8c2b83126966}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\PDE">
+      <UniqueIdentifier>{7c7a8666-8a87-464d-b57d-2bda9d301c77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\SDE">
+      <UniqueIdentifier>{dd366043-d822-4d93-bfbc-819615a5a3c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Copulas">
+      <UniqueIdentifier>{8da87ff8-832b-4c8e-96eb-33a97e851870}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Polynomials">
+      <UniqueIdentifier>{78e78a25-874b-4627-ab25-3deb15755224}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Trading">
+      <UniqueIdentifier>{ab18645e-e1e4-482c-b198-fd88ff696f80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Trading\Strategies">
+      <UniqueIdentifier>{74899a7c-eb94-4a62-b6fc-d2a415e9d87d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Data">
+      <UniqueIdentifier>{8e9b4f48-178e-43d7-afa0-e79240508dd5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\include\mqf\chrono.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\utility.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\distributions\inverse_gamma.h">
+      <Filter>Header Files\Distributions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\distributions\levy.h">
+      <Filter>Header Files\Distributions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\distributions\cauchy.h">
+      <Filter>Header Files\Distributions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\distributions\normal.h">
+      <Filter>Header Files\Distributions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\distributions\chi_squared.h">
+      <Filter>Header Files\Distributions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\distributions\gamma.h">
+      <Filter>Header Files\Distributions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\distributions\students_t.h">
+      <Filter>Header Files\Distributions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\processes\ornstein_uhlenbeck.h">
+      <Filter>Header Files\Processes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\processes\gbm.h">
+      <Filter>Header Files\Processes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\processes\wiener.h">
+      <Filter>Header Files\Processes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\distributions\chi.h">
+      <Filter>Header Files\Distributions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\distributions\poisson.h">
+      <Filter>Header Files\Distributions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\distributions\exponential.h">
+      <Filter>Header Files\Distributions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\distributions\beta.h">
+      <Filter>Header Files\Distributions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\functions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\distributions\dirac_delta.h">
+      <Filter>Header Files\Distributions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\distributions\binomial.h">
+      <Filter>Header Files\Distributions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\distributions\bernoulli.h">
+      <Filter>Header Files\Distributions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\distributions\laplace.h">
+      <Filter>Header Files\Distributions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\distributions\rayleigh.h">
+      <Filter>Header Files\Distributions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\distributions\maxwell_boltzmann.h">
+      <Filter>Header Files\Distributions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\processes\brownian_bridge.h">
+      <Filter>Header Files\Processes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\processes\bessel.h">
+      <Filter>Header Files\Processes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\processes\poisson.h">
+      <Filter>Header Files\Processes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\distributions\inverse_chi_squared.h">
+      <Filter>Header Files\Distributions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\processes\binomial_tree.h">
+      <Filter>Header Files\Processes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\processes\trinomial_tree.h">
+      <Filter>Header Files\Processes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\distributions\multinomial.h">
+      <Filter>Header Files\Distributions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\processes\square_root.h">
+      <Filter>Header Files\Processes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\processes\exponential_vasicek.h">
+      <Filter>Header Files\Processes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\distributions\continuous_uniform.h">
+      <Filter>Header Files\Distributions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\distributions\discrete_uniform.h">
+      <Filter>Header Files\Distributions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\distributions\log_normal.h">
+      <Filter>Header Files\Distributions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\distributions\log_cauchy.h">
+      <Filter>Header Files\Distributions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\processes\gamma.h">
+      <Filter>Header Files\Processes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\distributions\wald.h">
+      <Filter>Header Files\Distributions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\distributions\weibull.h">
+      <Filter>Header Files\Distributions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\distributions\logistic.h">
+      <Filter>Header Files\Distributions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\distributions\gumbel.h">
+      <Filter>Header Files\Distributions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\distributions\triangular.h">
+      <Filter>Header Files\Distributions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\eigen_pinv.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\random_variable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\distributions\f.h">
+      <Filter>Header Files\Distributions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\gregorian.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\day_count.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\time_series\arma.h">
+      <Filter>Header Files\Time Series</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\time_series\shift.h">
+      <Filter>Header Files\Time Series</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\regression\polynomial.h">
+      <Filter>Header Files\Regression</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\regression\least_squares.h">
+      <Filter>Header Files\Regression</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\finance\bonds.h">
+      <Filter>Header Files\Finance</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\finance\european_option.h">
+      <Filter>Header Files\Finance</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\finance\utility_function.h">
+      <Filter>Header Files\Finance</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\finance\interest.h">
+      <Filter>Header Files\Finance</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\finance\cashflow.h">
+      <Filter>Header Files\Finance</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\stats\conjugate_priors.h">
+      <Filter>Header Files\Statistics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\stats\descriptive.h">
+      <Filter>Header Files\Statistics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\pde\pde.h">
+      <Filter>Header Files\PDE</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\sde\milstein.h">
+      <Filter>Header Files\SDE</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\sde\stochastic_rk1.h">
+      <Filter>Header Files\SDE</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\sde\euler_maruyama.h">
+      <Filter>Header Files\SDE</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\process.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\distribution.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\nelson_siegel.h">
+      <Filter>Header Files\Finance</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\svensson.h">
+      <Filter>Header Files\Finance</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\finance\zcb.h">
+      <Filter>Header Files\Finance</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\finance\fixed_coupon_bond.h">
+      <Filter>Header Files\Finance</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\finance\floating_rate_note.h">
+      <Filter>Header Files\Finance</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\finance\flat_yield_curve.h">
+      <Filter>Header Files\Finance</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\copulas\independent.h">
+      <Filter>Header Files\Copulas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\copulas\clayton.h">
+      <Filter>Header Files\Copulas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\copulas\ali_mikhail_haq.h">
+      <Filter>Header Files\Copulas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\copulas\gumbel.h">
+      <Filter>Header Files\Copulas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\copulas\frank.h">
+      <Filter>Header Files\Copulas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\copulas\joe.h">
+      <Filter>Header Files\Copulas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\copulas\galambos.h">
+      <Filter>Header Files\Copulas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\copulas\farlie_gumbel_morgenstern.h">
+      <Filter>Header Files\Copulas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\copulas\husler_reiss.h">
+      <Filter>Header Files\Copulas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\copulas\marshall_olkin.h">
+      <Filter>Header Files\Copulas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\copulas\plackett.h">
+      <Filter>Header Files\Copulas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\copulas\comonotonicity.h">
+      <Filter>Header Files\Copulas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\copulas\countermonotonicity.h">
+      <Filter>Header Files\Copulas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\copulas\gaussian.h">
+      <Filter>Header Files\Copulas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\polynomials\hermite.h">
+      <Filter>Header Files\Polynomials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\polynomials\chebyshev.h">
+      <Filter>Header Files\Polynomials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\polynomials\legendre.h">
+      <Filter>Header Files\Polynomials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\assert.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\pde\multi_index.h">
+      <Filter>Header Files\PDE</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\pde\grid.h">
+      <Filter>Header Files\PDE</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\pde\aabb.h">
+      <Filter>Header Files\PDE</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\pde\black_scholes.h">
+      <Filter>Header Files\PDE</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\pde\fokker_planck.h">
+      <Filter>Header Files\PDE</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\time_series\moving_average.h">
+      <Filter>Header Files\Time Series</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\finance\capm.h">
+      <Filter>Header Files\Finance</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\trading\action.h">
+      <Filter>Header Files\Trading</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\trading\backtest.h">
+      <Filter>Header Files\Trading</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\trading\market.h">
+      <Filter>Header Files\Trading</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\kv_vector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\trading\portfolio.h">
+      <Filter>Header Files\Trading</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\trading\strategies\simple.h">
+      <Filter>Header Files\Trading\Strategies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\trading\strategies\moving_average.h">
+      <Filter>Header Files\Trading\Strategies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\trading\strategies\cw1.h">
+      <Filter>Header Files\Trading\Strategies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\fibonacci.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\trading\strategies\stripes.h">
+      <Filter>Header Files\Trading\Strategies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\time_series\drawdown.h">
+      <Filter>Header Files\Time Series</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\time_series\finite_difference.h">
+      <Filter>Header Files\Time Series</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\finance\efficient_frontier.h">
+      <Filter>Header Files\Finance</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\polynomials\polynomial.h">
+      <Filter>Header Files\Polynomials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\stats\mvue.h">
+      <Filter>Header Files\Statistics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\stats\mle.h">
+      <Filter>Header Files\Statistics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\data\yahoo.h">
+      <Filter>Header Files\Data</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

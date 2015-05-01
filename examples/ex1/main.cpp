@@ -1,14 +1,15 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <iterator>
 #include <mqf/processes/gbm.h>
 #include <mqf/processes/ornstein_uhlenbeck.h>
 #include <mqf/utility.h>
 #include <mqf/functions.h>
-#include <iostream>
-#include <fstream>
 #include <mqf/trading/strategies/cw1.h>
 #include <mqf/trading/strategies/moving_average.h>
 #include <mqf/trading/strategies/stripes.h>
 #include <mqf/trading/backtest.h>
-#include <string>
 #include <mqf/data/yahoo.h>
 
 using namespace std;
