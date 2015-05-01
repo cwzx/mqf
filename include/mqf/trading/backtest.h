@@ -4,21 +4,23 @@
 #include "../sde/milstein.h"
 #include "action.h"
 #include <cstdint>
+#include "return.h"
+#include "../time_series/drawdown.h"
 
 namespace mqf {
+
+	struct TestResult {
+		double annualReturn,
+		       annualVolatility,
+		       sharpeRatio;
+		DrawDown maxDrawDown;
+	};
 
 	template<typename Strat>
 	struct Backtest {
 		Strat strategy;
 
 		explicit Backtest( const Strat& s ) : strategy(s) {}
-
-		struct TestResult {
-			double annualizedLogarithmicReturn,
-			       volatility,
-			       sharpeRatio,
-			       maxDrawDown;
-		};
 
 		template<typename It>
 		TestResult runTest( const char* file, It p1, It p2 ) {
@@ -57,7 +59,6 @@ namespace mqf {
 			return result;
 		}
 	};
-
 
 	template<typename Strat,typename SDE>
 	struct StochasticBacktest {
@@ -122,7 +123,25 @@ namespace mqf {
 
 	};
 
+	inline double sharpeRatio( double mean, double vol, double riskFreeRate ) {
+		return ( mean - riskFreeRate ) / vol;
+	}
 
+	template<typename It>
+	TestResult computeTestResults( It p1, It p2, double dt, double riskFreeRate = 0.0 ) {
+		auto returns = computeLogReturns( p1, p2 );
+		auto mean = sampleMean( returns );
+		auto var = sampleVariance( returns.begin(), returns.end(), mean );
+		auto annualLogReturn = mean / dt;
+		auto annualVar = var / dt;
+
+		TestResult res;
+		res.annualReturn = returnFromLogReturn( annualLogReturn );
+		res.annualVolatility = std::sqrt( annualVar );
+		res.sharpeRatio = sharpeRatio( res.annualReturn, res.annualVolatility, riskFreeRate );
+		res.maxDrawDown = maxDrawDown(p1,p2);
+		return res;
+	}
 
 }
 

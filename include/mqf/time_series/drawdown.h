@@ -1,32 +1,59 @@
 #ifndef INCLUDED_MQF_DRAWDOWN
 #define INCLUDED_MQF_DRAWDOWN
 #include <iterator>
+#include "../trading/return.h"
 
 namespace mqf {
 
-	template<typename It>
-	double drawDown( It p1, It p2 ) {
-		if( p1 == p2 ) return 0.0;
-		auto max_dx = 0.0;
-		auto last = *std::prev(p2);
-		for(;p1!=p2;++p1) {
-			auto dx = *p1 - last;
-			if( dx > max_dx ) {
-				max_dx = dx;
-			}
+	struct DrawDown {
+		double high, low;
+
+		explicit DrawDown( double high = 0, double low = 0 ) : high(high), low(low) {}
+		
+		double loss() const {
+			return high - low;
 		}
-		return max_dx;
+		
+		double lossFraction() const {
+			return ( high - low ) / high;
+		}
+		
+		double Return() const {
+			return mqf::Return( high, low );
+		}
+
+		double logReturn() const {
+			return mqf::logReturn( high, low );
+		}
+
+	};
+
+	template<typename It>
+	DrawDown drawDown( It p1, It p2 ) {
+		DrawDown dd;
+		if( p1 == p2 ) return dd;
+		dd.low = *std::prev(p2);
+		dd.high = dd.low;
+		for(;p1!=p2;++p1) {
+			auto x = *p1;
+			if( x > dd.high )
+				dd.high = x;
+		}
+		return dd;
 	}
 
 	template<typename It>
-	double maxDrawDown( It p1, It p2 ) {
-		auto max_dd = 0.0;
-		auto e = std::next(p2);
-		for(auto q = std::next(p1);q!=e;++q) {
-			auto dd = drawDown( p1, q );
-			if( dd > max_dd ) {
+	DrawDown maxDrawDown( It p1, It p2 ) {
+		if( p1 == p2 ) return DrawDown();
+		auto peak = *p1;
+		DrawDown max_dd(peak,peak);
+		for(++p1;p1!=p2;++p1) {
+			auto x = *p1;
+			if( x > peak )
+				peak = x;
+			DrawDown dd( peak, x );
+			if( dd.loss() > max_dd.loss() )
 				max_dd = dd;
-			}
 		}
 		return max_dd;
 	}

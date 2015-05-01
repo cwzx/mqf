@@ -396,5 +396,8 @@
     <ClInclude Include="..\..\..\include\mqf\data\yahoo.h">
       <Filter>Header Files\Data</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\trading\return.h">
+      <Filter>Header Files\Trading</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
