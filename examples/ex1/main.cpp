@@ -23,14 +23,15 @@ int main() {
 
 	string ticker = "aapl";
 
-	auto data = Yahoo::load((ticker + ".csv").c_str());
+	auto data = Yahoo::loadWithSplits((ticker + ".csv").c_str());
 
-	auto start = std::find_if( data.begin(), data.end(), [](auto&& x){return x.date.year >= 1900;});
-	
+	auto start = std::find_if( data.begin(), data.end(), [](auto&& x){ return x.date.year >= 1900; });
+	auto end   = std::find_if( start, data.end(), [](auto&& x){ return x.date.year >= 2100; });
+
 	std::vector<double> timeseries;
 	timeseries.reserve( data.size() );
 	std::transform( start,
-					data.end(),
+					end,
 					std::back_inserter(timeseries),
 					[](auto&& x){ return x.close; } );
 
@@ -49,14 +50,15 @@ int main() {
 	{
 		CW1 strat;
 		Backtest<CW1> bt(strat);
-		bt.runTest( ("strat-1-" + ticker + ".csv").c_str(), timeseries.begin(), timeseries.end() );
+		auto res = bt.runTest( ("strat-1-" + ticker + ".csv").c_str(), timeseries.begin(), timeseries.end() );
+		res.print();
 	}
 	{
 		MAStrategy strat;
 		Backtest<MAStrategy> bt(strat);
-		bt.runTest( ("strat-ma-" + ticker + ".csv").c_str(), timeseries.begin(), timeseries.end() );
+		auto res = bt.runTest( ("strat-ma-" + ticker + ".csv").c_str(), timeseries.begin(), timeseries.end() );
+		res.print();
 	}
-
 
 	cout << "Press enter to continue . . . "; cin.get();
 }

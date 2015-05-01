@@ -46,7 +46,7 @@ namespace mqf {
 	}
 
 	template<typename It>
-	double computeReturns( It p1, It p2 ) {
+	std::vector<double> computeReturns( It p1, It p2 ) {
 		std::vector<double> ret;
 		auto count = std::distance( p1, p2 );
 		if( count < 2 ) return ret;
@@ -58,7 +58,7 @@ namespace mqf {
 	}
 
 	template<typename It>
-	double computeLogReturns( It p1, It p2 ) {
+	std::vector<double> computeLogReturns( It p1, It p2 ) {
 		std::vector<double> ret;
 		auto count = std::distance( p1, p2 );
 		if( count < 2 ) return ret;
@@ -70,7 +70,7 @@ namespace mqf {
 	}
 
 	template<typename It>
-	double computeCumulativeReturns( It p1, It p2 ) {
+	std::vector<double> computeCumulativeReturns( It p1, It p2 ) {
 		std::vector<double> ret;
 		auto count = std::distance( p1, p2 );
 		if( count < 2 ) return ret;
@@ -83,7 +83,7 @@ namespace mqf {
 	}
 
 	template<typename It>
-	double computeCumulativeLogReturns( It p1, It p2 ) {
+	std::vector<double> computeCumulativeLogReturns( It p1, It p2 ) {
 		std::vector<double> ret;
 		auto count = std::distance( p1, p2 );
 		if( count < 2 ) return ret;

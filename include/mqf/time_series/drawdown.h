@@ -13,9 +13,13 @@ namespace mqf {
 		double loss() const {
 			return high - low;
 		}
-		
+
+		double logLoss() const {
+			return -logReturn();
+		}
+
 		double lossFraction() const {
-			return ( high - low ) / high;
+			return -Return();
 		}
 		
 		double Return() const {
@@ -52,7 +56,7 @@ namespace mqf {
 			if( x > peak )
 				peak = x;
 			DrawDown dd( peak, x );
-			if( dd.loss() > max_dd.loss() )
+			if( dd.lossFraction() > max_dd.lossFraction() )
 				max_dd = dd;
 		}
 		return max_dd;
