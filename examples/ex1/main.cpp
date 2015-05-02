@@ -37,13 +37,13 @@ int main() {
 
 	/*{
 		CW1 strat;
-		StochasticBacktest<CW1,decltype(model)> bt(strat,model);
+		StochasticTest<CW1,decltype(model)> bt(strat,model);
 		bt.repeats = 100000;
 		bt.run( "strat-1.csv" );
 	}
 	{
 		MAStrategy strat;
-		StochasticBacktest<MAStrategy,decltype(model)> bt(strat,model);
+		StochasticTest<MAStrategy,decltype(model)> bt(strat,model);
 		bt.repeats = 100000;
 		bt.run( "strat-ma.csv" );
 	}*/

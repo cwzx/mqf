@@ -8,15 +8,15 @@
 namespace mqf {
 
 	template<typename Strat,typename SDE>
-	struct StochasticBacktest {
+	struct StochasticTest {
 		double tMax = 1.0;
 		double dt = 1.0 / 252;
 		double initial = 1.0;
 
 		uint32_t repeats = 1000;
 
-		StochasticBacktest() = default;
-		StochasticBacktest( const Strat& strat, const SDE& sde ) : strategy(strat), dynamics(sde) {}
+		StochasticTest() = default;
+		StochasticTest( const Strat& strat, const SDE& sde ) : strategy(strat), dynamics(sde) {}
 
 		Milstein<SDE> dynamics;
 		Strat strategy;
