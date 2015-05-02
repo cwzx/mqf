@@ -164,7 +164,7 @@ For educational purposes only. Work in progress.
 * Gregorian calendar
 * Day count conventions
 * Time of day in nanoseconds
-* Formatted time of day (h\:m\:s.ms'us'ns)
+* Formatted time of day (hh:mm:ss.ms'us'ns)
 
 ## Dependencies
 
