@@ -92,6 +92,7 @@ For educational purposes only. Work in progress.
 * Geometric Mean
 * Harmonic Mean
 * Histogram Generation
+* Empirical Distribution
 
 ### Polynomials
 

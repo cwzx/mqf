@@ -408,5 +408,8 @@
     <ClInclude Include="..\..\..\include\mqf\stats\histogram.h">
       <Filter>Header Files\Statistics</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\stats\empirical.h">
+      <Filter>Header Files\Statistics</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

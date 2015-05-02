@@ -115,6 +115,7 @@
     <ClInclude Include="..\..\..\include\mqf\sde\stochastic_rk1.h" />
     <ClInclude Include="..\..\..\include\mqf\stats\conjugate_priors.h" />
     <ClInclude Include="..\..\..\include\mqf\stats\descriptive.h" />
+    <ClInclude Include="..\..\..\include\mqf\stats\empirical.h" />
     <ClInclude Include="..\..\..\include\mqf\stats\histogram.h" />
     <ClInclude Include="..\..\..\include\mqf\stats\mle.h" />
     <ClInclude Include="..\..\..\include\mqf\stats\mvue.h" />
