@@ -405,5 +405,8 @@
     <ClInclude Include="..\..\..\include\mqf\trading\stochastic_test.h">
       <Filter>Header Files\Trading</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\stats\histogram.h">
+      <Filter>Header Files\Statistics</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

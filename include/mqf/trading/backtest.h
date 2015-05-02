@@ -3,6 +3,7 @@
 #include "results.h"
 #include "action.h"
 #include <cstdint>
+#include "../stats/histogram.h"
 
 namespace mqf {
 

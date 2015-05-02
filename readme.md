@@ -84,22 +84,14 @@ For educational purposes only. Work in progress.
 ### Descriptive Statistics
 
 * Sample Mean
-* Sample Variance
+* Sample Variance (biased and unbiased)
+* Sample Covariance (biased and unbiased)
 * Min
 * Max
 * Range
 * Geometric Mean
 * Harmonic Mean
-
-### Time Series
-
-* Drawdown
-* Max Drawdown
-* Simple Moving Average
-* Weighted Moving Average
-* Exponential Moving Average
-* Shift Operator
-* Finite Difference Operators
+* Histogram Generation
 
 ### Polynomials
 
@@ -111,13 +103,20 @@ For educational purposes only. Work in progress.
 
 * Ordinary Least Squares
 * Generalized Least Squares
-* Polynomial regression
+* Polynomial Regression
 
-### Interest Rates
+### Time Series
 
-* Accumulation factor
-* Discount factor
-* Conversion between oontinuous and non-continuous conversion periods.
+* Shift Operator
+* Finite Difference Operators
+
+#### Technical Analysis
+
+* Exponential Moving Average
+* Simple Moving Average
+* Weighted Moving Average
+* Fibonacci Numbers
+* Fibonacci Ratios
 
 ### Trading and Investment
 
@@ -125,9 +124,24 @@ For educational purposes only. Work in progress.
 * Efficient Frontier
 * Capital Asset Pricing Model (CAPM)
 * Backtest
-* Stochastic Backtest
+* Stochastic Test
 
-### Finance
+#### Results
+
+* Return
+* Log Return
+* Volatility
+* Sharpe Ratio
+* Drawdown
+* Max Drawdown
+
+### Interest Rates
+
+* Accumulation factor
+* Discount factor
+* Conversion between oontinuous and non-continuous conversion periods.
+
+### Pricing
 
 * Black--Scholes pricing for European calls and puts
 * Zero Coupon Bond
@@ -150,6 +164,7 @@ For educational purposes only. Work in progress.
 * Gregorian calendar
 * Day count conventions
 * Time of day in nanoseconds
+* Formatted time of day (h:m:s.ms'us'ns)
 
 ## Dependencies
 

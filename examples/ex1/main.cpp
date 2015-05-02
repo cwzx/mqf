@@ -56,8 +56,8 @@ int main() {
 	{
 		MAStrategy strat;
 		Backtest<MAStrategy> bt(strat);
-		auto res = bt.runTest( ("strat-ma-" + ticker + ".csv").c_str(), timeseries.begin(), timeseries.end() );
-		res.print();
+		//auto res = bt.runTest( ("strat-ma-" + ticker + ".csv").c_str(), timeseries.begin(), timeseries.end() );
+		//res.print();
 	}
 
 	cout << "Press enter to continue . . . "; cin.get();

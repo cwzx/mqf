@@ -33,7 +33,9 @@ namespace mqf {
 		auto returns = computeLogReturns( p1, p2 );
 		auto mean = sampleMean( returns.begin(), returns.end() );
 		auto var = sampleVariance( returns.begin(), returns.end(), mean );
-
+		
+		HistogramGenerator(0).generate( returns.begin(), returns.end() ).writeCSV("hist.csv");
+		
 		TestResult res;
 		res.annualLogReturn = mean / dt;
 		res.annualVolatility = std::sqrt( var / dt );
