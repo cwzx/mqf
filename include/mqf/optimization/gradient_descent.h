@@ -10,6 +10,7 @@ namespace mqf {
 		using Point = typename Metric::Point;
 
 		Metric metric;
+		Geodesic geodesic;
 		LineSearch lineSearch;
 		uint32_t maxSteps = 1000;
 
@@ -18,13 +19,13 @@ namespace mqf {
 		template<typename S,typename DS>
 		bool step( const S& cost, const DS& gradient ) {
 
-			Geodesic geodesic( x, -gradient(x) );
+			geodesic.set( x, -gradient(x) );
 
 			double alpha = lineSearch.search(
-					[&]( double t ){
+				[&]( double t ) {
 					return cost( geodesic(t) );
 				},
-				[&]( double t ){
+				[&]( double t ) {
 					Point xt = geodesic(t);
 					return metric(xt)(
 						gradient(xt),

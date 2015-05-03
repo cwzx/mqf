@@ -94,6 +94,12 @@ For educational purposes only. Work in progress.
 * Histogram Generation
 * Empirical Distribution
 
+### Nonlinear Optimization
+
+* Line Search
+* Gradient Descent
+* Conjugate Gradient
+
 ### Polynomials
 
 * Chebyshev
