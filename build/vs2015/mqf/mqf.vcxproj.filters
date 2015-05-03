@@ -52,6 +52,9 @@
     <Filter Include="Header Files\Data">
       <UniqueIdentifier>{8e9b4f48-178e-43d7-afa0-e79240508dd5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Optimization">
+      <UniqueIdentifier>{cc9460d9-d8bd-4cd8-90af-5c9b5824f1e2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\mqf\chrono.h">
@@ -410,6 +413,18 @@
     </ClInclude>
     <ClInclude Include="..\..\..\include\mqf\stats\empirical.h">
       <Filter>Header Files\Statistics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\optimization\gradient_descent.h">
+      <Filter>Header Files\Optimization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\optimization\linesearch.h">
+      <Filter>Header Files\Optimization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\optimization\conjugate_gradient.h">
+      <Filter>Header Files\Optimization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\optimization\euclidean.h">
+      <Filter>Header Files\Optimization</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

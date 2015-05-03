@@ -50,6 +50,13 @@ namespace mqf {
 		
 	}
 
+	template<typename T>
+	T clamp( T x, T lower, T upper ) {
+		if( x < lower ) x = lower;
+		if( x > upper ) x = upper;
+		return x;
+	}
+
 }
 
 #endif

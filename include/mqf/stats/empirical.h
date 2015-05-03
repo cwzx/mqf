@@ -25,22 +25,18 @@ namespace Distributions {
 		explicit Empirical( std::vector<double>&& ps ) : points(std::move(ps)) {}
 		
 		/*
-		 * Empirical cumulative distribution function
-		 *
-		 */
-		double cumulative( double x ) const {
-			auto total = points.size();
-			auto count = std::count_if( points.begin(), points.end(), [x](double p){ return p <= x; } );
-			return (double)count / total;
-		}
-
-		/*
 		 * Empirical measure for closed intervals [a,b]
 		 *
 		 */
 		double measure( double a, double b ) const {
 			auto total = points.size();
 			auto count = std::count_if( points.begin(), points.end(), [=](double p){ return a <= p && p <= b; } );
+			return (double)count / total;
+		}
+		
+		double cumulative( double x ) const {
+			auto total = points.size();
+			auto count = std::count_if( points.begin(), points.end(), [x](double p){ return p <= x; } );
 			return (double)count / total;
 		}
 
