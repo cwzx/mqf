@@ -60,6 +60,7 @@
     <ClInclude Include="..\..\..\include\mqf\distributions\log_normal.h" />
     <ClInclude Include="..\..\..\include\mqf\distributions\maxwell_boltzmann.h" />
     <ClInclude Include="..\..\..\include\mqf\distributions\multinomial.h" />
+    <ClInclude Include="..\..\..\include\mqf\distributions\bi_normal.h" />
     <ClInclude Include="..\..\..\include\mqf\distributions\normal.h" />
     <ClInclude Include="..\..\..\include\mqf\distributions\poisson.h" />
     <ClInclude Include="..\..\..\include\mqf\distributions\rayleigh.h" />
@@ -117,7 +118,6 @@
     <ClInclude Include="..\..\..\include\mqf\sde\euler_maruyama.h" />
     <ClInclude Include="..\..\..\include\mqf\sde\milstein.h" />
     <ClInclude Include="..\..\..\include\mqf\sde\stochastic_rk1.h" />
-    <ClInclude Include="..\..\..\include\mqf\stats\conjugate_priors.h" />
     <ClInclude Include="..\..\..\include\mqf\stats\descriptive.h" />
     <ClInclude Include="..\..\..\include\mqf\stats\empirical.h" />
     <ClInclude Include="..\..\..\include\mqf\stats\histogram.h" />

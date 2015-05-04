@@ -231,9 +231,6 @@
     <ClInclude Include="..\..\..\include\mqf\finance\cashflow.h">
       <Filter>Header Files\Finance</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\mqf\stats\conjugate_priors.h">
-      <Filter>Header Files\Statistics</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\mqf\stats\descriptive.h">
       <Filter>Header Files\Statistics</Filter>
     </ClInclude>
@@ -425,6 +422,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\include\mqf\optimization\euclidean.h">
       <Filter>Header Files\Optimization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\distributions\bi_normal.h">
+      <Filter>Header Files\Distributions</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

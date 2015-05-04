@@ -1,6 +1,6 @@
 #ifndef INCLUDED_MQF_CAPM
 #define INCLUDED_MQF_CAPM
-#include <mqf/stats/descriptive.h>
+#include "../stats/descriptive.h"
 
 namespace mqf {
 
