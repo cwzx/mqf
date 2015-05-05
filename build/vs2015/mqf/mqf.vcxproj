@@ -113,6 +113,7 @@
     <ClInclude Include="..\..\..\include\mqf\processes\trinomial_tree.h" />
     <ClInclude Include="..\..\..\include\mqf\processes\wiener.h" />
     <ClInclude Include="..\..\..\include\mqf\random_variable.h" />
+    <ClInclude Include="..\..\..\include\mqf\regression\kernel.h" />
     <ClInclude Include="..\..\..\include\mqf\regression\least_squares.h" />
     <ClInclude Include="..\..\..\include\mqf\regression\polynomial.h" />
     <ClInclude Include="..\..\..\include\mqf\sde\euler_maruyama.h" />
@@ -121,6 +122,8 @@
     <ClInclude Include="..\..\..\include\mqf\stats\descriptive.h" />
     <ClInclude Include="..\..\..\include\mqf\stats\empirical.h" />
     <ClInclude Include="..\..\..\include\mqf\stats\histogram.h" />
+    <ClInclude Include="..\..\..\include\mqf\stats\kde.h" />
+    <ClInclude Include="..\..\..\include\mqf\stats\kernels.h" />
     <ClInclude Include="..\..\..\include\mqf\stats\mle.h" />
     <ClInclude Include="..\..\..\include\mqf\stats\mvue.h" />
     <ClInclude Include="..\..\..\include\mqf\svensson.h" />

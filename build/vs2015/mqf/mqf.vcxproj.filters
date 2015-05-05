@@ -426,5 +426,14 @@
     <ClInclude Include="..\..\..\include\mqf\distributions\bi_normal.h">
       <Filter>Header Files\Distributions</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\stats\kde.h">
+      <Filter>Header Files\Statistics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\stats\kernels.h">
+      <Filter>Header Files\Statistics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\regression\kernel.h">
+      <Filter>Header Files\Regression</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

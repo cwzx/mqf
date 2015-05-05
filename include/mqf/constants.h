@@ -13,5 +13,6 @@ constexpr double Apery           = 1.2020569031595942853;
 constexpr double Sqrt2           = 1.4142135623730950488;
 constexpr double Sqrt3           = 1.7320508075688772935;
 constexpr double Sqrt5           = 2.2360679774997896964;
+constexpr double Sqrt2Pi         = 2.5066282746310005024;
 
 #endif

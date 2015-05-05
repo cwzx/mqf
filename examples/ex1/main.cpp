@@ -19,14 +19,14 @@ int main() {
 
 	double drift = 0.1;
 	double vol = 0.1;
-	auto model = Processes::GBM<>(drift+0.5*vol*vol,vol);
+	auto model = Processes::GBM<>( drift + 0.5*vol*vol, vol );
 
 	string ticker = "aapl";
 
-	auto data = Yahoo::loadWithSplits((ticker + ".csv").c_str());
+	auto data = Yahoo::loadWithSplits( (ticker + ".csv").c_str() );
 
-	auto start = std::find_if( data.begin(), data.end(), [](auto&& x){ return x.date.year >= 1900; });
-	auto end   = std::find_if( start, data.end(), [](auto&& x){ return x.date.year >= 2100; });
+	auto start = std::find_if( data.begin(), data.end(), [](auto&& x){ return x.date.year >= 1900; } );
+	auto end   = std::find_if(        start, data.end(), [](auto&& x){ return x.date.year >= 2100; } );
 
 	std::vector<double> timeseries;
 	timeseries.reserve( data.size() );

@@ -50,6 +50,11 @@ namespace mqf {
 		
 	}
 
+	template<typename T,typename F>
+	void plot2D( const char* filename, T lower, T upper, uint32_t N, F&& f ) {
+		plot2D( filename, lower, upper, lower, upper, N, N, std::forward<F>(f) );
+	}
+
 	template<typename T>
 	T clamp( T x, T lower, T upper ) {
 		if( x < lower ) x = lower;

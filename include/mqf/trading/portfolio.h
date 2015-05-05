@@ -10,9 +10,7 @@ namespace mqf {
 	struct Portfolio {
 		kv_vector<SecurityID,uint32_t> positions;
 		double cash;
-
-		double initial_value;
-		Gregorian::Date initial_date;
+		Gregorian::Date date;
 	};
 
 }
