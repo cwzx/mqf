@@ -59,12 +59,12 @@ namespace mqf {
 				double sr = logReturn( initial, prices.back() );
 				algoReturn += ar;
 				stockReturn += sr;
-				out << sr << "," << ar << endl;
+				out << sr << ',' << ar << endl;
 			}
 
 			algoReturn /= repeats;
 			stockReturn /= repeats;
-			//out << stockReturn << "," << algoReturn << endl;
+			//out << stockReturn << ',' << algoReturn << endl;
 
 		}
 

@@ -30,7 +30,7 @@ namespace Distributions {
 		double variance() const {
 			double rk = 1.0 / k;
 			double g = std::tgamma( 1.0 + rk );
-			return lambda*lambda* ( std::tgamma( 1.0 + 2.0*rk ) - g*g );
+			return lambda*lambda * ( std::tgamma( 1.0 + 2.0*rk ) - g*g );
 		}
 
 		double skewness() const {
@@ -43,6 +43,11 @@ namespace Distributions {
 			double y = x / lambda;
 			double r = std::pow( y, k-1 );
 			return k * r * std::exp( -r*y ) / lambda;
+		}
+
+		double log( double x ) const {
+			double y = x / lambda;
+			return std::log( k / lambda ) + (k-1) * std::log( y ) - std::pow( y, k );
 		}
 
 		double cumulative( double x ) const {

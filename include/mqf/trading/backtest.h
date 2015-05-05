@@ -46,7 +46,7 @@ namespace mqf {
 				double bench = 0.13 * t;
 				double perf = logReturn(investment,total);
 				double diff = perf - bench;
-				out << t << "," << stock << "," << x << "," << action.amount << "," << portfolio << "," << cash << "," << perf << "," << diff << endl;
+				out << t << ',' << stock << ',' << x << ',' << action.amount << ',' << portfolio << ',' << cash << ',' << perf << ',' << diff << endl;
 				t += dt;
 			}
 

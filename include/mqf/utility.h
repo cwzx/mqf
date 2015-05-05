@@ -5,9 +5,9 @@
 
 namespace mqf {
 
-	template<typename Container>
-	auto accumulate( const Container& c, typename Container::value_type initial ) {
-		return std::accumulate( std::begin(c), std::end(c), initial );
+	template<typename C>
+	auto accumulate( C&& c, typename C::value_type initial ) {
+		return std::accumulate( std::begin(std::forward<C>(c)), std::end(std::forward<C>(c)), initial );
 	}
 	
 	template<typename T,typename F>
@@ -17,7 +17,7 @@ namespace mqf {
 		T delta = ( upper - lower ) / ( N - 1 );
 		T x = lower;
 		for(uint32_t i=0;i<N;++i) {
-			out << x << "," << std::forward<F>(f)(x) << endl;
+			out << x << ',' << std::forward<F>(f)(x) << endl;
 			x += delta;
 		}
 		
@@ -30,18 +30,18 @@ namespace mqf {
 		T delta1 = ( upper1 - lower1 ) / ( N1 - 1 );
 		T delta2 = ( upper2 - lower2 ) / ( N2 - 1 );
 		
-		out << ",";
+		out << ',';
 		for(uint32_t j=0;j<N2;++j) {
-			out << lower2 + delta2*j << ",";
+			out << lower2 + delta2*j << ',';
 		}
 		out << endl;
 
 		T x = lower1;
 		for(uint32_t i=0;i<N1;++i) {
-			out << x << ",";
+			out << x << ',';
 			T y = lower2;
 			for(uint32_t j=0;j<N2;++j) {
-				out << std::forward<F>(f)(x,y) << ",";
+				out << std::forward<F>(f)(x,y) << ',';
 				y += delta2;
 			}
 			out << endl;

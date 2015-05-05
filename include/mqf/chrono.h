@@ -28,11 +28,11 @@ namespace mqf {
 	std::ostream& operator<<( std::ostream& os, const FormattedTime& f ) {
 		using namespace std;
 		return os << setfill('0')
-		          << setw(2) << f.hour   << ":"
-		          << setw(2) << f.minute << ":"
-		          << setw(2) << f.second << "."
-		          << setw(3) << f.milli  << "\'"
-		          << setw(3) << f.micro  << "\'"
+		          << setw(2) << f.hour   << ':'
+		          << setw(2) << f.minute << ':'
+		          << setw(2) << f.second << '.'
+		          << setw(3) << f.milli  << '\''
+		          << setw(3) << f.micro  << '\''
 		          << setw(3) << f.nano;
 	}
 

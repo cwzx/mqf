@@ -9,7 +9,7 @@ namespace mqf {
 	/*
 	 * Line Search
 	 *
-	 * A line search seeks to find a local minimum of a one-dimensional
+	 * A line search seeks a local minimum of a one-dimensional
 	 * continuously differentiable cost function S(alpha) such that alpha >= 0.
 	 *
 	 * This is primarily used in each step of n-dimensional nonlinear optimization methods.
@@ -118,7 +118,7 @@ namespace mqf {
 
 			double c2 = std::fabs( gc / g0 );
 
-			if( c2 > eta ) return false;
+			if( eta < c2 ) return false;
 
 			return true;
 		}

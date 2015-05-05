@@ -74,10 +74,10 @@ namespace mqf {
 			auto total = totalFrequency();
 			for(size_t i = 0;i<frequencies.size();++i) {
 				double freqDensity = binFreqDensity(i);
-				out << binCentre(i)                   << ","
-				    << frequencies[i]                 << ","
-				    << (double)frequencies[i] / total << ","
-				    << freqDensity                    << ","
+				out << binCentre(i)                   << ','
+				    << frequencies[i]                 << ','
+				    << (double)frequencies[i] / total << ','
+				    << freqDensity                    << ','
 				    << freqDensity / total            << endl;
 			}
 		}

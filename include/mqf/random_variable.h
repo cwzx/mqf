@@ -18,12 +18,12 @@ namespace mqf {
 	}
 
 	template<typename Dist>
-	typename Dist::Value Expectation( const RV<Dist>& X ) {
+	typename Dist::Value expectation( const RV<Dist>& X ) {
 		return X.dist.mean();
 	}
 
 	template<typename Dist>
-	typename Dist::Value Variance( const RV<Dist>& X ) {
+	typename Dist::Value variance( const RV<Dist>& X ) {
 		return X.dist.variance();
 	}
 
