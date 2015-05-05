@@ -23,7 +23,7 @@ namespace mqf {
 	struct LineSearch {
 		double alpha = 1.0e-2,
 		       alphaMax = 1.0e6,
-		       mu = 0.00001,
+		       mu = 1.0e-4,
 		       eta = 0.9;
 
 		void reset() {
@@ -74,7 +74,7 @@ namespace mqf {
 				Sc = cost(c);
 
 				// If the Wolfe conditions are satisfied, the current value is good enough
-				if( wolfe(S0,g0,Sc,gc) ) {
+				if( wolfe(S0,g0,c,Sc,gc) ) {
 					return alpha = c;
 				}
 
@@ -97,11 +97,15 @@ namespace mqf {
 
 	protected:
 
-		bool wolfe( double S0, double g0, double Sc, double gc ) const {
+		/*
+		 * The strong Wolfe conditions
+		 *
+		 */
+		bool wolfe( double S0, double g0, double c, double Sc, double gc ) const {
 
-			double c1 = (Sc - S0) / g0;
+			double c1 = (Sc - S0) / (c * g0);
 
-			if( c1 > mu || c1 < 0.0 ) return false;
+			if( c1 < 0.0 || mu < c1 ) return false;
 
 			double c2 = std::fabs( gc / g0 );
 

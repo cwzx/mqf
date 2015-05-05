@@ -11,6 +11,7 @@ For educational purposes only. Work in progress.
 * Bernoulli
 * Beta
 * Binomial
+* Bivariate Normal
 * Cauchy
 * Chi
 * Chi-squared
@@ -93,12 +94,26 @@ For educational purposes only. Work in progress.
 * Harmonic Mean
 * Histogram Generation
 * Empirical Distribution
+* Kernel Density Estimation
 
 ### Nonlinear Optimization
 
 * Line Search
 * Gradient Descent
-* Conjugate Gradient
+* Conjugate Gradient: Fletcher--Reeves,  Polak--Ribiere, Hestenes--Stiefel, Conjugate Descent, Dai--Yuan
+
+### Kernels
+
+* Cosine
+* Epanechnikov
+* Gaussian
+* Logistic
+* Quartic
+* Silverman
+* Triangular
+* Tricube
+* Triweight
+* Uniform
 
 ### Polynomials
 
@@ -111,6 +126,7 @@ For educational purposes only. Work in progress.
 * Ordinary Least Squares
 * Generalized Least Squares
 * Polynomial Regression
+* Kernel Regression
 
 ### Time Series
 
