@@ -4,6 +4,13 @@
 
 namespace mqf {
 	
+	/*
+	 * Gradient Descent on Riemannian Manifolds
+	 * 
+	 * Seeks a local minimum of a smooth cost function S : M -> R by stepping
+	 * along geodesics in the direction of the negative gradient.
+	 *
+	 */
 	template<typename Geodesic>
 	struct GradientDescent {
 		using Metric = typename Geodesic::Metric;
@@ -19,8 +26,10 @@ namespace mqf {
 		template<typename S,typename DS>
 		bool step( const S& cost, const DS& gradient ) {
 
+			// use the geodesic determined by the negative gradient at the current position
 			geodesic.set( x, -gradient(x) );
 
+			// line search the geodesic
 			double alpha = lineSearch.search(
 				[&]( double t ) {
 					return cost( geodesic(t) );
@@ -36,6 +45,7 @@ namespace mqf {
 
 			if( alpha <= 0.0 ) return false;
 
+			// step to the new position
 			x = geodesic(alpha);
 
 			return true;

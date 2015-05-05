@@ -10,26 +10,35 @@ namespace mqf {
 	 * Line Search
 	 *
 	 * A line search seeks to find a local minimum of a one-dimensional
-	 * continuously differentiable cost function f(t) such that t >= 0.
+	 * continuously differentiable cost function S(alpha) such that alpha >= 0.
 	 *
 	 * This is primarily used in each step of n-dimensional nonlinear optimization methods.
 	 *
-	 * This implementation establishes a bounding interval [a,b] with f'(a) < 0 and f'(b) > 0
+	 * This implementation establishes a bounding interval [a,b] with S'(a) < 0 and S'(b) > 0
 	 * and then iteratively refines the interval using the secant method.
 	 *
 	 * The Wolfe conditions are tested for early termination.
 	 *
 	 */
 	struct LineSearch {
-		double alpha = 1.0e-2,
-		       alphaMax = 1.0e6,
-		       mu = 1.0e-4,
-		       eta = 0.9;
+		double alpha = 1.0e-2,    // the previous solution
+		       alphaMax = 1.0e6,  // upper limit on solution
+		       mu = 1.0e-4,       // parameter for first Wolfe condition
+		       eta = 0.9;         // parameter for second Wolfe condition
 
 		void reset() {
 			alpha = 1.0e-2;
 		}
 
+		/*
+		 * Perform the search.
+		 *
+		 * The cost function and its derivative must be provided as callable objects:
+		 * e.g. function object, lambda, function pointer.
+		 *
+		 * The return value is an approximate local minimum.
+		 *
+		 */
 		template<typename S,typename DS>
 		double search( const S& cost, const DS& gradient ) {
 			static const double ratio = 2.0;
@@ -41,11 +50,11 @@ namespace mqf {
 			}
 			double S0 = cost(0.0);
 			
-			// The lower bound is set to zero
+			// the lower bound is set to zero
 			double a = 0.0;
 			double ga = g0;
 
-			// The upper bound is initially set to the last valid solution...
+			// the upper bound is initially set to the last valid solution...
 			double b = alpha;
 			double gb = gradient(b);
 
@@ -66,19 +75,19 @@ namespace mqf {
 				}
 			};
 
-			// Refine the interval using the secant method
+			// refine the interval using the secant method
 			double c, Sc, gc;
 			for(int i=0;i<maxIterations;++i) {
 				c = secant(a,b,ga,gb);
 				gc = gradient(c);
 				Sc = cost(c);
 
-				// If the Wolfe conditions are satisfied, the current value is good enough
+				// if the Wolfe conditions are satisfied, the current value is good enough
 				if( wolfe(S0,g0,c,Sc,gc) ) {
 					return alpha = c;
 				}
 
-				// Update the lower or upper bound depending on the sign of gc
+				// update the lower or upper bound depending on the sign of gc
 				if( gc < 0.0 ) {
 					a = c;
 					ga = gc;
@@ -88,11 +97,11 @@ namespace mqf {
 				} else break;
 			}
 
-			// Sanity check
-			if( Sc < S0 ) {
-				return alpha = c;
+			// sanity check
+			if( Sc > S0 ) {
+				return 0.0;
 			}
-			return 0.0;
+			return alpha = c;
 		}
 
 	protected:

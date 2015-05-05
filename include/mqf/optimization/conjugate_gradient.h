@@ -4,12 +4,20 @@
 
 namespace mqf {
 
+	// tags for the CG schemes
 	struct FletcherReeves {};
 	struct PolakRibiere {};
 	struct HestenesStiefel {};
 	struct ConjugateDescent {};
 	struct DaiYuan {};
 
+	/*
+	 * Conjugate Gradient on Riemannian Manifolds
+	 *
+	 * Seeks a local minimum of a smooth cost function S : M -> R by stepping along
+	 * geodesics in the direction determined by the Conjugate Gradient scheme.
+	 *
+	 */
 	template<typename Geodesic,typename Scheme = HestenesStiefel>
 	struct ConjugateGradient {
 		using Metric = typename Geodesic::Metric;
@@ -28,17 +36,21 @@ namespace mqf {
 
 		template<typename S,typename DS>
 		bool step( const S& cost, const DS& gradient ) {
+			// update the gradient
 			lastGrad = grad;
 			grad = gradient(x);
 
+			// the CG velocity is the negative gradient modified by the previous velocity
 			velocity = -grad;
 			if( n > 0 ) {
 				ptLastVel = geodesic.parallelTranslate( geodesic.velocity, lineSearch.alpha );
 				velocity += ptLastVel * modifier<Scheme>();
 			}
 
+			// set the geodesic
 			geodesic.set( x, velocity );
 
+			// line search the geodesic
 			double alpha = lineSearch.search(
 				[&]( double t ) {
 					return cost( geodesic(t) );
@@ -54,6 +66,7 @@ namespace mqf {
 
 			if( alpha <= 0.0 ) return false;
 
+			// step to the new position
 			lastX = x;
 			x = geodesic(alpha);
 
@@ -92,25 +105,22 @@ namespace mqf {
 		double modifier<HestenesStiefel>() {
 			auto innerProduct = metric(x);
 			auto ptlastGrad = geodesic.parallelTranslate( lastGrad, lineSearch.alpha );
-			auto ptlastSearch = geodesic.parallelTranslate( geodesic.velocity, lineSearch.alpha );
 			auto diff = grad - ptlastGrad;
-			return innerProduct( grad, diff ) / innerProduct( ptlastSearch, diff );
+			return innerProduct( grad, diff ) / innerProduct( ptLastVel, diff );
 		}
 
 		template<>
 		double modifier<ConjugateDescent>() {
 			auto innerProduct = metric(x);
 			auto ptlastGrad = geodesic.parallelTranslate( lastGrad, lineSearch.alpha );
-			auto ptlastSearch = geodesic.parallelTranslate( geodesic.velocity, lineSearch.alpha );
-			return -innerProduct.norm2( grad ) / innerProduct( ptlastSearch, ptlastGrad );
+			return -innerProduct.norm2( grad ) / innerProduct( ptLastVel, ptlastGrad );
 		}
 		
 		template<>
 		double modifier<DaiYuan>() {
 			auto innerProduct = metric(x);
 			auto ptlastGrad = geodesic.parallelTranslate( lastGrad, lineSearch.alpha );
-			auto ptlastSearch = geodesic.parallelTranslate( geodesic.velocity, lineSearch.alpha );
-			return innerProduct.norm2( grad ) / innerProduct( ptlastSearch, grad - ptlastGrad );
+			return innerProduct.norm2( grad ) / innerProduct( ptLastVel, grad - ptlastGrad );
 		}
 
 	};

@@ -12,11 +12,14 @@ namespace mqf {
 		std::vector<double> points;
 		double rbw = 1.0;
 
+		explicit KernelDensityEstimator( const std::vector<double>& v ) : points(v) {}
+		explicit KernelDensityEstimator( std::vector<double>&& v ) : points(std::move(v)) {}
+
 		double operator()( double x ) const {
-			auto f = [&,x,rbw]( double total, double p ) {
+			auto f = [=]( double total, double p ) {
 				return total + kernel( (x - p) * rbw ) * rbw;
 			};
-			return std::accumulate( points.begin(), points.end(), f ) / points.size();
+			return std::accumulate( points.begin(), points.end(), 0.0, f ) / points.size();
 		}
 
 		void setBandwidth( double bw ) {
