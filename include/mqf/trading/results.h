@@ -15,13 +15,17 @@ namespace mqf {
 		       sharpeRatio;
 		DrawDown maxDrawDown;
 
+		void print( std::ostream& os ) const {
+			using std::endl;
+			os << "Annual Log Return: " << annualLogReturn                        << endl;
+			os << "Annual Return: "     << returnFromLogReturn( annualLogReturn ) << endl;
+			os << "Annual Volatility: " << annualVolatility                       << endl;
+			os << "Sharpe Ratio: "      << sharpeRatio                            << endl;
+			os << "Max Drawdown: "      << maxDrawDown.lossFraction()             << endl;
+		}
+
 		void print() const {
-			using namespace std;
-			cout << "Annual Log Return: " << annualLogReturn                        << endl;
-			cout << "Annual Return: "     << returnFromLogReturn( annualLogReturn ) << endl;
-			cout << "Annual Volatility: " << annualVolatility                       << endl;
-			cout << "Sharpe Ratio: "      << sharpeRatio                            << endl;
-			cout << "Max Drawdown: "      << maxDrawDown.lossFraction()             << endl;
+			print( std::cout );
 		}
 
 	};

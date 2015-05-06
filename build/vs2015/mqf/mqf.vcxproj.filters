@@ -339,9 +339,6 @@
     <ClInclude Include="..\..\..\include\mqf\pde\fokker_planck.h">
       <Filter>Header Files\PDE</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\mqf\time_series\moving_average.h">
-      <Filter>Header Files\Time Series</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\mqf\finance\capm.h">
       <Filter>Header Files\Finance</Filter>
     </ClInclude>
@@ -437,6 +434,15 @@
     </ClInclude>
     <ClInclude Include="..\..\..\include\mqf\optimization\brute_force.h">
       <Filter>Header Files\Optimization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\time_series\sma.h">
+      <Filter>Header Files\Time Series</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\time_series\wma.h">
+      <Filter>Header Files\Time Series</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\time_series\ema.h">
+      <Filter>Header Files\Time Series</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,7 +1,7 @@
 #ifndef INCLUDED_MQF_TRADING_STRAT_SIMPLE
 #define INCLUDED_MQF_TRADING_STRAT_SIMPLE
 #include "../action.h"
-#include "../../time_series/moving_average.h"
+#include "../../time_series/wma.h"
 
 namespace mqf {
 
@@ -14,15 +14,14 @@ namespace mqf {
 			if( count < period )
 				return Action( Action::Hold );
 		
-			auto ma = WeightedMovingAverage(period).compute( std::prev(p2,period), p2 );
+			auto ma = WeightedMovingAverage(period).back( std::prev(p2,period), p2 );
 
 			auto current = *--p2;
-			auto avg = ma.back();
 
-			if( current > avg )
+			if( current > ma )
 				return Action( Action::Buy );
 
-			if( current < avg )
+			if( current < ma )
 				return Action( Action::Sell );
 
 			return Action( Action::Hold );
