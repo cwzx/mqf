@@ -1,14 +1,18 @@
 #ifndef INCLUDED_MQF_MULTIINDEX
 #define INCLUDED_MQF_MULTIINDEX
 #include <cstdint>
-#include <array>
+#include <Eigen/Core>
 #include <initializer_list>
 
 namespace mqf {
 
 	template<typename T,size_t N>
+	using MultiIndex = Eigen::Array<T,N,1>;
+
+	/*
+	template<typename T,size_t N>
 	struct MultiIndex {
-		std::array<T,N> index;
+		Eigen::Array<T,N,1> index;
 
 		MultiIndex( std::initializer_list<T> L ) : index(L) {}
 
@@ -18,8 +22,7 @@ namespace mqf {
 		}
 
 		MultiIndex<T,N>& setZero() {
-			for(size_t i=0;i<N;++i)
-				index[i] = 0;
+			index.setZero();
 			return *this;
 		}
 		
@@ -32,20 +35,18 @@ namespace mqf {
 		}
 		
 		MultiIndex<T,N>& operator+=( const MultiIndex<T,N>& rhs ) {
-			for(size_t i=0;i<N;++i)
-				index[i] += rhs.index[i];
+			index += rhs;
 			return *this;
 		}
 
 		MultiIndex<T,N> operator+( const MultiIndex<T,N>& rhs ) const {
 			MultiIndex<T,N> R = *this;
-			R += rhs;
+			R += rhs.index;
 			return R;
 		}
 		
 		MultiIndex<T,N>& operator-=( const MultiIndex<T,N>& rhsM ) {
-			for(size_t i=0;i<N;i++)
-				index[i] -= rhs.index[i];
+			index -= rhs.index;
 			return *this;
 		}
 		
@@ -91,24 +92,18 @@ namespace mqf {
 
 	template<typename T,size_t N>
 	T sum( const MultiIndex<T,N>& M ) {
-		T r = M[0];
-		for(size_t i=1;i<N;++i)
-			r += M[i];
-		return r;
+		return M.index.sum();
 	}
 		
 	template<typename T,size_t N>
 	T product( const MultiIndex<T,N>& M ) {
-		T r = M[0];
-		for(size_t i=1;i<N;++i)
-			r *= M[i];
-		return r;
+		return M.index.prod();
 	}
 
 	using Index1 = MultiIndex<uint32_t,1>;
 	using Index2 = MultiIndex<uint32_t,2>;
 	using Index3 = MultiIndex<uint32_t,3>;
-
+	*/
 }
 
 #endif

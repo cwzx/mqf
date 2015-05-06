@@ -6,16 +6,6 @@
 
 namespace mqf {
 
-	/*
-	 * A rectangular grid of points.
-	 *
-	 * T : point type
-	 * N : dimension
-	 *
-	 */
-	template<typename T,int N>
-	struct Grid;
-
 	template<typename T,size_t N>
 	struct GridIterator {
 		using this_type         = GridIterator<T,N>;
@@ -45,7 +35,8 @@ namespace mqf {
 			for(size_t i=0;i<N;++i) {
 				++index[i];
 				if( index[i] == size[i] ) {
-					index[i] = 0;
+					if( i < N-1 )
+						index[i] = 0;
 				} else break;
 			}
 			return *this;
@@ -75,39 +66,34 @@ namespace mqf {
 			return r;
 		}
 
-	};
-
-	template<typename T>
-	struct Grid<T,1> {
-		using Index = uint32_t;
-		using Point = T;
-		using iterator = Index;
-
-		Point offset, delta;
-		Index size;
-
-		explicit Grid( Index size = 1024,
-		               Point delta = 1.0,
-		               Point offset = 0.0 ) :
-			size(size),
-			delta(delta),
-			offset(offset)
-		{}
-
-		Point operator()( Index index ) const {
-			return offset + delta * index;
+		bool operator==( const this_type& rhs ) const {
+			return (index == rhs.index).all() && (size == rhs.size).all();
 		}
 
-		iterator begin() const {
-			return 0;
-		}
-
-		iterator end() const {
-			return size;
+		bool operator!=( const this_type& rhs ) const {
+			return !(*this == rhs);
 		}
 
 	};
 	
+	template<typename T,int N>
+	struct Grid {
+		using value_type = T;
+		using iterator = GridIterator<value_type,N>;
+		using const_iterator = iterator;
+
+		MultiIndex<value_type,N> size;
+
+		iterator begin() const {
+			return iterator( MultiIndex<value_type,N>::Zero(), size );
+		}
+
+		iterator end() const {
+			auto e = begin();
+			return ++(--e);
+		}
+
+	};
 
 }
 

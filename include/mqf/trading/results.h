@@ -35,11 +35,6 @@ namespace mqf {
 		auto returns = computeLogReturns( p1, p2 );
 		auto mean = sampleMean( returns.begin(), returns.end() );
 		auto var = sampleVariance( returns.begin(), returns.end(), mean );
-		
-		HistogramGenerator().generate( returns.begin(), returns.end() ).writeCSV("hist.csv");
-		KernelDensityEstimator<Kernels::Uniform> kde( returns );
-		kde.setGaussianBandwidth();
-		plot("kde.csv",-0.2,0.2,10000,kde);
 
 		TestResult res;
 		res.annualLogReturn = mean / dt;

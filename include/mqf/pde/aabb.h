@@ -10,11 +10,17 @@ namespace mqf {
 		
 		Vec minBounds, maxBounds;
 
+		AABB() = default;
+		
 		AABB( const Vec& minBounds,
 		      const Vec& maxBounds ) :
 			minBounds( minBounds ),
 			maxBounds( maxBounds )
 		{}
+
+		auto vector() const {
+			return maxBounds - minBounds;
+		}
 
 	};
 

@@ -21,7 +21,7 @@ namespace mqf {
 		std::vector<double> bins;
 		std::vector<uint32_t> frequencies;
 		
-		explicit Histogram( size_t N = 100 ) : bins(N), frequencies(N+1) {}
+		explicit Histogram( size_t N = 300 ) : bins(N), frequencies(N+1) {}
 
 		uint64_t totalFrequency() const {
 			return std::accumulate( frequencies.begin(), frequencies.end(), uint64_t(0) );
@@ -100,7 +100,7 @@ namespace mqf {
 	
 			uint32_t nBins = numBins;
 			if( nBins == 0 ) {
-				nBins = uint32_t(1 + count / 20);
+				nBins = std::min<uint32_t>( 1 + uint32_t(count) / 20, 250 );
 			}
 
 			auto minVal = binMin;

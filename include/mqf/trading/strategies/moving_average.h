@@ -8,8 +8,8 @@ namespace mqf {
 	struct MAStrategy {
 		int shortPeriod, longPeriod;
 
-		explicit MAStrategy( int shortPeriod = 40,
-							 int longPeriod = 90 ) :
+		explicit MAStrategy( int shortPeriod = 17,
+							 int longPeriod = 44 ) :
 			shortPeriod(shortPeriod),
 			longPeriod(longPeriod)
 		{}
@@ -17,7 +17,7 @@ namespace mqf {
 		template<typename It>
 		Action compute( It p1, It p2 ) const {
 			auto count = std::distance(p1,p2);
-			if( count < longPeriod )
+			if( count < std::max(shortPeriod,longPeriod) )
 				return Action( Action::Hold );
 		
 			auto shortMA = WeightedMovingAverage(shortPeriod).compute(p1,p2);

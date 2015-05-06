@@ -86,6 +86,7 @@
     <ClInclude Include="..\..\..\include\mqf\gregorian.h" />
     <ClInclude Include="..\..\..\include\mqf\kv_vector.h" />
     <ClInclude Include="..\..\..\include\mqf\nelson_siegel.h" />
+    <ClInclude Include="..\..\..\include\mqf\optimization\brute_force.h" />
     <ClInclude Include="..\..\..\include\mqf\optimization\conjugate_gradient.h" />
     <ClInclude Include="..\..\..\include\mqf\optimization\euclidean.h" />
     <ClInclude Include="..\..\..\include\mqf\optimization\gradient_descent.h" />

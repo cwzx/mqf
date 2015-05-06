@@ -435,5 +435,8 @@
     <ClInclude Include="..\..\..\include\mqf\regression\kernel.h">
       <Filter>Header Files\Regression</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\optimization\brute_force.h">
+      <Filter>Header Files\Optimization</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
