@@ -80,7 +80,7 @@ namespace Yahoo {
 				in.getline(buf,buf_size,',');
 				auto volume = atoll(buf);
 
-				in.ignore( smax, '\n');
+				in.ignore(smax,'\n');
 
 				data.dates .push_back( date   );
 				data.open  .push_back( open   );
@@ -125,7 +125,7 @@ namespace Yahoo {
 				data.splits.push_back( split );
 
 			} else {
-				in.ignore( smax, '\n');
+				in.ignore(smax,'\n');
 			}
 			
 		}

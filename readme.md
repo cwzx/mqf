@@ -99,6 +99,9 @@ For educational purposes only. Work in progress.
 ### Nonlinear Optimization
 
 * Brute Force Grid
+
+#### For Smooth Cost Functions on Riemannian Manifolds
+
 * Line Search
 * Gradient Descent
 * Conjugate Gradient: Fletcher--Reeves, Polak--Ribiere, Hestenes--Stiefel, Conjugate Descent, Dai--Yuan
@@ -189,6 +192,10 @@ For educational purposes only. Work in progress.
 * Day count conventions
 * Time of day in nanoseconds
 * Formatted time of day (hh:mm:ss.ms'us'ns)
+
+### Data
+
+* Parsing data from Yahoo Finance
 
 ## Dependencies
 
