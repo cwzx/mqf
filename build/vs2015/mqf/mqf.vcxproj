@@ -36,6 +36,7 @@
     <ClInclude Include="..\..\..\include\mqf\copulas\joe.h" />
     <ClInclude Include="..\..\..\include\mqf\copulas\marshall_olkin.h" />
     <ClInclude Include="..\..\..\include\mqf\copulas\plackett.h" />
+    <ClInclude Include="..\..\..\include\mqf\data\stocks.h" />
     <ClInclude Include="..\..\..\include\mqf\data\yahoo.h" />
     <ClInclude Include="..\..\..\include\mqf\day_count.h" />
     <ClInclude Include="..\..\..\include\mqf\distribution.h" />

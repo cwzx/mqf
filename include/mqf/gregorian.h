@@ -41,7 +41,7 @@ namespace Gregorian {
 			&& ( !( year % 100 == 0 ) || ( year % 400 == 0 ) );
 	}
 
-	static /*constexpr*/ int daysInMonth( Month m, Year y ) {
+	static int daysInMonth( Month m, Year y ) {
 		if( isLeapYear(y) )
 			return daysPerMonthLeap[int(m)-1];
 		return daysPerMonthCommon[int(m)-1];

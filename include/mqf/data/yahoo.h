@@ -1,8 +1,7 @@
 #ifndef INCLUDED_MQF_DATA_YAHOO
 #define INCLUDED_MQF_DATA_YAHOO
-#include "../gregorian.h"
-#include <vector>
 #include <fstream>
+#include "stocks.h"
 
 /*
  * Parsing stock price data from Yahoo Finance
@@ -12,159 +11,135 @@ namespace mqf {
 namespace Yahoo {
 
 	/*
-	 * Parse date of the form "yyyy-mm-dd", e.g. "2015-04-27"
+	 * Parse date of the form "yyyymmdd", e.g. "20150427"
 	 *
 	 */
-	Gregorian::Date parseDate( char* str ) {
+	Gregorian::Date parseDate( const char* str ) {
 		Gregorian::Date date;
 		
-		str[ 4] = '\0';
-		str[ 7] = '\0';
-		str[10] = '\0';
+		char temp[11];
 
-		date.year = atoi( &str[0] );
-		date.month = Gregorian::Month( atoi( &str[5] ) );
-		date.day = atoi( &str[8] );
+		temp[0] = str[0];
+		temp[1] = str[1];
+		temp[2] = str[2];
+		temp[3] = str[3];
+		temp[4] = '\0';
+		temp[5] = str[4];
+		temp[6] = str[5];
+		temp[7] = '\0';
+		temp[8] = str[6];
+		temp[9] = str[7];
+		temp[10] = '\0';
+
+		date.year = atoi( &temp[0] );
+		date.month = Gregorian::Month( atoi( &temp[5] ) );
+		date.day = atoi( &temp[8] );
 
 		return date;
 	}
-	
-	struct DailyData {
-		Gregorian::Date date;
-		double open, high, low, close, adj_close;
-		uint64_t volume;
-	};
 
 	/*
-	 * Load .csv files produced by real-chart.finance.yahoo.com/table.csv
+	 * Load csv files produced by real-chart.finance.yahoo.com/x
 	 *
 	 */
-	std::vector<DailyData> load( const char* file ) {
-		std::vector<DailyData> timeseries;
+	StockData load( const char* file ) {
 		std::ifstream in(file);
-		if( !in ) return timeseries;
+		if( !in ) return {};
 
 		const int buf_size = 16;
 		char buf[buf_size];
 
-		// skip over the header row
-		in.ignore( std::numeric_limits<std::streamsize>::max(), '\n');
+		auto smax = std::numeric_limits<std::streamsize>::max();
 
-		while( !(in.peek(),in.eof()) ) {
-			DailyData daily;
-			
-			in.getline(buf,buf_size,',');
-			daily.date = parseDate( buf );
-
-			in.getline(buf,buf_size,',');
-			daily.open = atof(buf);
-
-			in.getline(buf,buf_size,',');
-			daily.high = atof(buf);
-
-			in.getline(buf,buf_size,',');
-			daily.low = atof(buf);
-
-			in.getline(buf,buf_size,',');
-			daily.close = atof(buf);
-
-			in.getline(buf,buf_size,',');
-			daily.volume = atoll(buf);
-
-			in.getline(buf,buf_size,'\n');
-			daily.adj_close = atof(buf);
-
-			timeseries.push_back( daily );
-		}
-
-		std::reverse( timeseries.begin(), timeseries.end() );
-		return timeseries;
-	}
-	
-	struct StockSplit {
-		Gregorian::Date date;
-		double factor;
-	};
-
-	std::vector<StockSplit> loadSplits( const char* file ) {
-		std::vector<StockSplit> splits;
-		std::ifstream in(file);
-		if( !in ) return splits;
-
-		const int buf_size = 16;
-		char buf[buf_size];
+		StockData data;
 
 		// skip over the header row
-		//in.ignore( std::numeric_limits<std::streamsize>::max(), '\n');
+		in.ignore(smax,'\n');
 
 		while( !(in.peek(),in.eof()) ) {
-			StockSplit split;
-			
+
 			in.getline(buf,buf_size,',');
-			split.date = parseDate( buf );
 
-			in.getline(buf,buf_size,'\n');
-			split.factor = atof(buf);
+			// if the first char is a number, assume daily price data
+			if( buf[0] >= '0' && buf[0] <= '9' ) {
+				
+				auto date = parseDate( buf );
 
-			splits.push_back( split );
-		}
+				in.getline(buf,buf_size,',');
+				auto open = atof(buf);
 
-		std::reverse( splits.begin(), splits.end() );
-		return splits;
-	}
+				in.getline(buf,buf_size,',');
+				auto high = atof(buf);
 
-	struct Dividend {
-		Gregorian::Date date;
-		double amountPerShare;
-	};
+				in.getline(buf,buf_size,',');
+				auto low = atof(buf);
 
-	std::vector<Dividend> loadDividends( const char* file ) {
-		std::vector<Dividend> divs;
-		std::ifstream in(file);
-		if( !in ) return divs;
+				in.getline(buf,buf_size,',');
+				auto close = atof(buf);
 
-		const int buf_size = 16;
-		char buf[buf_size];
+				in.getline(buf,buf_size,',');
+				auto volume = atoll(buf);
 
-		// skip over the header row
-		//in.ignore( std::numeric_limits<std::streamsize>::max(), '\n');
+				in.ignore( smax, '\n');
 
-		while( !(in.peek(),in.eof()) ) {
-			Dividend div;
-			
-			in.getline(buf,buf_size,',');
-			div.date = parseDate( buf );
+				data.dates .push_back( date   );
+				data.open  .push_back( open   );
+				data.high  .push_back( high   );
+				data.low   .push_back( low    );
+				data.close .push_back( close  );
+				data.volume.push_back( volume );
 
-			in.getline(buf,buf_size,'\n');
-			div.amountPerShare = atof(buf);
+			} else if( strcmp( buf, "DIVIDEND" ) == 0 ) {
+				
+				Dividend div;
 
-			divs.push_back( div );
-		}
+				// ignore the single space
+				in.ignore(1);
 
-		std::reverse( divs.begin(), divs.end() );
-		return divs;
-	}
+				in.getline(buf,buf_size,',');
+				div.date = parseDate( buf );
 
-	std::vector<DailyData> loadWithSplits( const char* file ) {
-		auto timeseries = load(file);
-		std::string f = file;
-		f.pop_back(); f.pop_back(); f.pop_back(); f.pop_back();
-		auto splits = loadSplits((f + "-splits.csv").c_str());
-		double factor = 1.0;
-		auto p = splits.begin();
-		for( auto&& x : timeseries ) {
-			if( p != splits.end() ) {
-				if( x.date == p->date ) {
-					factor *= p->factor;
-					++p;
-				}
+				in.getline(buf,buf_size,'\n');
+				div.amountPerShare = atof(buf);
+
+				data.dividends.push_back( div );
+
+			} else if( strcmp( buf, "SPLIT" ) == 0 ) {
+				
+				Split split;
+
+				// ignore the single space
+				in.ignore(1);
+
+				in.getline(buf,buf_size,',');
+				split.date = parseDate( buf );
+
+				in.getline(buf,buf_size,':');
+				auto numerator = atof(buf);
+
+				in.getline(buf,buf_size,'\n');
+				auto denominator = atof(buf);
+
+				split.factor = numerator / denominator;
+
+				data.splits.push_back( split );
+
+			} else {
+				in.ignore( smax, '\n');
 			}
-			x.open      *= factor;
-			x.high      *= factor;
-			x.low       *= factor;
-			x.close     *= factor;
+			
 		}
-		return timeseries;
+
+		std::reverse( data.dates    .begin(), data.dates    .end() );
+		std::reverse( data.open     .begin(), data.open     .end() );
+		std::reverse( data.high     .begin(), data.high     .end() );
+		std::reverse( data.low      .begin(), data.low      .end() );
+		std::reverse( data.close    .begin(), data.close    .end() );
+		std::reverse( data.volume   .begin(), data.volume   .end() );
+		std::reverse( data.dividends.begin(), data.dividends.end() );
+		std::reverse( data.splits   .begin(), data.splits   .end() );
+
+		return data;
 	}
 
 }

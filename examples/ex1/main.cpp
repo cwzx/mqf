@@ -18,14 +18,9 @@ using namespace mqf;
 
 void test( const string& ticker ) {
 
-	auto data = Yahoo::loadWithSplits( (ticker + ".csv").c_str() );
+	auto data = Yahoo::load( (ticker + ".csv").c_str() );
 
-	std::vector<double> timeseries;
-	timeseries.reserve( data.size() );
-	std::transform( data.begin(),
-					data.end(),
-					std::back_inserter(timeseries),
-					[](auto&& x){ return x.close; } );
+	auto timeseries = data.computeAdjustedClose();
 
 	{
 		BruteForce<double,2> bf;
@@ -42,7 +37,7 @@ void test( const string& ticker ) {
 			return -res.sharpeRatio;
 		} );
 
-		r.histogram.writeCSV("h-1.csv");
+		r.histogram.writeCSV(("h-1-" + ticker + ".csv").c_str());
 
 		cout << "opt: " << r.optimal << endl;
 		
@@ -69,7 +64,7 @@ void test( const string& ticker ) {
 			return -res.sharpeRatio;
 		} );
 
-		r.histogram.writeCSV("h-ma.csv");
+		r.histogram.writeCSV(("h-ma-" + ticker + ".csv").c_str());
 
 		cout << "opt: " << r.optimal << endl;
 
@@ -86,26 +81,10 @@ void test( const string& ticker ) {
 
 int main() {
 
-	double drift = 0.1;
-	double vol = 0.1;
-	auto model = Processes::GBM<>( drift + 0.5*vol*vol, vol );
-
 	const char* tickers[] = { "aapl", "ibm", "amzn", "nflx", "googl", "msft" };
+
 	for( auto&& ticker : tickers )
 		test( ticker );
-
-	/*{
-		CW1 strat;
-		StochasticTest<CW1,decltype(model)> bt(strat,model);
-		bt.repeats = 100000;
-		bt.run( "strat-1.csv" );
-	}
-	{
-		MAStrategy strat;
-		StochasticTest<MAStrategy,decltype(model)> bt(strat,model);
-		bt.repeats = 100000;
-		bt.run( "strat-ma.csv" );
-	}*/
 
 	cout << "Press enter to continue . . . "; cin.get();
 }
