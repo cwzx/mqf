@@ -12,7 +12,7 @@ namespace mqf {
 	 * A line search seeks a local minimum of a one-dimensional
 	 * continuously differentiable cost function S(alpha) such that alpha >= 0.
 	 *
-	 * This is primarily used in each step of n-dimensional nonlinear optimization methods.
+	 * This is primarily used by each step of n-dimensional nonlinear optimization methods.
 	 *
 	 * This implementation establishes a bounding interval [a,b] with S'(a) < 0 and S'(b) > 0
 	 * and then iteratively refines the interval using the secant method.

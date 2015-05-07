@@ -43,7 +43,7 @@ namespace mqf {
 				totals.push_back( total );
 
 				double stock = logReturn(inital_stock,x);
-				double bench = 0.13 * t;
+				double bench = stock;
 				double perf = logReturn(investment,total);
 				double diff = perf - bench;
 				out << t << ',' << stock << ',' << x << ',' << action.amount << ',' << portfolio << ',' << cash << ',' << perf << ',' << diff << endl;

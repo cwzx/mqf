@@ -36,8 +36,10 @@ namespace mqf {
 
 		template<typename S,typename DS>
 		bool step( const S& cost, const DS& gradient ) {
+			using std::swap;
+
 			// update the gradient
-			lastGrad = grad;
+			swap( lastGrad, grad );
 			grad = gradient(x);
 
 			// the CG velocity is the negative gradient modified by the previous velocity
@@ -67,7 +69,7 @@ namespace mqf {
 			if( alpha <= 0.0 ) return false;
 
 			// step to the new position
-			lastX = x;
+			swap( lastX, x );
 			x = geodesic(alpha);
 
 			return true;

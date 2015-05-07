@@ -98,9 +98,10 @@ For educational purposes only. Work in progress.
 
 ### Nonlinear Optimization
 
+* Brute Force Grid
 * Line Search
 * Gradient Descent
-* Conjugate Gradient: Fletcher--Reeves,  Polak--Ribiere, Hestenes--Stiefel, Conjugate Descent, Dai--Yuan
+* Conjugate Gradient: Fletcher--Reeves, Polak--Ribiere, Hestenes--Stiefel, Conjugate Descent, Dai--Yuan
 
 ### Kernels
 

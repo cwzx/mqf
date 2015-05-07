@@ -163,7 +163,6 @@ namespace Yahoo {
 			x.high      *= factor;
 			x.low       *= factor;
 			x.close     *= factor;
-			x.adj_close *= factor;
 		}
 		return timeseries;
 	}
