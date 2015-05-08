@@ -118,7 +118,7 @@ namespace Distributions {
 	}
 
 	RV<LogNormal> operator/( double lhs, const RV<LogNormal>& rhs ) {
-		return MakeRV( LogNormal( -rhs.dist.mu, rhs.dist.sigma2 ) );
+		return MakeRV( LogNormal( std::log(lhs) - rhs.dist.mu, rhs.dist.sigma2 ) );
 	}
 
 }

@@ -2,6 +2,7 @@
 #define INCLUDED_MQF_DATA_YAHOO
 #include <fstream>
 #include "stocks.h"
+#include <cstring>
 
 /*
  * Parsing stock price data from Yahoo Finance

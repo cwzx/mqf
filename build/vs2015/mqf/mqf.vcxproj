@@ -58,6 +58,7 @@
     <ClInclude Include="..\..\..\include\mqf\distributions\levy.h" />
     <ClInclude Include="..\..\..\include\mqf\distributions\logistic.h" />
     <ClInclude Include="..\..\..\include\mqf\distributions\log_cauchy.h" />
+    <ClInclude Include="..\..\..\include\mqf\distributions\log_logistic.h" />
     <ClInclude Include="..\..\..\include\mqf\distributions\log_normal.h" />
     <ClInclude Include="..\..\..\include\mqf\distributions\maxwell_boltzmann.h" />
     <ClInclude Include="..\..\..\include\mqf\distributions\multinomial.h" />
@@ -129,7 +130,7 @@
     <ClInclude Include="..\..\..\include\mqf\stats\mle.h" />
     <ClInclude Include="..\..\..\include\mqf\stats\mvue.h" />
     <ClInclude Include="..\..\..\include\mqf\svensson.h" />
-    <ClInclude Include="..\..\..\include\mqf\time_series\arma.h" />
+    <ClInclude Include="..\..\..\include\mqf\time_series\ar.h" />
     <ClInclude Include="..\..\..\include\mqf\time_series\drawdown.h" />
     <ClInclude Include="..\..\..\include\mqf\time_series\finite_difference.h" />
     <ClInclude Include="..\..\..\include\mqf\time_series\ema.h" />

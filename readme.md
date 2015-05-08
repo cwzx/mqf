@@ -27,6 +27,7 @@ For educational purposes only. Work in progress.
 * Laplace
 * Levy
 * Log-Cauchy
+* Log-Logistic
 * Log-Normal
 * Logistic
 * Maxwell--Boltzmann

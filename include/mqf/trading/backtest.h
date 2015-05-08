@@ -1,9 +1,8 @@
 #ifndef INCLUDED_MQF_BACKTEST
 #define INCLUDED_MQF_BACKTEST
+#include <cstdint>
 #include "results.h"
 #include "action.h"
-#include <cstdint>
-#include "../stats/histogram.h"
 
 namespace mqf {
 
@@ -59,10 +58,8 @@ namespace mqf {
 			std::vector<double> totals;
 			totals.reserve( std::distance(p1,p2) );
 			double portfolio = 0.0;
-			double investment = 10000.0;
-			double cash = investment;
+			double cash = 10000.0;
 			double t = 0, dt = 1.0/252;
-			double inital_stock = *p1;
 			for(auto q = p1; q != p2; ++q) {
 
 				double x = *q;
@@ -81,10 +78,6 @@ namespace mqf {
 				double total = cash + portfolio * x;
 				totals.push_back( total );
 
-				double stock = logReturn(inital_stock,x);
-				double bench = 0.13 * t;
-				double perf = logReturn(investment,total);
-				double diff = perf - bench;
 				t += dt;
 			}
 

@@ -204,9 +204,6 @@
     <ClInclude Include="..\..\..\include\mqf\day_count.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\mqf\time_series\arma.h">
-      <Filter>Header Files\Time Series</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\mqf\time_series\shift.h">
       <Filter>Header Files\Time Series</Filter>
     </ClInclude>
@@ -446,6 +443,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\include\mqf\data\stocks.h">
       <Filter>Header Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\distributions\log_logistic.h">
+      <Filter>Header Files\Distributions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\time_series\ar.h">
+      <Filter>Header Files\Time Series</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
