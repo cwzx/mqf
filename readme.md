@@ -6,7 +6,21 @@ For educational purposes only. Work in progress.
 
 ## Features
 
-### Probability Distributions
+### Data Acquisition
+
+* Parsing historical data from Yahoo Finance
+
+### Chrono
+
+* Gregorian calendar
+* Day count conventions
+* Time of day in nanoseconds
+* Formatted time of day (hh:mm:ss.ms'us'ns)
+
+
+### Probability and Stochastic Processes
+
+#### Probability Distributions
 
 * Bernoulli
 * Beta
@@ -40,7 +54,7 @@ For educational purposes only. Work in progress.
 * Wald
 * Weibull
 
-### Copulas
+#### Copulas
 
 * Ali--Mikhail--Haq
 * Clayton
@@ -56,34 +70,29 @@ For educational purposes only. Work in progress.
 * Marshall--Olkin
 * Plackett
 
-### Stochastic Processes
+#### Stochastic Processes
 
-* Wiener
+* Wiener / Brownian Motion
 * Brownian Bridge
 * Geometric Brownian Motion
-* Ornstein--Uhlenbeck
+* Ornstein--Uhlenbeck / Vasicek
+* Square-Root / CIR
+* Exponential Vasicek
 * Binomial Tree
 * Trinomial Tree
-* Square-Root
-* Exponential Vasicek
 * Gamma
 * Poisson
 
-### Numerical Methods for SDEs
+#### Numerical Methods for SDEs
 
 * Euler--Maruyama
 * Milstein
 * Stochastic RK1
 
-### Numerical Methods for PDEs
 
-* Rectangular grid in n-dimensions
-* Finite differences for partial derivatives, laplacian
-* Multi-Index
-* Fokker--Planck equation
-* Black--Scholes equation
+### Statistics
 
-### Descriptive Statistics
+#### Descriptive Statistics
 
 * Sample Mean
 * Sample Variance (biased and unbiased)
@@ -97,17 +106,7 @@ For educational purposes only. Work in progress.
 * Empirical Distribution
 * Kernel Density Estimation
 
-### Nonlinear Optimization
-
-* Brute Force Grid
-
-#### For Smooth Cost Functions on Riemannian Manifolds
-
-* Line Search
-* Gradient Descent
-* Conjugate Gradient: Fletcher--Reeves, Polak--Ribiere, Hestenes--Stiefel, Conjugate Descent, Dai--Yuan
-
-### Kernels
+#### Kernels
 
 * Cosine
 * Epanechnikov
@@ -120,31 +119,34 @@ For educational purposes only. Work in progress.
 * Triweight
 * Uniform
 
-### Polynomials
-
-* Chebyshev
-* Hermite
-* Legendre
-
-### Regression
+#### Regression
 
 * Ordinary Least Squares
 * Generalized Least Squares
 * Polynomial Regression
 * Kernel Regression
 
-### Time Series
 
-* Shift Operator
-* Finite Difference Operators
+### Nonlinear Optimization
 
-#### Technical Analysis
+* Brute Force Grid
+
+#### For Smooth Cost Functions on Riemannian Manifolds
+
+* Line Search
+* Gradient Descent
+* Conjugate Gradient: Fletcher--Reeves, Polak--Ribiere, Hestenes--Stiefel, Conjugate Descent, Dai--Yuan
+
+
+### Time Series Analysis
 
 * Exponential Moving Average
 * Simple Moving Average
 * Weighted Moving Average
-* Fibonacci Numbers
-* Fibonacci Ratios
+* Autoregression
+* Shift Operator
+* Finite Difference Operators
+
 
 ### Trading and Investment
 
@@ -154,7 +156,7 @@ For educational purposes only. Work in progress.
 * Backtest
 * Stochastic Test
 
-#### Results
+#### Test Results
 
 * Return
 * Log Return
@@ -163,23 +165,7 @@ For educational purposes only. Work in progress.
 * Drawdown
 * Max Drawdown
 
-### Interest Rates
-
-* Accumulation factor
-* Discount factor
-* Conversion between oontinuous and non-continuous conversion periods.
-
-### Pricing
-
-* Black--Scholes pricing for European calls and puts
-* Zero Coupon Bond
-* Fixed Coupon Bond
-* Floating Rate Note
-* Flat Yield Curve
-* Nelson--Siegel Curve
-* Svensson Curve
-
-### Utility Functions
+#### Utility Functions
 
 * Exponential
 * Logarithmic
@@ -187,21 +173,45 @@ For educational purposes only. Work in progress.
 * Absolute Risk Aversion
 * Relative Risk Aversion
 
-### Chrono
 
-* Gregorian calendar
-* Day count conventions
-* Time of day in nanoseconds
-* Formatted time of day (hh:mm:ss.ms'us'ns)
+### Finance
 
-### Data
+#### Interest Rates
 
-* Parsing data from Yahoo Finance
+* Accumulation factor
+* Discount factor
+* Conversion between oontinuous and non-continuous conversion periods.
+
+#### Pricing
+
+* Black--Scholes pricing for European options
+* Zero Coupon Bond
+* Fixed Coupon Bond
+* Floating Rate Note
+* Flat Yield Curve
+* Nelson--Siegel Curve
+* Svensson Curve
+
+
+### Other
+
+* Fibonacci Numbers
+* Fibonacci Ratios
+
+#### Polynomials
+
+* Chebyshev
+* Hermite
+* Legendre
+
+#### Numerical Methods for PDEs
+
+* Rectangular grid in n-dimensions
+* Finite differences for partial derivatives, laplacian
+* Multi-Index
+
 
 ## Dependencies
 
 * Eigen for linear algebra
-
-
-
 

@@ -30,12 +30,15 @@ void test( const string& ticker ) {
 		bf.bounds.maxBounds[0] = 0.1;
 		bf.bounds.minBounds[1] = 20;
 		bf.bounds.maxBounds[1] = 200;
-		auto r = bf.optimize( [&](auto&& x){ 
+
+		auto cost = [&](auto&& x) { 
 			CW1 strat(x[0],x[0],(int)x[1]);
 			Backtest<CW1> bt(strat);
 			auto res = bt.runTest( timeseries.begin(), timeseries.end() );
 			return -res.sharpeRatio;
-		} );
+		};
+
+		auto r = bf.optimize( cost );
 
 		r.histogram.writeCSV(("h-1-" + ticker + ".csv").c_str());
 
@@ -57,12 +60,15 @@ void test( const string& ticker ) {
 		bf.bounds.maxBounds[0] = 25;
 		bf.bounds.minBounds[1] = 26;
 		bf.bounds.maxBounds[1] = 200;
-		auto r = bf.optimize( [&](auto&& x){
-			MAStrategy strat((int)x[0],(int)x[1]);
+		
+		auto cost = [&](auto&& x) {
+			MAStrategy strat( (int)x[0], (int)x[1] );
 			Backtest<MAStrategy> bt(strat);
 			auto res = bt.runTest( timeseries.begin(), timeseries.end() );
 			return -res.sharpeRatio;
-		} );
+		};
+		
+		auto r = bf.optimize( cost );
 
 		r.histogram.writeCSV(("h-ma-" + ticker + ".csv").c_str());
 
