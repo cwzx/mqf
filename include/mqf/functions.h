@@ -7,6 +7,11 @@
 
 namespace mqf {
 
+	template<typename T>
+	inline T square( T&& x ) {
+		return x * x;
+	}
+
 	inline double binomial( uint32_t n, uint32_t k ) {
 		if( k == 0 || n == k ) return 1.0;
 		if( k > n ) return 0.0;

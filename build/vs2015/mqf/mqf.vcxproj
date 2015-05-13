@@ -139,6 +139,9 @@
     <ClInclude Include="..\..\..\include\mqf\time_series\wma.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\action.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\backtest.h" />
+    <ClInclude Include="..\..\..\include\mqf\trading\indicators\cw1.h" />
+    <ClInclude Include="..\..\..\include\mqf\trading\indicators\macd.h" />
+    <ClInclude Include="..\..\..\include\mqf\trading\indicators\rsi.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\market.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\portfolio.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\results.h" />

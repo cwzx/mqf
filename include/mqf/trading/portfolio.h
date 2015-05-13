@@ -1,16 +1,25 @@
 #ifndef INCLUDED_MQF_PORTFOLIO
 #define INCLUDED_MQF_PORTFOLIO
-#include "../kv_vector.h"
 #include "../gregorian.h"
+#include <vector>
+#include <Eigen/Core>
 
 namespace mqf {
 
-	using SecurityID = uint32_t;
-
 	struct Portfolio {
-		kv_vector<SecurityID,uint32_t> positions;
+		using Vec = Eigen::VectorXd;
+
+		Vec weights;
+		std::vector<uint32_t> ids;
+
 		double cash;
-		Gregorian::Date date;
+
+		void normalize() {
+			double norm = weights.cwiseAbs().sum() + cash;
+			weights /= norm;
+			cash /= norm;
+		}
+
 	};
 
 }

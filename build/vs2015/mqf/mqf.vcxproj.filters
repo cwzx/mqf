@@ -55,6 +55,9 @@
     <Filter Include="Header Files\Optimization">
       <UniqueIdentifier>{cc9460d9-d8bd-4cd8-90af-5c9b5824f1e2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Trading\Indicators">
+      <UniqueIdentifier>{9317b84b-8800-410f-819c-2b7afbe19624}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\mqf\chrono.h">
@@ -449,6 +452,15 @@
     </ClInclude>
     <ClInclude Include="..\..\..\include\mqf\time_series\ar.h">
       <Filter>Header Files\Time Series</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\trading\indicators\cw1.h">
+      <Filter>Header Files\Trading\Indicators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\trading\indicators\rsi.h">
+      <Filter>Header Files\Trading\Indicators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\trading\indicators\macd.h">
+      <Filter>Header Files\Trading\Indicators</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

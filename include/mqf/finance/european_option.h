@@ -38,7 +38,7 @@ namespace Options {
 		
 		static double PriceCall( double strike,
 		                         double underlying,
-		                         Time timeToExpiry,
+		                         double timeToExpiry,
 		                         double riskFreeRate,
 		                         double volatility,
 		                         double dividendRate = 0.0 )
@@ -58,7 +58,7 @@ namespace Options {
 
 		static double PricePut( double strike,
 		                        double underlying,
-		                        Time timeToExpiry,
+		                        double timeToExpiry,
 		                        double riskFreeRate,
 		                        double volatility,
 		                        double dividendRate = 0.0 )

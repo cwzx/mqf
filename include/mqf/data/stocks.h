@@ -29,8 +29,8 @@ namespace mqf {
 		double computeSplitFactor( const Date& from, const Date& to ) const {
 			double factor = 1.0;
 			for( auto&& s : splits ) {
-				if( s.date > from ) factor *= s.factor;
 				if( s.date > to ) break;
+				if( s.date > from ) factor *= s.factor;
 			}
 			return factor;
 		}

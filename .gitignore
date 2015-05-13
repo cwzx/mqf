@@ -2,6 +2,7 @@ bin/
 lib/
 
 include/mqf/trading/strategies/cw1.h
+include/mqf/trading/indicators/cw1.h
 
 examples/*/*.csv
 examples/*/*.txt

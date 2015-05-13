@@ -10,7 +10,8 @@ namespace mqf {
 
 	template<typename T,int Rows,int Cols>
 	Matrix<T,Cols,Rows> pseudoInverse( const Matrix<T,Rows,Cols>& A, typename NumTraits<T>::Real epsilon = NumTraits<T>::epsilon() ) {
-		JacobiSVD<Matrix<T,Rows,Cols>> svd( A, ComputeThinU | ComputeThinV );
+		//JacobiSVD<Matrix<T,Rows,Cols>> svd( A, ComputeThinU | ComputeThinV );
+		BDCSVD<Matrix<T,Rows,Cols>> svd( A, ComputeThinU | ComputeThinV );
 
 		auto tolerance = epsilon
 		               * std::max( A.rows(), A.cols() )
