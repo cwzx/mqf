@@ -5,10 +5,10 @@
 
 namespace mqf {
 
-	struct SimpleMovingAverage {
+	struct SMA {
 		int period;
 
-		explicit SimpleMovingAverage( int period = 2 ) : period(period) {}
+		explicit SMA( int period = 2 ) : period(period) {}
 
 		template<typename It>
 		auto back( It p1, It p2 ) const {

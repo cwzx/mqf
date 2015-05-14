@@ -3,8 +3,19 @@
 #include <cstdint>
 #include "results.h"
 #include "action.h"
+#include "../finance/interest.h"
+#include "../gregorian.h"
 
 namespace mqf {
+
+	struct BacktestSpec {
+		Gregorian::Date start, end;
+
+		double riskFreeRate;
+
+		std::vector<double> benchmark;
+	
+	};
 
 	template<typename Strat>
 	struct Backtest {

@@ -5,10 +5,10 @@
 
 namespace mqf {
 
-	struct WeightedMovingAverage {
+	struct WMA {
 		int period;
 
-		explicit WeightedMovingAverage( int period = 2 ) : period(period) {}
+		explicit WMA( int period = 2 ) : period(period) {}
 
 		template<typename It>
 		static double weightedSum( It p1, It p2 ) {

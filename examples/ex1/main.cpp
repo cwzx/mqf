@@ -32,7 +32,7 @@ void test( const string& ticker ) {
 		bf.bounds.maxBounds[1] = 200;
 
 		auto cost = [&](auto&& x) { 
-			CW1 strat(x[0],x[0],(int)x[1]);
+			CW1 strat(x[0],(int)x[1]);
 			Backtest<CW1> bt(strat);
 			auto res = bt.runTest( timeseries.begin(), timeseries.end() );
 			return -res.sharpeRatio;
@@ -44,7 +44,7 @@ void test( const string& ticker ) {
 
 		cout << "opt: " << r.optimal << endl;
 		
-		CW1 strat(r.optimal[0],r.optimal[0],(int)r.optimal[1]);
+		CW1 strat(r.optimal[0],(int)r.optimal[1]);
 		Backtest<CW1> bt(strat);
 		auto res = bt.runTest( ("strat-1-" + ticker + ".csv").c_str(), timeseries.begin(), timeseries.end() );
 		res.print();
@@ -91,6 +91,19 @@ int main() {
 
 	for( auto&& ticker : tickers )
 		test( ticker );
+
+	auto bench = Yahoo::load( "SPY.csv" );
+
+	auto adjclose = bench.computeAdjustedClose();
+
+	auto result = computeTestResults( adjclose.begin(), adjclose.end(), 1.0/252 );
+	result.print();
+
+	auto returns = computeCumulativeLogReturns( adjclose.begin(), adjclose.end() );
+	ofstream out("bench.csv");
+	for( auto x : returns )
+		out << x << endl;
+
 
 	cout << "Press enter to continue . . . "; cin.get();
 }

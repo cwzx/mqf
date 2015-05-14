@@ -4,10 +4,10 @@
 
 namespace mqf {
 
-	struct ExponentialMovingAverage {
+	struct EMA {
 		double alpha;
 
-		explicit ExponentialMovingAverage( double alpha = 0.1 ) : alpha(alpha) {}
+		explicit EMA( double alpha = 0.1 ) : alpha(alpha) {}
 		
 		double update( double ema, double x ) const {
 			return (1.0-alpha) * ema + alpha * x;
@@ -17,7 +17,7 @@ namespace mqf {
 		auto back( It p1, It p2 ) const {
 			auto ema = *p1;
 			for(++p1;p1!=p2;++p1) {
-				ema += alpha * (*p1 - x);
+				ema += alpha * (*p1 - ema);
 			}
 			return ema;
 		}

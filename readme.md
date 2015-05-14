@@ -141,6 +141,7 @@ For educational purposes only. Work in progress.
 ### Time Series Analysis
 
 * Exponential Moving Average
+* Double Exponential Moving Average
 * Simple Moving Average
 * Weighted Moving Average
 * Autoregression
@@ -164,6 +165,12 @@ For educational purposes only. Work in progress.
 * Sharpe Ratio
 * Drawdown
 * Max Drawdown
+
+#### Indicators
+
+* Moving Average Convergence/Divergence (MACD)
+* Relative Strength (RS)
+* Relative Strength Index (RSI)
 
 #### Utility Functions
 

@@ -462,5 +462,14 @@
     <ClInclude Include="..\..\..\include\mqf\trading\indicators\macd.h">
       <Filter>Header Files\Trading\Indicators</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\trading\transaction_costs.h">
+      <Filter>Header Files\Trading</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\trading\bid_ask.h">
+      <Filter>Header Files\Trading</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\time_series\double_ema.h">
+      <Filter>Header Files\Time Series</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

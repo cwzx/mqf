@@ -20,8 +20,8 @@ namespace mqf {
 			if( count < std::max(shortPeriod,longPeriod) )
 				return Action( Action::Hold );
 		
-			auto shortMA = WeightedMovingAverage(shortPeriod).back(p1,p2);
-			auto longMA = WeightedMovingAverage(longPeriod).back(p1,p2);
+			auto shortMA = WMA(shortPeriod).back(p1,p2);
+			auto longMA = WMA(longPeriod).back(p1,p2);
 
 			if( shortMA > longMA ) {
 				return Action( Action::Buy );

@@ -14,7 +14,7 @@ namespace mqf {
 			if( count < period )
 				return Action( Action::Hold );
 		
-			auto ma = WeightedMovingAverage(period).back( std::prev(p2,period), p2 );
+			auto ma = WMA(period).back( std::prev(p2,period), p2 );
 
 			auto current = *--p2;
 

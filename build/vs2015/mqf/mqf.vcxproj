@@ -131,6 +131,7 @@
     <ClInclude Include="..\..\..\include\mqf\stats\mvue.h" />
     <ClInclude Include="..\..\..\include\mqf\svensson.h" />
     <ClInclude Include="..\..\..\include\mqf\time_series\ar.h" />
+    <ClInclude Include="..\..\..\include\mqf\time_series\double_ema.h" />
     <ClInclude Include="..\..\..\include\mqf\time_series\drawdown.h" />
     <ClInclude Include="..\..\..\include\mqf\time_series\finite_difference.h" />
     <ClInclude Include="..\..\..\include\mqf\time_series\ema.h" />
@@ -139,6 +140,7 @@
     <ClInclude Include="..\..\..\include\mqf\time_series\wma.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\action.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\backtest.h" />
+    <ClInclude Include="..\..\..\include\mqf\trading\bid_ask.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\indicators\cw1.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\indicators\macd.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\indicators\rsi.h" />
@@ -151,6 +153,7 @@
     <ClInclude Include="..\..\..\include\mqf\trading\strategies\simple.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\strategies\cw1.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\strategies\stripes.h" />
+    <ClInclude Include="..\..\..\include\mqf\trading\transaction_costs.h" />
     <ClInclude Include="..\..\..\include\mqf\types.h" />
     <ClInclude Include="..\..\..\include\mqf\utility.h" />
   </ItemGroup>
