@@ -1,6 +1,7 @@
 #ifndef INCLUDED_MQF_TRADING_INDICATORS_MACD
 #define INCLUDED_MQF_TRADING_INDICATORS_MACD
 #include "../../time_series/ema.h"
+#include "../../time_series/wma.h"
 #include "../return.h"
 
 namespace mqf {
@@ -9,12 +10,12 @@ namespace Indicators {
 	struct MACD {
 		using Value = double;
 
-		EMA ema_short, ema_long, ema_signal;
+		WMA ema_short, ema_long, ema_signal;
 
 		explicit MACD( int shortPeriod = 12, int longPeriod = 26, int signalPeriod = 9 ) :
-			ema_short(1.0/shortPeriod),
-			ema_long(1.0/longPeriod),
-			ema_signal(1.0/signalPeriod)
+			ema_short(shortPeriod),
+			ema_long(longPeriod),
+			ema_signal(signalPeriod)
 		{}
 
 		template<typename It>

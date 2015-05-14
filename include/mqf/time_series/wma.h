@@ -24,7 +24,7 @@ namespace mqf {
 		template<typename It>
 		static double weightedAvg( It p1, It p2 ) {
 			auto N = std::distance(p1,p2);
-			return ( N > 0 ) ? weightedSum(p1,p2) / ((N*(N+1))/2) : 0.0;
+			return ( N > 0 ) ? ( weightedSum(p1,p2) / ((N*(N+1))/2) ) : 0.0;
 		}
 
 		template<typename It>

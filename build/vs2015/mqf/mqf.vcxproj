@@ -149,6 +149,7 @@
     <ClInclude Include="..\..\..\include\mqf\trading\results.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\return.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\stochastic_test.h" />
+    <ClInclude Include="..\..\..\include\mqf\trading\strategies\macd.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\strategies\moving_average.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\strategies\simple.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\strategies\cw1.h" />

@@ -3,6 +3,7 @@
 #include "../action.h"
 
 namespace mqf {
+namespace Strategies {
 
 	template<typename It>
 	std::vector<double> logPrices( It p1, It p2 ) {
@@ -58,6 +59,7 @@ namespace mqf {
 
 	};
 
+}
 }
 
 #endif

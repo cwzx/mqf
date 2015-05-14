@@ -4,8 +4,9 @@
 #include "../../time_series/wma.h"
 
 namespace mqf {
+namespace Strategies {
 
-	struct SimpleStrategy {
+	struct Simple {
 		int period = 5;
 
 		template<typename It>
@@ -29,6 +30,7 @@ namespace mqf {
 
 	};
 
+}
 }
 
 #endif

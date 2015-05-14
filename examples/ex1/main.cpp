@@ -8,13 +8,13 @@
 #include <mqf/functions.h>
 #include <mqf/trading/strategies/cw1.h>
 #include <mqf/trading/strategies/moving_average.h>
-#include <mqf/trading/strategies/stripes.h>
 #include <mqf/trading/backtest.h>
 #include <mqf/data/yahoo.h>
 #include <mqf/optimization/brute_force.h>
 
 using namespace std;
 using namespace mqf;
+using namespace mqf::Strategies;
 
 void test( const string& ticker ) {
 
@@ -54,28 +54,28 @@ void test( const string& ticker ) {
 	}
 	{
 		BruteForce<double,2> bf;
-		bf.grid.size[0] = 25;
-		bf.grid.size[1] = 88;
+		bf.grid.size[0] = 50;
+		bf.grid.size[1] = 100;
 		bf.bounds.minBounds[0] = 1;
-		bf.bounds.maxBounds[0] = 25;
-		bf.bounds.minBounds[1] = 26;
-		bf.bounds.maxBounds[1] = 200;
+		bf.bounds.maxBounds[0] = 50;
+		bf.bounds.minBounds[1] = 1;
+		bf.bounds.maxBounds[1] = 100;
 		
 		auto cost = [&](auto&& x) {
-			MAStrategy strat( (int)x[0], (int)x[1] );
-			Backtest<MAStrategy> bt(strat);
+			BasicMA strat( (int)x[0], (int)x[1] );
+			Backtest<BasicMA> bt(strat);
 			auto res = bt.runTest( timeseries.begin(), timeseries.end() );
 			return -res.sharpeRatio;
 		};
 		
 		auto r = bf.optimize( cost );
 
-		r.histogram.writeCSV(("h-ma-" + ticker + ".csv").c_str());
+		r.histogram.writeCSV( ("h-ma-" + ticker + ".csv").c_str() );
 
 		cout << "opt: " << r.optimal << endl;
 
-		MAStrategy strat((int)r.optimal[0],(int)r.optimal[1]);
-		Backtest<MAStrategy> bt(strat);
+		BasicMA strat((int)r.optimal[0],(int)r.optimal[1]);
+		Backtest<BasicMA> bt(strat);
 		auto res = bt.runTest( ("strat-ma-" + ticker + ".csv").c_str(), timeseries.begin(), timeseries.end() );
 		res.print();
 		ofstream out("params-ma-" + ticker + ".txt");
@@ -87,7 +87,7 @@ void test( const string& ticker ) {
 
 int main() {
 
-	const char* tickers[] = { "aapl", "ibm", "amzn", "nflx", "googl", "msft" };
+	const char* tickers[] = { "AAPL", "IBM", "AMZN", "NFLX", "GOOGL", "MSFT" };
 
 	for( auto&& ticker : tickers )
 		test( ticker );

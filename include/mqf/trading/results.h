@@ -31,6 +31,7 @@ namespace mqf {
 	};
 
 	inline double sharpeRatio( double ret, double vol, double riskFreeRate ) {
+		if( vol == 0.0 ) return 0.0;
 		return ( ret - riskFreeRate ) / vol;
 	}
 

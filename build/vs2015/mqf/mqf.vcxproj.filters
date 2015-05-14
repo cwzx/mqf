@@ -471,5 +471,8 @@
     <ClInclude Include="..\..\..\include\mqf\time_series\double_ema.h">
       <Filter>Header Files\Time Series</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\trading\strategies\macd.h">
+      <Filter>Header Files\Trading\Strategies</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

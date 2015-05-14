@@ -1,14 +1,15 @@
-#ifndef INCLUDED_MQF_TRADING_STRAT_MOVING_AVERAGE
-#define INCLUDED_MQF_TRADING_STRAT_MOVING_AVERAGE
+#ifndef INCLUDED_MQF_TRADING_STRAT_BASIC_MA
+#define INCLUDED_MQF_TRADING_STRAT_BASIC_MA
 #include "../action.h"
 #include "../../time_series/wma.h"
 
 namespace mqf {
+namespace Strategies {
 
-	struct MAStrategy {
+	struct BasicMA {
 		int shortPeriod, longPeriod;
 
-		explicit MAStrategy( int shortPeriod = 20,
+		explicit BasicMA( int shortPeriod = 20,
 		                     int longPeriod = 42 ) :
 			shortPeriod(shortPeriod),
 			longPeriod(longPeriod)
@@ -34,6 +35,7 @@ namespace mqf {
 
 	};
 
+}
 }
 
 #endif
