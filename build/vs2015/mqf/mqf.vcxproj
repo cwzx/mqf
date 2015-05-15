@@ -90,6 +90,7 @@
     <ClInclude Include="..\..\..\include\mqf\nelson_siegel.h" />
     <ClInclude Include="..\..\..\include\mqf\optimization\brute_force.h" />
     <ClInclude Include="..\..\..\include\mqf\optimization\conjugate_gradient.h" />
+    <ClInclude Include="..\..\..\include\mqf\optimization\differential_evolution.h" />
     <ClInclude Include="..\..\..\include\mqf\optimization\euclidean.h" />
     <ClInclude Include="..\..\..\include\mqf\optimization\gradient_descent.h" />
     <ClInclude Include="..\..\..\include\mqf\optimization\linesearch.h" />

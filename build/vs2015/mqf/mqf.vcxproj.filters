@@ -474,5 +474,8 @@
     <ClInclude Include="..\..\..\include\mqf\trading\strategies\macd.h">
       <Filter>Header Files\Trading\Strategies</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\optimization\differential_evolution.h">
+      <Filter>Header Files\Optimization</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -2,8 +2,6 @@
 #include <fstream>
 #include <string>
 #include <iterator>
-#include <mqf/processes/gbm.h>
-#include <mqf/processes/ornstein_uhlenbeck.h>
 #include <mqf/utility.h>
 #include <mqf/functions.h>
 #include <mqf/trading/strategies/cw1.h>
