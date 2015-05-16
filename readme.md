@@ -130,6 +130,7 @@ For educational purposes only. Work in progress.
 ### Nonlinear Optimization
 
 * Brute Force Grid
+* Differential Evolution
 
 #### For Smooth Cost Functions on Riemannian Manifolds
 

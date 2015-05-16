@@ -8,7 +8,7 @@
 #include <mqf/trading/strategies/moving_average.h>
 #include <mqf/trading/backtest.h>
 #include <mqf/data/yahoo.h>
-#include <mqf/optimization/brute_force.h>
+#include <mqf/optimization/differential_evolution.h>
 
 using namespace std;
 using namespace mqf;
@@ -21,6 +21,60 @@ void test( const string& ticker ) {
 	auto timeseries = data.computeAdjustedClose();
 
 	{
+		DifferentialEvolution<double,2> de;
+		de.bounds.minBounds[0] = -0.2;
+		de.bounds.maxBounds[0] = 0.2;
+		de.bounds.minBounds[1] = 1;
+		de.bounds.maxBounds[1] = 200;
+		de.max_evals = 500;
+
+		auto cost = [&](auto&& x) { 
+			CW1 strat(x[0],(int)x[1]);
+			Backtest<CW1> bt(strat);
+			auto res = bt.runTest( timeseries.begin(), timeseries.end() );
+			return -res.annualLogReturn;
+		};
+
+		auto r = de.optimize( cost );
+
+		cout << "opt: " << r << endl;
+		
+		CW1 strat(r[0],(int)r[1]);
+		Backtest<CW1> bt(strat);
+		auto res = bt.runTest( ("strat-1-" + ticker + ".csv").c_str(), timeseries.begin(), timeseries.end() );
+		res.print();
+		ofstream out("params-1-" + ticker + ".txt");
+		out << r << endl;
+		res.print( out );
+	}
+	{
+		DifferentialEvolution<double,2> de;
+		de.bounds.minBounds[0] = 1;
+		de.bounds.maxBounds[0] = 50;
+		de.bounds.minBounds[1] = 1;
+		de.bounds.maxBounds[1] = 200;
+		de.max_evals = 10000;
+		
+		auto cost = [&](auto&& x) {
+			BasicMA strat( (int)x[0], (int)x[1] );
+			Backtest<BasicMA> bt(strat);
+			auto res = bt.runTest( timeseries.begin(), timeseries.end() );
+			return -res.annualLogReturn;
+		};
+		
+		auto r = de.optimize( cost );
+
+		cout << "opt: " << r << endl;
+
+		BasicMA strat((int)r[0],(int)r[1]);
+		Backtest<BasicMA> bt(strat);
+		auto res = bt.runTest( ("strat-ma-" + ticker + ".csv").c_str(), timeseries.begin(), timeseries.end() );
+		res.print();
+		ofstream out("params-ma-" + ticker + ".txt");
+		out << r << endl;
+		res.print( out );
+	}
+	/*{
 		BruteForce<double,2> bf;
 		bf.grid.size[0] = 21;
 		bf.grid.size[1] = 61;
@@ -79,7 +133,7 @@ void test( const string& ticker ) {
 		ofstream out("params-ma-" + ticker + ".txt");
 		out << r.optimal << endl;
 		res.print( out );
-	}
+	}*/
 
 }
 
