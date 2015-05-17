@@ -155,6 +155,7 @@ For educational purposes only. Work in progress.
 * Portfolios
 * Efficient Frontier
 * Capital Asset Pricing Model (CAPM)
+* Black--Litterman
 * Backtest
 * Stochastic Test
 

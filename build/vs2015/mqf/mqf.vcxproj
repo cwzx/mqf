@@ -142,6 +142,7 @@
     <ClInclude Include="..\..\..\include\mqf\trading\action.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\backtest.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\bid_ask.h" />
+    <ClInclude Include="..\..\..\include\mqf\trading\black_litterman.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\indicators\cw1.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\indicators\macd.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\indicators\rsi.h" />

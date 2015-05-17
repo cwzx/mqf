@@ -4,23 +4,27 @@
 #include <Eigen/SVD>
 #include <algorithm>
 
-using namespace Eigen;
-
 namespace mqf {
 
-	template<typename T,int Rows,int Cols>
-	Matrix<T,Cols,Rows> pseudoInverse( const Matrix<T,Rows,Cols>& A, typename NumTraits<T>::Real epsilon = NumTraits<T>::epsilon() ) {
+	template<typename Derived>
+	Eigen::Matrix<typename Derived::Scalar,
+	              Derived::ColsAtCompileTime,
+	              Derived::RowsAtCompileTime>
+	pseudoInverse( const Eigen::MatrixBase<Derived>& A ) {
+		using namespace Eigen;
+		using T = Derived::Scalar;
+		constexpr int Rows = Derived::RowsAtCompileTime;
+		constexpr int Cols = Derived::ColsAtCompileTime;
 		//JacobiSVD<Matrix<T,Rows,Cols>> svd( A, ComputeThinU | ComputeThinV );
 		BDCSVD<Matrix<T,Rows,Cols>> svd( A, ComputeThinU | ComputeThinV );
 
-		auto tolerance = epsilon
-		               * std::max( A.rows(), A.cols() )
-		               * svd.singularValues().array().abs().maxCoeff();
+		auto threshold = svd.threshold();
 
-		auto svInv = ( svd.singularValues().array().abs() > tolerance ).select( svd.singularValues().array().inverse(), 0 );
+		decltype(svd)::SingularValuesType svInv = ( svd.singularValues().array().abs() > threshold ).select( svd.singularValues().array().inverse(), 0 );
 
 		return svd.matrixV() * svInv.asDiagonal() * svd.matrixU().adjoint();
 	}
+
 }
 
 #endif
