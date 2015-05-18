@@ -131,6 +131,7 @@ For educational purposes only. Work in progress.
 
 * Brute Force Grid
 * Differential Evolution
+* Sequential Minimal Optimization
 
 #### For Smooth Cost Functions on Riemannian Manifolds
 

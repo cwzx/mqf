@@ -92,6 +92,7 @@
     <ClInclude Include="..\..\..\include\mqf\optimization\euclidean.h" />
     <ClInclude Include="..\..\..\include\mqf\optimization\gradient_descent.h" />
     <ClInclude Include="..\..\..\include\mqf\optimization\linesearch.h" />
+    <ClInclude Include="..\..\..\include\mqf\optimization\smo.h" />
     <ClInclude Include="..\..\..\include\mqf\pde\aabb.h" />
     <ClInclude Include="..\..\..\include\mqf\pde\black_scholes.h" />
     <ClInclude Include="..\..\..\include\mqf\pde\fokker_planck.h" />

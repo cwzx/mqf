@@ -81,7 +81,7 @@ namespace Kernels {
 	
 	struct Gaussian {
 		double operator()( double x ) const {
-			return std::exp(-0.5 * x*x) / std::sqrt( 2.0 * Pi );
+			return std::exp(-0.5 * x*x) / Sqrt2Pi;
 		}
 
 		static constexpr double squareIntegral() {

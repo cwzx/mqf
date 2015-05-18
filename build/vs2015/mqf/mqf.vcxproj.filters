@@ -486,5 +486,8 @@
     <ClInclude Include="..\..\..\include\mqf\portfolio\efficient_frontier_unconstrained.h">
       <Filter>Header Files\Portfolio</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\optimization\smo.h">
+      <Filter>Header Files\Optimization</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
