@@ -1,5 +1,5 @@
-#ifndef INCLUDED_MQF_BLACK_LITTERMAN
-#define INCLUDED_MQF_BLACK_LITTERMAN
+#ifndef INCLUDED_MQF_PORTFOLIO_BLACK_LITTERMAN
+#define INCLUDED_MQF_PORTFOLIO_BLACK_LITTERMAN
 #include "../eigen_pinv.h"
 
 namespace mqf {
@@ -13,8 +13,8 @@ namespace mqf {
 	 *
 	 */
 	struct BlackLitterman {
-		using Vec = Eigen::VectorXd;
-		using Mat = Eigen::MatrixXd;
+		using Vec  = Eigen::VectorXd;
+		using Mat  = Eigen::MatrixXd;
 		using Diag = Eigen::DiagonalMatrix<double,-1>;
 
 		double riskFreeRate = 0.0,
@@ -60,27 +60,29 @@ namespace mqf {
 		}
 
 		Vec computePosteriorReturns( const Views& vs ) const {
-			return returns + tau * covariance * vs.weights.transpose()
-			     * pseudoInverse( ( tau * vs.weights * covariance * vs.weights.transpose() + vs.variances.diagonal() ).eval() )
+			auto tauSigma = tau * covariance;
+			return returns + tauSigma * vs.weights.transpose()
+			     * pseudoInverse( vs.weights * tauSigma * vs.weights.transpose() + vs.variances.diagonal() )
 			     * ( vs.returns - vs.weights * returns );
 		}
 
 		Mat computePosteriorVariance( const Views& vs ) const {
 			auto tauSigma = tau * covariance;
 			return tauSigma - tauSigma * vs.weights.transpose()
-			     * pseudoInverse( ( vs.weights * tauSigma * vs.weights.transpose() + vs.variances.diagonal() ).eval() )
+			     * pseudoInverse( vs.weights * tauSigma * vs.weights.transpose() + vs.variances.diagonal() )
 			     * vs.weights * tauSigma;
 		}
 
 		Vec computeWeights( const Views& vs ) const {
-			auto posteriorReturns = computePosteriorReturns( vs );
-			auto posteriorVariance = computePosteriorVariance( vs );
-			return (1.0 / riskAversion) * posteriorReturns * pseudoInverse( ( covariance + posteriorVariance ).eval() );
+			auto tauSigma = tau * covariance;
+			auto temp = ( tauSigma * vs.weights.transpose()
+			          * pseudoInverse( vs.weights * tauSigma * vs.weights.transpose() + vs.variances.diagonal() ) ).eval();
+			auto posteriorReturns = returns + temp * ( vs.returns - vs.weights * returns );
+			auto posteriorVariance = tauSigma - temp * vs.weights * tauSigma;
+			return (1.0 / riskAversion) * pseudoInverse( covariance + posteriorVariance ) * posteriorReturns;
 		}
 
 	};
-
-	
 
 }
 

@@ -1,5 +1,5 @@
-#ifndef INCLUDED_MQF_CAPM
-#define INCLUDED_MQF_CAPM
+#ifndef INCLUDED_MQF_PORTFOLIO_CAPM
+#define INCLUDED_MQF_PORTFOLIO_CAPM
 #include "../stats/descriptive.h"
 
 namespace mqf {

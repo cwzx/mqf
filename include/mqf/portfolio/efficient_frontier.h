@@ -1,6 +1,5 @@
-#ifndef INCLUDED_MQF_EFFICIENT_FRONTIER
-#define INCLUDED_MQF_EFFICIENT_FRONTIER
-#include <Eigen/Core>
+#ifndef INCLUDED_MQF_PORTFOLIO_EFFICIENT_FRONTIER
+#define INCLUDED_MQF_PORTFOLIO_EFFICIENT_FRONTIER
 #include "../eigen_pinv.h"
 
 namespace mqf {
@@ -10,8 +9,10 @@ namespace mqf {
 	 *
 	 * The set of portfolios that have the least variance for their expected return.
 	 *
+	 * This uses the fully-invested constraint \sum_i w_i = 1.
+	 *
 	 * The tangency portfolio is the portfolio on the efficient frontier
-	 * that maximizes the Sharpe ratio w.r.t. a given riskFreeRate.
+	 * that maximizes the Sharpe ratio w.r.t. a given risk-free rate.
 	 *
 	 */
 	struct EfficientFrontier {

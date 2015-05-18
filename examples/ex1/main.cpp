@@ -9,7 +9,7 @@
 #include <mqf/trading/backtest.h>
 #include <mqf/data/yahoo.h>
 #include <mqf/optimization/differential_evolution.h>
-#include <mqf/trading/black_litterman.h>
+#include <mqf/portfolio/black_litterman.h>
 
 using namespace std;
 using namespace mqf;
@@ -139,8 +139,6 @@ void test( const string& ticker ) {
 }
 
 int main() {
-
-	BlackLitterman bl;
 
 	const char* tickers[] = { "AAPL", "IBM", "AMZN", "NFLX", "GOOGL", "MSFT" };
 

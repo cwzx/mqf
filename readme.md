@@ -150,12 +150,17 @@ For educational purposes only. Work in progress.
 * Finite Difference Operators
 
 
-### Trading and Investment
+### Portfolios
 
-* Portfolios
-* Efficient Frontier
+* Efficient Frontier (Constrained)
+* Efficient Frontier (Unconstrained)
 * Capital Asset Pricing Model (CAPM)
 * Black--Litterman
+
+
+### Trading
+
+* Portfolios
 * Backtest
 * Stochastic Test
 

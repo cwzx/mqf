@@ -58,6 +58,9 @@
     <Filter Include="Header Files\Trading\Indicators">
       <UniqueIdentifier>{9317b84b-8800-410f-819c-2b7afbe19624}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Portfolio">
+      <UniqueIdentifier>{cbb17f28-146f-4f1e-aff8-20099bcc0beb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\mqf\chrono.h">
@@ -339,9 +342,6 @@
     <ClInclude Include="..\..\..\include\mqf\pde\fokker_planck.h">
       <Filter>Header Files\PDE</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\mqf\finance\capm.h">
-      <Filter>Header Files\Finance</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\mqf\trading\action.h">
       <Filter>Header Files\Trading</Filter>
     </ClInclude>
@@ -377,9 +377,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\include\mqf\time_series\finite_difference.h">
       <Filter>Header Files\Time Series</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\mqf\finance\efficient_frontier.h">
-      <Filter>Header Files\Finance</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\mqf\polynomials\polynomial.h">
       <Filter>Header Files\Polynomials</Filter>
@@ -477,8 +474,17 @@
     <ClInclude Include="..\..\..\include\mqf\optimization\differential_evolution.h">
       <Filter>Header Files\Optimization</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\mqf\trading\black_litterman.h">
-      <Filter>Header Files\Trading</Filter>
+    <ClInclude Include="..\..\..\include\mqf\portfolio\black_litterman.h">
+      <Filter>Header Files\Portfolio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\portfolio\capm.h">
+      <Filter>Header Files\Portfolio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\portfolio\efficient_frontier.h">
+      <Filter>Header Files\Portfolio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\portfolio\efficient_frontier_unconstrained.h">
+      <Filter>Header Files\Portfolio</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

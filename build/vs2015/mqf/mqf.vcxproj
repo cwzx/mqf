@@ -74,9 +74,7 @@
     <ClInclude Include="..\..\..\include\mqf\eigen_pinv.h" />
     <ClInclude Include="..\..\..\include\mqf\fibonacci.h" />
     <ClInclude Include="..\..\..\include\mqf\finance\bonds.h" />
-    <ClInclude Include="..\..\..\include\mqf\finance\capm.h" />
     <ClInclude Include="..\..\..\include\mqf\finance\cashflow.h" />
-    <ClInclude Include="..\..\..\include\mqf\finance\efficient_frontier.h" />
     <ClInclude Include="..\..\..\include\mqf\finance\european_option.h" />
     <ClInclude Include="..\..\..\include\mqf\finance\fixed_coupon_bond.h" />
     <ClInclude Include="..\..\..\include\mqf\finance\floating_rate_note.h" />
@@ -104,6 +102,10 @@
     <ClInclude Include="..\..\..\include\mqf\polynomials\hermite.h" />
     <ClInclude Include="..\..\..\include\mqf\polynomials\legendre.h" />
     <ClInclude Include="..\..\..\include\mqf\polynomials\polynomial.h" />
+    <ClInclude Include="..\..\..\include\mqf\portfolio\black_litterman.h" />
+    <ClInclude Include="..\..\..\include\mqf\portfolio\capm.h" />
+    <ClInclude Include="..\..\..\include\mqf\portfolio\efficient_frontier.h" />
+    <ClInclude Include="..\..\..\include\mqf\portfolio\efficient_frontier_unconstrained.h" />
     <ClInclude Include="..\..\..\include\mqf\process.h" />
     <ClInclude Include="..\..\..\include\mqf\processes\bessel.h" />
     <ClInclude Include="..\..\..\include\mqf\processes\binomial_tree.h" />
@@ -142,7 +144,6 @@
     <ClInclude Include="..\..\..\include\mqf\trading\action.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\backtest.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\bid_ask.h" />
-    <ClInclude Include="..\..\..\include\mqf\trading\black_litterman.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\indicators\cw1.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\indicators\macd.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\indicators\rsi.h" />
