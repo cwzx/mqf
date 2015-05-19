@@ -50,8 +50,10 @@
     <ClInclude Include="..\..\..\include\mqf\distributions\discrete_uniform.h" />
     <ClInclude Include="..\..\..\include\mqf\distributions\exponential.h" />
     <ClInclude Include="..\..\..\include\mqf\distributions\f.h" />
+    <ClInclude Include="..\..\..\include\mqf\distributions\folded_normal.h" />
     <ClInclude Include="..\..\..\include\mqf\distributions\gamma.h" />
     <ClInclude Include="..\..\..\include\mqf\distributions\gumbel.h" />
+    <ClInclude Include="..\..\..\include\mqf\distributions\half_logistic.h" />
     <ClInclude Include="..\..\..\include\mqf\distributions\inverse_chi_squared.h" />
     <ClInclude Include="..\..\..\include\mqf\distributions\inverse_gamma.h" />
     <ClInclude Include="..\..\..\include\mqf\distributions\laplace.h" />

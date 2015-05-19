@@ -34,8 +34,11 @@ For educational purposes only. Work in progress.
 * Discrete Uniform
 * Exponential
 * F
+* Folded Normal
 * Gamma
 * Gumbel
+* Half-Logistic
+* Half-Normal
 * Inverse Chi-squared
 * Inverse Gamma
 * Laplace

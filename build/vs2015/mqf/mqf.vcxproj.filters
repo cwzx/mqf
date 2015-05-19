@@ -489,5 +489,11 @@
     <ClInclude Include="..\..\..\include\mqf\optimization\smo.h">
       <Filter>Header Files\Optimization</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\distributions\folded_normal.h">
+      <Filter>Header Files\Distributions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\distributions\half_logistic.h">
+      <Filter>Header Files\Distributions</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

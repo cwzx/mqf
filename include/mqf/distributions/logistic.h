@@ -4,6 +4,7 @@
 #include "../distribution.h"
 #include "../random_variable.h"
 #include "../constants.h"
+#include "../functions.h"
 
 namespace mqf {
 namespace Distributions {
@@ -46,6 +47,47 @@ namespace Distributions {
 
 		double cumulative( double x ) const {
 			return 1.0 / ( 1.0 + std::exp( -( x - mu )/s ) );
+		}
+
+	};
+
+	struct StdLogistic : Density<> {
+
+		double mean() const {
+			return 0.0;
+		}
+
+		double median() const {
+			return 0.0;
+		}
+
+		double mode() const {
+			return 0.0;
+		}
+
+		double variance() const {
+			return Pi*Pi / 3.0;
+		}
+
+		double skewness() const {
+			return 0.0;
+		}
+
+		double excessKurtosis() const {
+			return 1.2;
+		}
+
+		double operator()( double x ) const {
+			double a = std::exp( -x );
+			return a / square( 1.0 + a );
+		}
+
+		double cumulative( double x ) const {
+			return 1.0 / ( 1.0 + std::exp( -x ) );
+		}
+
+		operator Logistic() const {
+			return Logistic(0,1);
 		}
 
 	};

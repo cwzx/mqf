@@ -60,7 +60,7 @@ namespace Distributions {
 	}
 
 	// Assuming independent
-	RV<ChiSquared> operator*( const RV<StdNormal>& lhs, const RV<StdNormal>& rhs ) {
+	RV<ChiSquared> operator*( RV<StdNormal>, RV<StdNormal> ) {
 		return MakeRV( ChiSquared( 1 ) );
 	}
 
