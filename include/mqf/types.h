@@ -3,9 +3,6 @@
 
 namespace mqf {
 
-	using Rate        = double;
-	using Probability = double;
-
 }
 
 #endif

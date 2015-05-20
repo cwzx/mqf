@@ -1,6 +1,7 @@
 #ifndef INCLUDED_MQF_DISTRIBUTIONS_EXPONENTIAL
 #define INCLUDED_MQF_DISTRIBUTIONS_EXPONENTIAL
 #include "gamma.h"
+#include "../random_variable.h"
 
 namespace mqf {
 namespace Distributions {

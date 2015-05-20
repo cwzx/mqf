@@ -110,7 +110,7 @@ namespace Gregorian {
 		bool operator<( const Date& rhs ) const {
 			return ( year <  rhs.year )
 			    || ( year == rhs.year && month <  rhs.month )
-			    || ( year == rhs.year && month == rhs.month  && day < rhs.day );
+			    || ( year == rhs.year && month == rhs.month && day < rhs.day );
 		}
 
 		bool operator<=( const Date& rhs ) const {

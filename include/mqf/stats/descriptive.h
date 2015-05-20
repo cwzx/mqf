@@ -3,6 +3,7 @@
 #include <limits>
 #include <algorithm>
 #include <numeric>
+#include "../utility.h"
 
 namespace mqf {
 
@@ -53,8 +54,7 @@ namespace mqf {
 	template<typename It>
 	double biasedSampleVariance( It p1, It p2, double mean ) {
 		auto squares = [mean]( double total, double x ) {
-			double r = x - mean;
-			return total + r*r;
+			return total + square(x - mean);
 		};
 		return std::accumulate(p1,p2,0.0,squares) / std::distance(p1,p2);
 	}
@@ -67,8 +67,7 @@ namespace mqf {
 	template<typename It>
 	double sampleVariance( It p1, It p2, double mean ) {
 		auto squares = [mean]( double total, double x ) {
-			double r = x - mean;
-			return total + r*r;
+			return total + square(x - mean);
 		};
 		return std::accumulate(p1,p2,0.0,squares) / ( std::distance(p1,p2) - 1 );
 	}

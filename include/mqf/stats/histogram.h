@@ -28,10 +28,7 @@ namespace mqf {
 		}
 
 		double binWidth( size_t i ) const {
-			if(i == 0) {
-				return std::numeric_limits<double>::infinity();
-			}
-			if(i == bins.size()) {
+			if( i == 0 || i == bins.size() ) {
 				return std::numeric_limits<double>::infinity();
 			}
 			return bins[i] - bins[i-1];
@@ -73,11 +70,10 @@ namespace mqf {
 			if( !out ) return;
 			auto total = totalFrequency();
 			for(size_t i = 0;i<frequencies.size();++i) {
-				double freqDensity = binFreqDensity(i);
+				auto freqDensity = binFreqDensity(i);
 				out << binCentre(i)                   << ','
 				    << frequencies[i]                 << ','
 				    << (double)frequencies[i] / total << ','
-				    << freqDensity                    << ','
 				    << freqDensity / total            << endl;
 			}
 		}
@@ -100,7 +96,7 @@ namespace mqf {
 	
 			uint32_t nBins = numBins;
 			if( nBins == 0 ) {
-				nBins = std::min<uint32_t>( 1 + uint32_t(count) / 20, 250 );
+				nBins = std::min<uint32_t>( 1 + count / 20, 250 );
 			}
 
 			auto minVal = binMin;

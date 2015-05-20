@@ -140,8 +140,6 @@ void test( const string& ticker ) {
 
 int main() {
 
-	SMO smo;
-
 	const char* tickers[] = { "AAPL", "IBM", "AMZN", "NFLX", "GOOGL", "MSFT" };
 
 	for( auto&& ticker : tickers )
