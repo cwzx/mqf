@@ -495,5 +495,11 @@
     <ClInclude Include="..\..\..\include\mqf\distributions\half_logistic.h">
       <Filter>Header Files\Distributions</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\digamma.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\trigamma.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

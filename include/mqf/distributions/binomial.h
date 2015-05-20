@@ -1,5 +1,6 @@
 #ifndef INCLUDED_MQF_DISTRIBUTIONS_BINOMIAL
 #define INCLUDED_MQF_DISTRIBUTIONS_BINOMIAL
+#include <random>
 #include "../distribution.h"
 #include "../functions.h"
 

@@ -26,6 +26,11 @@ namespace Distributions {
 			return ( alpha * beta ) / ( sum * sum * ( sum + 1.0 ) );
 		}
 
+		double skewness() const {
+			double sum = alpha + beta;
+			return 2.0*( beta - alpha ) / ( sum + 2.0 ) * std::sqrt( (sum + 1.0)/( alpha * beta ) );
+		}
+
 		double operator()( Value x ) const {
 			return std::exp( std::lgamma(alpha+beta)
 			               - std::lgamma(alpha)
@@ -46,9 +51,18 @@ namespace Distributions {
 			     * ( am1/x - bm1/onemx );
 		}
 
+		double log( Value x ) const {
+			return std::lgamma(alpha+beta)
+			     - std::lgamma(alpha)
+			     - std::lgamma(beta)
+			     + (alpha-1.0)*std::log(x)
+			     + (beta-1.0)*std::log(1.0-x);
+		}
+
 	};
 
 }
+
 }
 
 #endif

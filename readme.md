@@ -222,6 +222,14 @@ For educational purposes only. Work in progress.
 * Hermite
 * Legendre
 
+#### Functions
+
+* Factorial
+* Binomial Coefficient
+* Beta
+* Digamma
+* Trigamma
+
 #### Numerical Methods for PDEs
 
 * Rectangular grid in n-dimensions

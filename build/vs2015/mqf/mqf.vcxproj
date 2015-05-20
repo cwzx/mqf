@@ -39,6 +39,7 @@
     <ClInclude Include="..\..\..\include\mqf\data\stocks.h" />
     <ClInclude Include="..\..\..\include\mqf\data\yahoo.h" />
     <ClInclude Include="..\..\..\include\mqf\day_count.h" />
+    <ClInclude Include="..\..\..\include\mqf\digamma.h" />
     <ClInclude Include="..\..\..\include\mqf\distribution.h" />
     <ClInclude Include="..\..\..\include\mqf\distributions\bernoulli.h" />
     <ClInclude Include="..\..\..\include\mqf\distributions\beta.h" />
@@ -161,6 +162,7 @@
     <ClInclude Include="..\..\..\include\mqf\trading\strategies\cw1.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\strategies\stripes.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\transaction_costs.h" />
+    <ClInclude Include="..\..\..\include\mqf\trigamma.h" />
     <ClInclude Include="..\..\..\include\mqf\types.h" />
     <ClInclude Include="..\..\..\include\mqf\utility.h" />
   </ItemGroup>

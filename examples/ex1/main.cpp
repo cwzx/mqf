@@ -9,7 +9,8 @@
 #include <mqf/trading/backtest.h>
 #include <mqf/data/yahoo.h>
 #include <mqf/optimization/differential_evolution.h>
-#include <mqf/optimization/smo.h>
+#include <mqf/digamma.h>
+#include <mqf/trigamma.h>
 
 using namespace std;
 using namespace mqf;
@@ -139,6 +140,9 @@ void test( const string& ticker ) {
 }
 
 int main() {
+
+	plot("dg.csv",-1.0,1.0,10000, digamma );
+	plot("tg.csv",-1.0,1.0,10000, trigamma );
 
 	const char* tickers[] = { "AAPL", "IBM", "AMZN", "NFLX", "GOOGL", "MSFT" };
 
