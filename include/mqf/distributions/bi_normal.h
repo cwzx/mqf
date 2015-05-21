@@ -36,6 +36,11 @@ namespace Distributions {
 			return w * ( (*this)(x,y) / r );
 		}
 
+		double cumulative( double x, double y ) const {
+			//static_assert(false,"Not implemented");
+			return 0.0;
+		}
+		
 		double log( double x, double y ) const {
 			double r = 1.0 - rho*rho;
 			return -0.5 * (x*x + y*y - 2.0*rho*x*y) / r - std::log( 2.0 * Pi * std::sqrt(r) );

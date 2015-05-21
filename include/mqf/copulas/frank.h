@@ -28,7 +28,8 @@ namespace Copulas {
 			auto b = std::exp( theta*u );
 			auto c = std::exp( theta*v );
 			auto d = b*c;
-			return ( theta * (a-1.0) * a * d ) / square( d - a*(b+c+1.0) );
+			return ( theta * (a-1.0) * a * d )
+			     / square( d - a*(b+c+1.0) );
 		}
 
 	};

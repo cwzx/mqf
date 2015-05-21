@@ -23,8 +23,8 @@ namespace Copulas {
 		}
 
 		double density( double u, double v ) const {
-			double id = 1.0 / ( 1.0 - theta * (1.0 - u) * (1.0 - v) );
-			return id + theta * ( u*v - u - v + 2.0*u*v * id ) * (id*id);
+			return ( theta*theta * (u + v - u*v - 1.0) - theta * (u + v + u*v - 2.0) - 1.0 )
+			     / cube( theta * (u - 1.0) * (v - 1.0) - 1.0 );
 		}
 
 	};

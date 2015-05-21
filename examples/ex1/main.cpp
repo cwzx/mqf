@@ -11,7 +11,20 @@
 #include <mqf/optimization/differential_evolution.h>
 #include <mqf/digamma.h>
 #include <mqf/trigamma.h>
+#include <mqf/copulas/ali_mikhail_haq.h>
+#include <mqf/copulas/clayton.h>
+#include <mqf/copulas/comonotonicity.h>
+#include <mqf/copulas/countermonotonicity.h>
+#include <mqf/copulas/farlie_gumbel_morgenstern.h>
 #include <mqf/copulas/frank.h>
+#include <mqf/copulas/galambos.h>
+#include <mqf/copulas/gaussian.h>
+#include <mqf/copulas/gumbel.h>
+#include <mqf/copulas/husler_reiss.h>
+#include <mqf/copulas/independent.h>
+#include <mqf/copulas/joe.h>
+#include <mqf/copulas/marshall_olkin.h>
+#include <mqf/copulas/plackett.h>
 
 using namespace std;
 using namespace mqf;
@@ -142,7 +155,19 @@ void test( const string& ticker ) {
 
 int main() {
 
-	plot2D("cop.csv",0.0,0.99,200,[](double x,double y){ return Copulas::Frank(2.0).density(x,y); });
+	plot2D("cop1.csv",0.0,0.99,100,[](double x,double y){ return Copulas::AliMikhailHaq(2.0).density(x,y); });
+	plot2D("cop2.csv",0.0,0.99,100,[](double x,double y){ return Copulas::Clayton(2.0).density(x,y); });
+	plot2D("cop3.csv",0.0,0.99,100,[](double x,double y){ return Copulas::Comonotonicity().density(x,y); });
+	plot2D("cop4.csv",0.0,0.99,100,[](double x,double y){ return Copulas::Countermonotonicity().density(x,y); });
+	plot2D("cop5.csv",0.0,0.99,100,[](double x,double y){ return Copulas::FarlieGumbelMorgenstern(2.0).density(x,y); });
+	plot2D("cop6.csv",0.0,0.99,100,[](double x,double y){ return Copulas::Frank(2.0).density(x,y); });
+	//plot2D("cop7.csv",0.0,0.99,100,[](double x,double y){ return Copulas::Galambos(2.0).density(x,y); });
+	//plot2D("cop8.csv",0.0,0.99,100,[](double x,double y){ return Copulas::Gaussian(2.0).density(x,y); });
+	plot2D("cop9.csv",0.0,0.99,100,[](double x,double y){ return Copulas::Gumbel(2.0).density(x,y); });
+	//plot2D("cop10.csv",0.0,0.99,100,[](double x,double y){ return Copulas::HuslerReiss(2.0).density(x,y); });
+	plot2D("cop11.csv",0.0,0.99,100,[](double x,double y){ return Copulas::Joe(2.0).density(x,y); });
+	plot2D("cop12.csv",0.0,0.99,100,[](double x,double y){ return Copulas::MarshallOlkin(2.0,2.0).density(x,y); });
+	plot2D("cop13.csv",0.0,0.99,100,[](double x,double y){ return Copulas::Plackett(2.0).density(x,y); });
 
 	return 0;
 

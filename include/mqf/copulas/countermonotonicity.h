@@ -12,6 +12,11 @@ namespace Copulas {
 			return std::fmax( sum(std::forward<Ts>(xs)...) + 1.0 - sizeof...(xs), 0.0 );
 		}
 
+		template<typename... Ts>
+		double density( Ts&&... ) const {
+			return 0.0;
+		}
+
 	};
 
 }

@@ -34,7 +34,8 @@ namespace Copulas {
 
 			auto utm = ut/u;
 			auto vtm = vt/v;
-			return ( (theta+1.0) * utm * vtm * std::pow( umt + vmt - 1.0, -1.0/theta ) ) / square( vt - ut * (vt-1.0) );
+			return ( (theta+1.0) * utm * vtm * std::pow( umt + vmt - 1.0, -1.0/theta ) )
+			     / square( vt - ut * (vt-1.0) );
 		}
 
 	};

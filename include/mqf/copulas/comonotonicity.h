@@ -12,6 +12,11 @@ namespace Copulas {
 			return min(std::forward<Ts>(xs)...);
 		}
 
+		template<typename... Ts>
+		double density( Ts&&... ) const {
+			return 0.0;
+		}
+
 	};
 
 }

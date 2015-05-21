@@ -76,8 +76,7 @@ namespace Distributions {
 		}
 
 		double operator()( double x ) const {
-			double y = x;
-			return std::exp(-0.5*y*y) / std::sqrt(2.0*Pi);
+			return std::exp(-0.5*x*x) / std::sqrt(2.0*Pi);
 		}
 
 		double derivative( double x ) const {
@@ -88,8 +87,17 @@ namespace Distributions {
 			return 0.5 * ( 1.0 + erf( x/std::sqrt(2.0) ) );
 		}
 
+		double inverseCumulative( double x ) const {
+			//static_assert(false,"Not implemented");
+			return 0.0;
+		}
+
 		double log( double x ) const {
 			return -0.5*( x*x + std::log( 2.0*Pi ) );
+		}
+
+		std::normal_distribution<Value> distribution() const {
+			return std::normal_distribution<Value>( 0, 1 );
 		}
 
 		operator Normal() const {
