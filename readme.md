@@ -140,8 +140,13 @@ For educational purposes only. Work in progress.
 
 * Line Search
 * Gradient Descent
-* Conjugate Gradient: Fletcher--Reeves, Polak--Ribiere, Hestenes--Stiefel, Conjugate Descent, Dai--Yuan
-
+* Conjugate Gradient
+ * Fletcher--Reeves
+ * Polak--Ribiere
+ * Hestenes--Stiefel
+ * Conjugate Descent
+ * Dai--Yuan
+ 
 
 ### Time Series Analysis
 
@@ -156,8 +161,9 @@ For educational purposes only. Work in progress.
 
 ### Portfolios
 
-* Efficient Frontier (Constrained)
-* Efficient Frontier (Unconstrained)
+* Efficient Frontier
+ * Unconstrained
+ * Fully-Invested
 * Capital Asset Pricing Model (CAPM)
 * Black--Litterman
 
