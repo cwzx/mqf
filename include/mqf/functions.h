@@ -12,6 +12,11 @@ namespace mqf {
 		return x * x;
 	}
 
+	template<typename T>
+	inline T cube( T&& x ) {
+		return x * x * x;
+	}
+
 	inline double binomial( uint32_t n, uint32_t k ) {
 		if( k == 0 || n == k ) return 1.0;
 		if( k > n ) return 0.0;

@@ -6,7 +6,6 @@ namespace mqf {
 namespace Copulas {
 	
 	struct AliMikhailHaq {
-
 		double theta;
 
 		explicit AliMikhailHaq( double theta ) : theta(theta) {}

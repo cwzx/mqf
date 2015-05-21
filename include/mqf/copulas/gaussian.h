@@ -6,7 +6,6 @@ namespace mqf {
 namespace Copulas {
 
 	struct Gaussian {
-
 		double rho;
 
 		explicit Gaussian( double rho ) : rho(rho) {}

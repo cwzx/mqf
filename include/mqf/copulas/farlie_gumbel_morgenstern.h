@@ -6,7 +6,6 @@ namespace mqf {
 namespace Copulas {
 	
 	struct FarlieGumbelMorgenstern {
-
 		double theta;
 
 		explicit FarlieGumbelMorgenstern( double theta ) : theta(theta) {}

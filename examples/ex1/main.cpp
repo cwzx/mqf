@@ -11,6 +11,7 @@
 #include <mqf/optimization/differential_evolution.h>
 #include <mqf/digamma.h>
 #include <mqf/trigamma.h>
+#include <mqf/copulas/frank.h>
 
 using namespace std;
 using namespace mqf;
@@ -141,8 +142,9 @@ void test( const string& ticker ) {
 
 int main() {
 
-	plot("dg.csv",-1.0,1.0,10000, digamma );
-	plot("tg.csv",-1.0,1.0,10000, trigamma );
+	plot2D("cop.csv",0.0,0.99,200,[](double x,double y){ return Copulas::Frank(2.0).density(x,y); });
+
+	return 0;
 
 	const char* tickers[] = { "AAPL", "IBM", "AMZN", "NFLX", "GOOGL", "MSFT" };
 

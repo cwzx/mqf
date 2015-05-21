@@ -9,7 +9,7 @@ namespace Copulas {
 
 		template<typename... Ts>
 		double operator()( Ts&&... xs ) const {
-			return std::fmax( sum(xs...) + 1.0 - sizeof...(xs), 0.0 );
+			return std::fmax( sum(std::forward<Ts>(xs)...) + 1.0 - sizeof...(xs), 0.0 );
 		}
 
 	};

@@ -9,7 +9,7 @@ namespace Copulas {
 
 		template<typename... Ts>
 		double operator()( Ts&&... xs ) const {
-			return product(xs...);
+			return product(std::forward<Ts>(xs)...);
 		}
 
 		template<typename... Ts>

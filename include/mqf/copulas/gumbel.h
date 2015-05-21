@@ -23,6 +23,11 @@ namespace Copulas {
 			return std::exp( -std::pow(x,1.0/theta) );
 		}
 
+		double density( double u, double v ) const {
+			// (log^(theta-1)(u) log^(theta-1)(v) e^(-((-1)^theta (log^theta(u)+log^theta(v)))^(1/theta)) ((-1)^theta (log^theta(u)+log^theta(v)))^(1/theta) (theta+((-1)^theta (log^theta(u)+log^theta(v)))^(1/theta)-1))/(u v (log^theta(u)+log^theta(v))^2)
+			return 0.0; // todo
+		}
+		
 	};
 
 }
