@@ -96,7 +96,7 @@ namespace mqf {
 	
 			uint32_t nBins = numBins;
 			if( nBins == 0 ) {
-				nBins = std::min<uint32_t>( 1 + count / 20, 250 );
+				nBins = std::min<uint32_t>( 1 + (uint32_t)count / 20, 250 );
 			}
 
 			auto minVal = binMin;

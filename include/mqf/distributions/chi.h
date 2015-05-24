@@ -51,6 +51,13 @@ namespace Distributions {
 	}
 
 }
+
+/* mle
+
+2 * logGeometricMean(x_i) = log(2) + psi(k/2)
+
+*/
+
 }
 
 #endif

@@ -11,6 +11,8 @@
 #include <mqf/optimization/differential_evolution.h>
 #include <mqf/digamma.h>
 #include <mqf/trigamma.h>
+#include <mqf/stats/histogram.h>
+#include <mqf/stats/mle.h>
 
 using namespace std;
 using namespace mqf;
@@ -21,7 +23,12 @@ void test( const string& ticker ) {
 	auto data = Yahoo::load( (ticker + ".csv").c_str() );
 
 	auto timeseries = data.computeAdjustedClose();
-
+	{
+		auto ret = computeLogReturns( timeseries.begin(), timeseries.end() );
+		HistogramGenerator().generate( ret.begin(), ret.end() ).writeCSV( ("returns-" + ticker + ".csv").c_str() );
+		auto d = MLE<Distributions::Normal>()( ret.begin(), ret.end() );
+		plot(("returns-hist-" + ticker + ".csv").c_str(),-1.0,1.0,1000,[d](double x){return d(x);});
+	}
 	{
 		DifferentialEvolution<double,2> de;
 		de.bounds.minBounds[0] = -0.2;
@@ -30,7 +37,7 @@ void test( const string& ticker ) {
 		de.bounds.maxBounds[1] = 200;
 		de.max_evals = 500;
 
-		auto cost = [&](auto&& x) { 
+		auto cost = [&](auto&& x) {
 			CW1 strat(x[0],(int)x[1]);
 			Backtest<CW1> bt(strat);
 			auto res = bt.runTest( timeseries.begin(), timeseries.end() );

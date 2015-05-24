@@ -2,6 +2,8 @@
 #define INCLUDED_MQF_DISTRIBUTIONS_EXPONENTIAL
 #include "gamma.h"
 #include "../random_variable.h"
+#include "../stats/mle.h"
+#include "../stats/descriptive.h"
 
 namespace mqf {
 namespace Distributions {
@@ -63,6 +65,16 @@ namespace Distributions {
 	}
 
 }
+
+	template<>
+	struct MLE<Distributions::Exponential> {
+		using Dist = Distributions::Exponential;
+		template<typename It>
+		Dist operator()( It p1, It p2 ) const {
+			return Dist( 1.0 / sampleMean(p1,p2) );
+		}
+	};
+
 }
 
 #endif

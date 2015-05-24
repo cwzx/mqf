@@ -109,6 +109,15 @@ namespace Distributions {
 	}
 
 }
+
+/* mle
+
+sum_i tanh( (x_i-mu)/(2 sigma) ) = 0
+
+sum_i x_i tanh( (x_i-mu)/(2 sigma) ) = -N sigma
+
+*/
+
 }
 
 #endif

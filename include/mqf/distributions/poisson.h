@@ -3,6 +3,8 @@
 #include <random>
 #include "../distribution.h"
 #include "../functions.h"
+#include "../stats/mle.h"
+#include "../stats/descriptive.h"
 
 namespace mqf {
 namespace Distributions {
@@ -40,6 +42,16 @@ namespace Distributions {
 	};
 
 }
+
+	template<>
+	struct MLE<Distributions::Poisson> {
+		using Dist = Distributions::Poisson;
+		template<typename It>
+		Dist operator()( It p1, It p2 ) const {
+			return Dist( sampleMean(p1,p2) );
+		}
+	};
+
 }
 
 #endif

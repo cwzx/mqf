@@ -26,6 +26,16 @@ namespace mqf {
 	double geometricMean( It p1, It p2 ) {
 		return std::pow( product(p1,p2), 1.0 / std::distance(p1,p2) );
 	}
+	
+	template<typename It>
+	double logGeometricMean( It p1, It p2 ) {
+		return std::log( product(p1,p2) ) / std::distance(p1,p2);
+	}
+
+	template<typename It>
+	double meanLog( It p1, It p2 ) {
+		return logGeometricMean(p1,p2);
+	}
 
 	template<typename It>
 	double harmonicMean( It p1, It p2 ) {
@@ -33,6 +43,35 @@ namespace mqf {
 			return total + 1.0 / x;
 		};
 		return (double)std::distance(p1,p2) / std::accumulate( p1, p2, 0.0, recip );
+	}
+
+	template<typename It>
+	double logHarmonicMean( It p1, It p2 ) {
+		auto recip = []( double total, double x ) {
+			return total + 1.0 / x;
+		};
+		return -std::log( std::accumulate( p1, p2, 0.0, recip ) / std::distance(p1,p2) );
+	}
+
+	template<typename It>
+	double meanReciprocal( It p1, It p2 ) {
+		auto recip = []( double total, double x ) {
+			return total + 1.0 / x;
+		};
+		return std::accumulate(p1,p2,0.0,recip) / std::distance(p1,p2);
+	}
+
+	template<typename It>
+	double meanSquare( It p1, It p2 ) {
+		auto squares = []( double total, double x ) {
+			return total + x*x;
+		};
+		return std::accumulate(p1,p2,0.0,squares) / std::distance(p1,p2);
+	}
+
+	template<typename It>
+	double rootMeanSquare( It p1, It p2 ) {
+		return std::sqrt( meanSquare(p1,p2) );
 	}
 
 	template<typename It>

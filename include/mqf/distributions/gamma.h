@@ -37,6 +37,16 @@ namespace Distributions {
 	};
 
 }
+
+/* mle
+
+1/N sum_i log(x_i) = psi(k) + log(theta)
+1/N sum_i x_i = k theta
+
+logGeometricMean(x_i) - logMean(x_i) = psi(k) - log(k)
+logGeometricMean(x_i) = psi( mean(x_i) / theta ) + log(theta)
+
+*/
 }
 
 #endif

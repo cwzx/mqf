@@ -5,6 +5,8 @@
 #include "../distribution.h"
 #include "../random_variable.h"
 #include "../constants.h"
+#include "../stats/mle.h"
+#include "../stats/descriptive.h"
 
 namespace mqf {
 namespace Distributions {
@@ -127,6 +129,18 @@ namespace Distributions {
 	}
 
 }
+
+	template<>
+	struct MLE<Distributions::Normal> {
+		using Normal = Distributions::Normal;
+		template<typename It>
+		Normal operator()( It p1, It p2 ) const {
+			auto mu = sampleMean(p1,p2);
+			auto sigma2 = biasedSampleVariance(p1,p2,mu);
+			return Normal( mu, sigma2 );
+		}
+	};
+
 }
 
 #endif

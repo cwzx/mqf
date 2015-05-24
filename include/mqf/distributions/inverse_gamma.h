@@ -50,6 +50,20 @@ namespace Distributions {
 	}
 
 }
+
+/* mle
+
+1/N sum_i log(x_i) = log(b) - psi(a)
+
+harmonicMean(x_i) = b/a
+
+
+logGeometricMean(x_i) - logHarmonicMean(x_i) = log(a) - psi(a)
+
+logGeometricMean(x_i) = log(b) - psi( b / harmonicMean(x_i) )
+
+*/
+
 }
 
 #endif

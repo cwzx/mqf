@@ -103,6 +103,15 @@ namespace Distributions {
 	}
 
 }
+
+/* mle
+
+sum_i (x_i - mu)/( (x_i - mu)^2 + sigma^2 ) = 0
+
+sum_i 1/( (x_i - mu)^2 + sigma^2 ) = N / (2 sigma^2)
+
+*/
+
 }
 
 #endif

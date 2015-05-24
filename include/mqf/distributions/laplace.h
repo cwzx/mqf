@@ -58,6 +58,18 @@ namespace Distributions {
 	}
 
 }
+
+/* mle
+
+1/N sum_i abs(x_i - mu) = b
+
+sum_i (x_i - mu)/abs(x_i - mu) = 0 = sum_i sgn(x_i - mu)
+
+
+set mu = median.
+
+*/
+
 }
 
 #endif

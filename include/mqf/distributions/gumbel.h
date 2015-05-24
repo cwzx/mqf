@@ -98,6 +98,14 @@ namespace Distributions {
 	};
 
 }
+
+/* mle
+
+1/N sum_i x_i exp(-(x_i - mu)/beta) = x_bar - beta
+1/N sum_i exp(-(x_i - mu)/beta) = 1
+
+*/
+
 }
 
 #endif

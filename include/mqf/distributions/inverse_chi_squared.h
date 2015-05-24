@@ -44,6 +44,13 @@ namespace Distributions {
 	};
 
 }
+
+/* mle
+
+1/N sum_i log(x_i) = -psi(k/2) - log(2)
+
+*/
+
 }
 
 #endif

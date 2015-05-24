@@ -3,6 +3,8 @@
 #include <cmath>
 #include "../distribution.h"
 #include "../constants.h"
+#include "../stats/mle.h"
+#include "../stats/descriptive.h"
 
 namespace mqf {
 namespace Distributions {
@@ -41,6 +43,16 @@ namespace Distributions {
 	};
 
 }
+
+	template<>
+	struct MLE<Distributions::Rayleigh> {
+		using Dist = Distributions::Rayleigh;
+		template<typename It>
+		Dist operator()( It p1, It p2 ) const {
+			return Dist( std::sqrt( 0.5 * meanSquare(p1,p2) ) );
+		}
+	};
+
 }
 
 #endif

@@ -4,6 +4,8 @@
 #include "../distribution.h"
 #include "../random_variable.h"
 #include "../constants.h"
+#include "../stats/mle.h"
+#include "../stats/descriptive.h"
 
 namespace mqf {
 namespace Distributions {
@@ -43,6 +45,16 @@ namespace Distributions {
 	};
 
 }
+
+	template<>
+	struct MLE<Distributions::MaxwellBoltzmann> {
+		using Dist = Distributions::MaxwellBoltzmann;
+		template<typename It>
+		Dist operator()( It p1, It p2 ) const {
+			return Dist( std::sqrt( meanSquares(p1,p2) / 3.0 ) );
+		}
+	};
+
 }
 
 #endif

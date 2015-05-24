@@ -43,9 +43,25 @@ namespace Distributions {
 		double mean() const {
 			return sampleMean( points.begin(), points.end() );
 		}
+		
+		double median() const {
+			auto N = points.size();
+			if( N == 0 ) return 0.0;
+			if( N == 1 ) return points[0];
+
+			std::sort( points.begin(), points.end() );
+
+			auto p1 = std::next( points.begin(), N/2 - 1 );
+			auto p2 = std::next(p1);
+			return secant( *p1, *p2, cumulative(*p1), cumulative(*p2) );
+		}
 
 		double variance() const {
 			return biasedSampleVariance( points.begin(), points.end() );
+		}
+
+		static double secant( double a, double b, double ca, double cb, double t = 0.5 ) {
+			return a + (b - a) * (t - ca) / (cb - ca);
 		}
 
 	};

@@ -1,6 +1,8 @@
 #ifndef INCLUDED_MQF_DISTRIBUTIONS_BERNOULLI
 #define INCLUDED_MQF_DISTRIBUTIONS_BERNOULLI
 #include "binomial.h"
+#include "../stats/mle.h"
+#include <algorithm>
 
 namespace mqf {
 namespace Distributions {
@@ -25,6 +27,18 @@ namespace Distributions {
 	};
 
 }
+
+	template<>
+	struct MLE<Distributions::Bernoulli> {
+		using Dist = Distributions::Bernoulli;
+		template<typename It>
+		Dist operator()( It p1, It p2 ) const {
+			auto N = std::distance(p1,p2);
+			auto N1 = std::count(p1,p2,true);
+			return Dist( (double)N1 / N );
+		}
+	};
+
 }
 
 #endif

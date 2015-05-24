@@ -65,6 +65,15 @@ namespace Distributions {
 	}
 
 }
+
+/* mle
+
+1/N sum 1/(x_i - mu)^2 = 3 ( 1/N sum 1/(x_i - mu) )^2
+
+c = harmonicMean(x_i - mu)
+
+*/
+
 }
 
 #endif

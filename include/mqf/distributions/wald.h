@@ -6,9 +6,9 @@ namespace mqf {
 namespace Distributions {
 
 	struct Wald : Density<> {
-		double lambda, mu;
+		double mu, lambda;
 				
-		explicit Wald( double lambda = 1.0, double mu = 1.0 ) : lambda(lambda), mu(mu) {}
+		explicit Wald( double mu = 1.0, double lambda = 1.0 ) : mu(mu), lambda(lambda) {}
 
 		double mean() const {
 			return mu;
@@ -46,7 +46,28 @@ namespace Distributions {
 
 	};
 
+	RV<Wald> operator*( const RV<Wald>& lhs, double rhs ) {
+		return MakeRV( Wald( lhs.dist.mu * rhs, lhs.dist.lambda * rhs ) );
+	}
+
+	RV<Wald> operator*( double lhs, const RV<Wald>& rhs ) {
+		return rhs * lhs;
+	}
+
 }
+
+	template<>
+	struct MLE<Distributions::Wald> {
+		using Dist = Distributions::Wald;
+		template<typename It>
+		Dist operator()( It p1, It p2 ) const {
+			auto mu = sampleMean(p1,p2);
+			auto lambda = 1.0 / ( meanReciprocal(p1,p2) - 1.0 / mu );
+			return Dist( mu, lambda );
+		}
+	};
+
+
 }
 
 #endif

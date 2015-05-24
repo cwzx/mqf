@@ -1,6 +1,7 @@
 #ifndef INCLUDED_MQF_DISTRIBUTIONS_LOG_CAUCHY
 #define INCLUDED_MQF_DISTRIBUTIONS_LOG_CAUCHY
 #include "cauchy.h"
+#include "../functions.h"
 
 namespace mqf {
 namespace Distributions {
@@ -21,9 +22,8 @@ namespace Distributions {
 
 		double derivative( double x ) const {
 			double y = ( std::log(x) - mu ) / sigma;
-			double z = 1.0 + y * y;
-			double d = x * sigma * z;
-			return -(sigma*z + 2.0*y) / ( Pi * d*d );
+			double z = sigma * (1.0 + y * y);
+			return -(z + 2.0*y) / ( Pi * square(x * z) );
 		}
 
 		double cumulative( double x ) const {
@@ -47,8 +47,7 @@ namespace Distributions {
 		double derivative( double x ) const {
 			double y = std::log(x);
 			double z = 1.0 + y * y;
-			double d = x * z;
-			return -(z + 2.0*y) / ( Pi * d*d );
+			return -(z + 2.0*y) / ( Pi * square(x * z) );
 		}
 
 		double cumulative( double x ) const {
