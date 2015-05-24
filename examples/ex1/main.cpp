@@ -29,10 +29,10 @@ void test( const string& ticker ) {
 		auto ret = computeLogReturns( timeseries.begin(), timeseries.end() );
 		HistogramGenerator().generate( ret.begin(), ret.end() ).writeCSV( ("returns-" + ticker + ".csv").c_str() );
 		auto d = MLE<Normal>()( ret.begin(), ret.end() );
-		plot(("returns-hist-" + ticker + ".csv").c_str(),-1.0,1.0,1000,[&](double x){return d(x);});
+		plot(("returns-hist-" + ticker + ".csv").c_str(),-1.0,1.0,1000,d);
 		auto mu = sampleMean(ret.begin(), ret.end());
 		Cauchy c( mu, 0.5 * sampleStdDev( ret.begin(), ret.end(), mu ) );
-		plot(("returns-hist2-" + ticker + ".csv").c_str(),-1.0,1.0,1000,[&](double x){return c(x);});
+		plot(("returns-hist2-" + ticker + ".csv").c_str(),-1.0,1.0,1000,c);
 
 	}
 	{

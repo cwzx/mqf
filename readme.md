@@ -36,6 +36,7 @@ For educational purposes only. Work in progress.
 * F
 * Folded Normal
 * Gamma
+* Geometric
 * Gumbel
 * Half-Logistic
 * Half-Normal
@@ -49,6 +50,7 @@ For educational purposes only. Work in progress.
 * Logistic
 * Maxwell--Boltzmann
 * Multinomial
+* Negative Binomial
 * Normal
 * Poisson
 * Rayleigh
@@ -128,6 +130,17 @@ For educational purposes only. Work in progress.
 * Generalized Least Squares
 * Polynomial Regression
 * Kernel Regression
+
+#### Maximum Likelihood Estimation (MLE)
+
+* Bernoulli
+* Exponential
+* Geometric
+* Maxwell--Boltzmann
+* Normal
+* Poisson
+* Rayleigh
+* Wald
 
 
 ### Nonlinear Optimization
