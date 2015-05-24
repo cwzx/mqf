@@ -116,6 +116,16 @@ namespace mqf {
 		return sampleVariance( p1, p2, sampleMean(p1,p2) );
 	}
 
+	template<typename It>
+	double sampleStdDev( It p1, It p2 ) {
+		return std::sqrt( sampleVariance( p1, p2 ) );
+	}
+	
+	template<typename It>
+	double sampleStdDev( It p1, It p2, double mean ) {
+		return std::sqrt( sampleVariance( p1, p2, mean ) );
+	}
+
 	template<typename Itp,typename Itq>
 	double sampleCovariance( Itp lhs1, Itp lhs2, Itq rhs1, Itq rhs2 ) {
 		auto count = std::min( std::distance(lhs1,lhs2), std::distance(rhs1,rhs2) );

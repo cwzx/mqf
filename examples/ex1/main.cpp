@@ -13,10 +13,12 @@
 #include <mqf/trigamma.h>
 #include <mqf/stats/histogram.h>
 #include <mqf/stats/mle.h>
+#include <mqf/distributions/cauchy.h>
 
 using namespace std;
 using namespace mqf;
 using namespace mqf::Strategies;
+using namespace mqf::Distributions;
 
 void test( const string& ticker ) {
 
@@ -26,8 +28,12 @@ void test( const string& ticker ) {
 	{
 		auto ret = computeLogReturns( timeseries.begin(), timeseries.end() );
 		HistogramGenerator().generate( ret.begin(), ret.end() ).writeCSV( ("returns-" + ticker + ".csv").c_str() );
-		auto d = MLE<Distributions::Normal>()( ret.begin(), ret.end() );
-		plot(("returns-hist-" + ticker + ".csv").c_str(),-1.0,1.0,1000,[d](double x){return d(x);});
+		auto d = MLE<Normal>()( ret.begin(), ret.end() );
+		plot(("returns-hist-" + ticker + ".csv").c_str(),-1.0,1.0,1000,[&](double x){return d(x);});
+		auto mu = sampleMean(ret.begin(), ret.end());
+		Cauchy c( mu, 0.5 * sampleStdDev( ret.begin(), ret.end(), mu ) );
+		plot(("returns-hist2-" + ticker + ".csv").c_str(),-1.0,1.0,1000,[&](double x){return c(x);});
+
 	}
 	{
 		DifferentialEvolution<double,2> de;
