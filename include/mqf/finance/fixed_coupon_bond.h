@@ -14,7 +14,7 @@ namespace mqf {
 		int N;
 
 		Date getDate( int i ) const {
-			return maturity - delta * (N - i);
+			return maturity - couponInterval * (N - i);
 		}
 	};
 

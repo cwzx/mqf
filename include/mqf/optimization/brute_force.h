@@ -29,7 +29,7 @@ namespace mqf {
 		}
 
 		template<typename S>
-		Results optimize( const S& cost ) const {
+		Results optimize( S&& cost ) const {
 			auto count = grid.size.prod();
 			std::vector<T> results;
 			results.reserve( count );
@@ -56,7 +56,7 @@ namespace mqf {
 		}
 
 		template<typename S>
-		Results maximize( const S& cost ) const {
+		Results maximize( S&& cost ) const {
 			return optimize( [&](auto&& x){ return -cost(x); } );
 		}
 

@@ -24,6 +24,7 @@ namespace mqf {
 		}
 
 	};
+
 	template<typename F>
 	struct BlackScholes::RHS {
 		double r, sigma;

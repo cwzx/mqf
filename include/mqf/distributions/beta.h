@@ -1,8 +1,8 @@
 #ifndef INCLUDED_MQF_DISTRIBUTIONS_BETA
 #define INCLUDED_MQF_DISTRIBUTIONS_BETA
 #include <cassert>
-#include <cmath>
 #include "../distribution.h"
+#include "../functions.h"
 
 namespace mqf {
 namespace Distributions {
@@ -32,9 +32,7 @@ namespace Distributions {
 		}
 
 		double operator()( Value x ) const {
-			return std::exp( std::lgamma(alpha+beta)
-			               - std::lgamma(alpha)
-			               - std::lgamma(beta)
+			return std::exp( -logBeta(alpha,beta)
 			               + (alpha-1.0)*std::log(x)
 			               + (beta-1.0)*std::log(1.0-x) );
 		}
@@ -43,18 +41,14 @@ namespace Distributions {
 			double am1 = alpha - 1.0;
 			double bm1 = beta - 1.0;
 			double onemx = 1.0 - x;
-			return std::exp( std::lgamma(alpha+beta)
-			               - std::lgamma(alpha)
-			               - std::lgamma(beta)
+			return std::exp( -logBeta(alpha,beta)
 			               + am1*std::log(x)
 			               + bm1*std::log(onemx) )
 			     * ( am1/x - bm1/onemx );
 		}
 
 		double log( Value x ) const {
-			return std::lgamma(alpha+beta)
-			     - std::lgamma(alpha)
-			     - std::lgamma(beta)
+			return -logBeta(alpha,beta)
 			     + (alpha-1.0)*std::log(x)
 			     + (beta-1.0)*std::log(1.0-x);
 		}

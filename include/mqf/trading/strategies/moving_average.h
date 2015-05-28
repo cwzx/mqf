@@ -10,7 +10,7 @@ namespace Strategies {
 		int shortPeriod, longPeriod;
 
 		explicit BasicMA( int shortPeriod = 20,
-		                     int longPeriod = 42 ) :
+		                  int longPeriod = 42 ) :
 			shortPeriod(shortPeriod),
 			longPeriod(longPeriod)
 		{}

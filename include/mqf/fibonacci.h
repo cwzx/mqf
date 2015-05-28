@@ -42,8 +42,6 @@ namespace mqf {
 		return std::pow( Golden, -n );
 	}
 
-
-
 }
 
 #endif

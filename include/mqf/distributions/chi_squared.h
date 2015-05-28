@@ -29,12 +29,10 @@ namespace Distributions {
 		}
 
 		double operator()( double x ) const {
-			if( x < 0 ) {
-				return 0.0;
-			}
+			if( x < 0 )	return 0.0;
 			double p = 0.5 * k;
 			return ( std::pow( x, p-1 ) * std::exp( -0.5 * x ) )
-			     / ( std::pow(2,p) * std::tgamma(p) );
+			     / ( std::pow(2.0,p) * std::tgamma(p) );
 		}
 
 		double derivative( double x ) const {
@@ -55,7 +53,7 @@ namespace Distributions {
 	};
 
 	// Assuming independent
-	RV<ChiSquared> operator+( const RV<ChiSquared>& lhs, const RV<ChiSquared>& rhs ) {
+	RV<ChiSquared> operator+( RV<ChiSquared> lhs, RV<ChiSquared> rhs ) {
 		return MakeRV( ChiSquared( lhs.dist.k + rhs.dist.k ) );
 	}
 
@@ -64,21 +62,21 @@ namespace Distributions {
 		return MakeRV( ChiSquared( 1 ) );
 	}
 
-	RV<Gamma> operator*( const RV<ChiSquared>& lhs, double rhs ) {
+	RV<Gamma> operator*( RV<ChiSquared> lhs, double rhs ) {
 		assert( rhs > 0 );
 		return MakeRV( Gamma( 0.5 * lhs.dist.k, 2.0 * rhs ) );
 	}
 
-	RV<Gamma> operator*( double lhs, const RV<ChiSquared>& rhs ) {
+	RV<Gamma> operator*( double lhs, RV<ChiSquared> rhs ) {
 		return rhs * lhs;
 	}
 
-	RV<Gamma> operator/( const RV<ChiSquared>& lhs, double rhs ) {
+	RV<Gamma> operator/( RV<ChiSquared> lhs, double rhs ) {
 		assert( rhs > 0 );
 		return MakeRV( Gamma( 0.5 * lhs.dist.k, 2.0 / rhs ) );
 	}
 
-	RV<InverseGamma> operator/( double lhs, const RV<ChiSquared>& rhs ) {
+	RV<InverseGamma> operator/( double lhs, RV<ChiSquared> rhs ) {
 		return MakeRV( InverseGamma( 0.5 * rhs.dist.k, 0.5 * lhs ) );
 	}
 

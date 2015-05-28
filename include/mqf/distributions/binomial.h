@@ -23,7 +23,7 @@ namespace Distributions {
 
 		double operator()( Value k ) const {
 			if( k > n ) return 0.0;
-			return binomial(n,k) * std::pow(p,k) * std::pow( 1.0-p, n-k );
+			return binomial(n,k) * std::pow(p,int(k)) * std::pow( 1.0-p, int(n-k) );
 		}
 
 		std::binomial_distribution<Value> distribution() const {

@@ -24,7 +24,7 @@ namespace mqf {
 		Point x;
 		
 		template<typename S,typename DS>
-		bool step( const S& cost, const DS& gradient ) {
+		bool step( S&& cost, DS&& gradient ) {
 
 			// use the geodesic determined by the negative gradient at the current position
 			geodesic.set( x, -gradient(x) );

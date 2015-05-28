@@ -35,7 +35,7 @@ namespace mqf {
 		Vector grad, lastGrad, velocity, ptLastVel;
 
 		template<typename S,typename DS>
-		bool step( const S& cost, const DS& gradient ) {
+		bool step( S&& cost, DS&& gradient ) {
 			using std::swap;
 
 			// update the gradient

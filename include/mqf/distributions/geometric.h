@@ -1,7 +1,7 @@
 #ifndef INCLUDED_MQF_DISTRIBUTIONS_GEOMETRIC
 #define INCLUDED_MQF_DISTRIBUTIONS_GEOMETRIC
 #include "exponential.h"
-
+#include "negative_binomial.h"
 
 namespace mqf {
 namespace Distributions {
@@ -45,6 +45,10 @@ namespace Distributions {
 
 		std::geometric_distribution<Value> distribution() const {
 			return std::geometric_distribution<Value>( p );
+		}
+
+		operator NegativeBinomial() const {
+			return NegativeBinomial( 1, 1.0 - p );
 		}
 
 	};

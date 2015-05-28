@@ -101,7 +101,7 @@ namespace mqf {
 			alpha.setZero( y.size() );
 			gradient.setConstant( y.size(), -1.0 );
 
-			for(int k=0;k<max_its;++k){
+			for(int k=0;k<max_its;++k) {
 
 				int i, j;
 				std::tie(i,j) = workingSetSelection3( gradient, alpha );

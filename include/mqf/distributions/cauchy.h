@@ -98,7 +98,7 @@ namespace Distributions {
 		return rhs + lhs;
 	}
 
-	RV<Cauchy> operator/( double lhs, const RV<StdCauchy>& ) {
+	RV<Cauchy> operator/( double lhs, RV<StdCauchy> ) {
 		return MakeRV( Cauchy( 0, std::fabs(lhs) ) );
 	}
 

@@ -18,6 +18,7 @@ namespace mqf {
 		}
 
 	};
+
 	template<typename Drift,typename Diffusion,typename F>
 	struct FokkerPlanck<Drift,Diffusion>::RHS {
 		Drift mu;

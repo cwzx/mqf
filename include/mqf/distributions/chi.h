@@ -26,27 +26,29 @@ namespace Distributions {
 
 		double operator()( double x ) const {
 			if( x < 0.0 ) return 0.0;
+			double p = 0.5 * k;
 			return ( 2.0 * std::pow(x,k-1) * std::exp(-0.5*x*x) )
-			     / ( std::pow( std::sqrt(2.0), k ) * std::tgamma(0.5*k) );
+			     / ( std::pow(2.0,p) * std::tgamma(p) );
 		}
 
 		double derivative( double x ) const {
 			if( x < 0.0 ) return 0.0;
+			double p = 0.5 * k;
 			return ( 2.0 * std::pow(x,k-2) * std::exp(-0.5*x*x) * ( k - 1.0 - x*x ) )
-			     / ( std::pow( std::sqrt(2.0), k ) * std::tgamma(0.5*k) );
+			     / ( std::pow(2.0,p) * std::tgamma(p) );
 		}
 
 	};
 
-	RV<Chi> abs( const RV<StdNormal>& X ) {
+	RV<Chi> abs( RV<StdNormal> ) {
 		return MakeRV( Chi( 1 ) );
 	}
 
-	RV<ChiSquared> square( const RV<Chi>& X ) {
+	RV<ChiSquared> square( RV<Chi> X ) {
 		return MakeRV( ChiSquared( X.dist.k ) );
 	}
 
-	RV<Chi> sqrt( const RV<ChiSquared>& X ) {
+	RV<Chi> sqrt( RV<ChiSquared> X ) {
 		return MakeRV( Chi( X.dist.k ) );
 	}
 

@@ -40,7 +40,7 @@ namespace mqf {
 		 *
 		 */
 		template<typename S,typename DS>
-		double search( const S& cost, const DS& gradient ) {
+		double search( S&& cost, DS&& gradient ) {
 			static const double ratio = 2.0;
 			static const int maxIterations = 5;
 
