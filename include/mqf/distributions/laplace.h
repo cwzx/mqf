@@ -70,6 +70,20 @@ set mu = median.
 
 */
 
+	template<typename>
+	struct MomentEstimation;
+
+	template<>
+	struct MomentEstimation<Distributions::Laplace> {
+		using Dist = Distributions::Laplace;
+		template<typename It>
+		Dist operator()( It p1, It p2 ) const {
+			auto mu = sampleMean(p1,p2);
+			auto var = sampleVariance(p1,p2,mu);
+			return Dist( mu, std::sqrt( 0.5 * var ) );
+		}
+	};
+
 }
 
 #endif

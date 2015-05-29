@@ -3,6 +3,7 @@
 #include <cmath>
 #include <random>
 #include "../distribution.h"
+#include "../functions.h"
 
 namespace mqf {
 namespace Distributions {
@@ -29,8 +30,7 @@ namespace Distributions {
 
 		double variance() const {
 			double rk = 1.0 / k;
-			double g = std::tgamma( 1.0 + rk );
-			return lambda*lambda * ( std::tgamma( 1.0 + 2.0*rk ) - g*g );
+			return lambda*lambda * ( std::tgamma( 1.0 + 2.0*rk ) - square( std::tgamma( 1.0 + rk ) ) );
 		}
 
 		double skewness() const {

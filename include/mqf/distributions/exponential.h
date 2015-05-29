@@ -75,6 +75,19 @@ namespace Distributions {
 		}
 	};
 
+	template<typename>
+	struct MomentEstimation;
+
+	template<>
+	struct MomentEstimation<Distributions::Exponential> {
+		using Dist = Distributions::Exponential;
+		template<typename It>
+		Dist operator()( It p1, It p2 ) const {
+			auto mu = sampleMean(p1,p2);
+			return Dist( 1.0 / mu );
+		}
+	};
+
 }
 
 #endif

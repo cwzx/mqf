@@ -149,6 +149,24 @@ Mathematics for quantitative finance.
 * Rayleigh
 * Wald
 
+#### Method of Moments Estimation
+
+* Chi
+* Chi-squared
+* Exponential
+* Gamma
+* Geometric
+* Gumbel
+* Laplace
+* Logistic
+* Maxwell--Boltzmann
+* Normal
+* Poisson
+* Rayleigh
+* Student's T
+* Student's T with Location-Scale
+* Wald
+
 
 ### Nonlinear Optimization
 

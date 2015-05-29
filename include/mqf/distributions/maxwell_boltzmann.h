@@ -54,6 +54,20 @@ namespace Distributions {
 			return Dist( std::sqrt( meanSquares(p1,p2) / 3.0 ) );
 		}
 	};
+	
+	template<typename>
+	struct MomentEstimation;
+
+	template<>
+	struct MomentEstimation<Distributions::MaxwellBoltzmann> {
+		using Dist = Distributions::MaxwellBoltzmann;
+		template<typename It>
+		Dist operator()( It p1, It p2 ) const {
+			auto mu = sampleMean(p1,p2);
+			auto var = sampleVariance(p1,p2,mu);
+			return Dist( mu * std::sqrt(Pi/8.0) );
+		}
+	};
 
 }
 

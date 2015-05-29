@@ -88,6 +88,17 @@ psi(k/2) = 1/N sum_i log(x_i) - log(2)
 
 */
 
+	template<typename>
+	struct MomentEstimation;
+
+	template<>
+	struct MomentEstimation<Distributions::ChiSquared> {
+		using Dist = Distributions::ChiSquared;
+		template<typename It>
+		Dist operator()( It p1, It p2 ) const {
+			return Dist( sampleMean(p1,p2) );
+		}
+	};
 
 }
 

@@ -1,5 +1,6 @@
 #ifndef INCLUDED_MQF_DISTRIBUTIONS_LOG_CAUCHY
 #define INCLUDED_MQF_DISTRIBUTIONS_LOG_CAUCHY
+#include <limits>
 #include "cauchy.h"
 #include "../functions.h"
 
@@ -13,6 +14,10 @@ namespace Distributions {
 
 		double median() const {
 			return std::exp( mu );
+		}
+
+		double variance() const {
+			return std::numeric_limits<double>::infinity();
 		}
 
 		double operator()( double x ) const {
@@ -37,6 +42,10 @@ namespace Distributions {
 
 		double median() const {
 			return 1.0;
+		}
+
+		double variance() const {
+			return std::numeric_limits<double>::infinity();
 		}
 
 		double operator()( double x ) const {

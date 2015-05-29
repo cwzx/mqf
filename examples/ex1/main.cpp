@@ -13,7 +13,6 @@
 #include <mqf/trigamma.h>
 #include <mqf/stats/histogram.h>
 #include <mqf/stats/mle.h>
-#include <mqf/distributions/cauchy.h>
 #include <mqf/distributions/students_t.h>
 
 using namespace std;
@@ -28,18 +27,18 @@ void test( const string& ticker ) {
 	auto timeseries = data.computeAdjustedClose();
 	{
 		auto ret = computeLogReturns( timeseries.begin(), timeseries.end() );
+
 		HistogramGenerator().generate( ret.begin(), ret.end() ).writeCSV( ("returns-" + ticker + ".csv").c_str() );
+		
 		auto normal = MLE<Normal>()( ret.begin(), ret.end() );
-		plot(("returns-histn-" + ticker + ".csv").c_str(),-1.0,1.0,1000,normal);
-		auto mu = sampleMean(ret.begin(), ret.end());
-		auto sigma = sampleStdDev( ret.begin(), ret.end(), mu );
-		Cauchy cauchy( mu, 0.5 * sigma );
-		plot(("returns-histc-" + ticker + ".csv").c_str(),-1.0,1.0,1000,cauchy);
-		auto k = sampleExKurtosis( ret.begin(), ret.end(), mu );
-		auto nu = 6.0 / k + 4.0;
-		cout << ticker << " nu = " << nu << "\n";
-		StudentsTLS student( nu, mu, sigma*sigma * (nu - 2.0)/nu );
-		plot(("returns-histt-" + ticker + ".csv").c_str(),-1.0,1.0,1000,student);
+		plot(("returns-histn-" + ticker + ".csv").c_str(),-0.5,0.5,1000,normal);
+
+		auto student = MomentEstimation<StudentsTLS>()( ret.begin(), ret.end() );
+		plot(("returns-histt-" + ticker + ".csv").c_str(),-0.5,0.5,1000,student);
+		cout << ticker << " nu = " << student.nu << "\n";
+
+		student = MomentEstimation<StudentsTLS>()( ret.begin(), ret.end(), 3.0 );
+		plot(("returns-histt3-" + ticker + ".csv").c_str(),-0.5,0.5,1000,student);
 	}
 	/*{
 		DifferentialEvolution<double,2> de;

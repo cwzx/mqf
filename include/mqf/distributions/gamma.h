@@ -47,6 +47,23 @@ logGeometricMean(x_i) - logMean(x_i) = psi(k) - log(k)
 logGeometricMean(x_i) = psi( mean(x_i) / theta ) + log(theta)
 
 */
+
+	template<typename>
+	struct MomentEstimation;
+
+	template<>
+	struct MomentEstimation<Distributions::Gamma> {
+		using Dist = Distributions::Gamma;
+		template<typename It>
+		Dist operator()( It p1, It p2 ) const {
+			auto mu = sampleMean(p1,p2);
+			auto var = sampleVariance(p1,p2,mu);
+			auto theta = var / mu;
+			auto k = mu / theta;
+			return Dist( k, theta );
+		}
+	};
+
 }
 
 #endif

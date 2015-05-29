@@ -34,7 +34,7 @@ namespace Distributions {
 			double p = 0.5 * k;
 			double pp1 = p + 1.0;
 			return std::exp( -( pp1*std::log(x) + p*std::log(2.0) + std::lgamma(p) + 0.5/x ) )
-				* ( 0.5 - pp1*x ) / (x*x);
+			     * ( 0.5 - pp1*x ) / (x*x);
 		}
 
 		operator InverseGamma() const {

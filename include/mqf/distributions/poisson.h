@@ -51,6 +51,18 @@ namespace Distributions {
 			return Dist( sampleMean(p1,p2) );
 		}
 	};
+	
+	template<typename>
+	struct MomentEstimation;
+
+	template<>
+	struct MomentEstimation<Distributions::Poisson> {
+		using Dist = Distributions::Poisson;
+		template<typename It>
+		Dist operator()( It p1, It p2 ) const {
+			return Dist( sampleMean(p1,p2) );
+		}
+	};
 
 }
 

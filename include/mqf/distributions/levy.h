@@ -1,6 +1,8 @@
 #ifndef INCLUDED_MQF_DISTRIBUTIONS_LEVY
 #define INCLUDED_MQF_DISTRIBUTIONS_LEVY
+#include <cassert>
 #include <cmath>
+#include <limits>
 #include "../distribution.h"
 #include "../random_variable.h"
 #include "../constants.h"
@@ -13,33 +15,65 @@ namespace Distributions {
 				
 		explicit Levy( double mu = 0.0, double c = 1.0 ) : mu(mu), c(c) {}
 
+		double mean() const {
+			return std::numeric_limits<double>::infinity();
+		}
+
+		double median() const {
+			return mu + c * ( 1.0 / ( 2.0 * InvErfHalf * InvErfHalf ) );
+		}
+
+		double mode() const {
+			return mu + c / 3.0;
+		}
+
+		double variance() const {
+			return std::numeric_limits<double>::infinity();
+		}
+
 		double operator()( double x ) const {
 			double y = (x - mu) / c;
-			return exp(-0.5 / y) / ( c * y * sqrt(2.0*Pi*y) );
+			return std::exp(-0.5 / y) / ( c * y * std::sqrt(2.0*Pi*y) );
 		}
 
 		double derivative( double x ) const {
 			double y = (x - mu) / c;
-			return ( exp(-0.5 / y) * ( 1.0 - 3.0 * y ) ) / ( 2.0 * c*c * y*y*y * sqrt(2.0*Pi*y) );
+			return ( std::exp(-0.5 / y) * ( 1.0 - 3.0 * y ) ) / ( 2.0 * c*c * y*y*y * std::sqrt(2.0*Pi*y) );
 		}
 
 		double cumulative( double x ) const {
-			return std::erfc( sqrt( c / (2.0*(x-mu)) ) );
+			return std::erfc( std::sqrt( 0.5 * c / (x-mu) ) );
 		}
 
 	};
 
 	struct StdLevy : Density<> {
 
+		double mean() const {
+			return std::numeric_limits<double>::infinity();
+		}
+
+		double median() const {
+			return 1.0 / ( 2.0 * InvErfHalf * InvErfHalf );
+		}
+
+		double mode() const {
+			return 1.0 / 3.0;
+		}
+
+		double variance() const {
+			return std::numeric_limits<double>::infinity();
+		}
+
 		double operator()( double x ) const {
-			return 1.0 / ( x * sqrt(2.0*Pi*x) ) * exp(-0.5 / x);
+			return 1.0 / ( x * std::sqrt(2.0*Pi*x) ) * std::exp(-0.5 / x);
 		}
 
 		double derivative( double x ) const {
 		}
 
 		double cumlative( double x ) const {
-			return std::erfc( sqrt( 1.0 / (2.0*x) ) );
+			return std::erfc( std::sqrt( 0.5 / x ) );
 		}
 
 		operator Levy() const {

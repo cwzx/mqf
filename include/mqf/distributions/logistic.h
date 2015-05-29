@@ -27,8 +27,7 @@ namespace Distributions {
 		}
 
 		double variance() const {
-			double a = s * Pi;
-			return a*a / 3.0;
+			return square( s * Pi ) / 3.0;
 		}
 
 		double skewness() const {
@@ -117,6 +116,20 @@ sum_i tanh( (x_i-mu)/(2 sigma) ) = 0
 sum_i x_i tanh( (x_i-mu)/(2 sigma) ) = -N sigma
 
 */
+
+	template<typename>
+	struct MomentEstimation;
+
+	template<>
+	struct MomentEstimation<Distributions::Logistic> {
+		using Dist = Distributions::Logistic;
+		template<typename It>
+		Dist operator()( It p1, It p2 ) const {
+			auto mu = sampleMean(p1,p2);
+			auto var = sampleVariance(p1,p2,mu);
+			return Dist( mu, std::sqrt( 3.0 * var ) / Pi );
+		}
+	};
 
 }
 

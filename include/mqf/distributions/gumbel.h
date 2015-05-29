@@ -4,6 +4,7 @@
 #include <random>
 #include "../distribution.h"
 #include "../constants.h"
+#include "../functions.h"
 
 namespace mqf {
 namespace Distributions {
@@ -26,8 +27,7 @@ namespace Distributions {
 		}
 
 		double variance() const {
-			double a = Pi * beta;
-			return a*a/6.0;
+			return square(Pi * beta) / 6.0;
 		}
 
 		double skewness() const {
@@ -105,6 +105,21 @@ namespace Distributions {
 1/N sum_i exp(-(x_i - mu)/beta) = 1
 
 */
+
+	template<typename>
+	struct MomentEstimation;
+
+	template<>
+	struct MomentEstimation<Distributions::Gumbel> {
+		using Dist = Distributions::Gumbel;
+		template<typename It>
+		Dist operator()( It p1, It p2 ) const {
+			auto mu = sampleMean(p1,p2);
+			auto var = sampleVariance(p1,p2,mu);
+			auto beta = std::sqrt( 6.0 * var ) / Pi;
+			return Dist( mu - beta * EulerMascheroni, beta );
+		}
+	};
 
 }
 

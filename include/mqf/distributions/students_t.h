@@ -106,6 +106,41 @@ namespace Distributions {
 	};
 
 }
+
+	template<typename>
+	struct MomentEstimation;
+
+	template<>
+	struct MomentEstimation<Distributions::StudentsT> {
+		using Dist = Distributions::StudentsT;
+		template<typename It>
+		Dist operator()( It p1, It p2 ) const {
+			auto var = sampleVariance(p1,p2);
+			return Dist( 2.0 * var / (var - 1.0) );
+		}
+	};
+
+	template<>
+	struct MomentEstimation<Distributions::StudentsTLS> {
+		using Dist = Distributions::StudentsTLS;
+
+		template<typename It>
+		Dist operator()( It p1, It p2 ) const {
+			auto mu = sampleMean(p1,p2);
+			auto var = sampleVariance(p1,p2,mu);
+			auto k = sampleExKurtosis(p1,p2,mu);
+			auto nu = 6.0 / k + 4.0;
+			return Dist( nu, mu, var * (nu - 2.0)/nu );
+		}
+
+		template<typename It>
+		Dist operator()( It p1, It p2, double nu ) const {
+			auto mu = sampleMean(p1,p2);
+			auto var = sampleVariance(p1,p2,mu);
+			return Dist( nu, mu, var * (nu - 2.0)/nu );
+		}
+	};
+
 }
 
 #endif
