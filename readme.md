@@ -2,7 +2,10 @@
 
 Mathematics for quantitative finance.
 
-For educational purposes only. Work in progress.
+* For educational purposes only
+* Work in progress
+* ~7200 lines of code
+
 
 ## Features
 
@@ -55,6 +58,7 @@ For educational purposes only. Work in progress.
 * Poisson
 * Rayleigh
 * Student's T
+* Student's T with Location-Scale
 * Triangular
 * Wald
 * Weibull
@@ -100,8 +104,11 @@ For educational purposes only. Work in progress.
 #### Descriptive Statistics
 
 * Sample Mean
-* Sample Variance (biased and unbiased)
-* Sample Covariance (biased and unbiased)
+* Sample Variance
+* Sample Covariance
+* Sample Correlation
+* Sample Skewness
+* Sample Excess Kurtosis
 * Min
 * Max
 * Range

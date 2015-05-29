@@ -14,6 +14,7 @@
 #include <mqf/stats/histogram.h>
 #include <mqf/stats/mle.h>
 #include <mqf/distributions/cauchy.h>
+#include <mqf/distributions/students_t.h>
 
 using namespace std;
 using namespace mqf;
@@ -28,14 +29,19 @@ void test( const string& ticker ) {
 	{
 		auto ret = computeLogReturns( timeseries.begin(), timeseries.end() );
 		HistogramGenerator().generate( ret.begin(), ret.end() ).writeCSV( ("returns-" + ticker + ".csv").c_str() );
-		auto d = MLE<Normal>()( ret.begin(), ret.end() );
-		plot(("returns-hist-" + ticker + ".csv").c_str(),-1.0,1.0,1000,d);
+		auto normal = MLE<Normal>()( ret.begin(), ret.end() );
+		plot(("returns-histn-" + ticker + ".csv").c_str(),-1.0,1.0,1000,normal);
 		auto mu = sampleMean(ret.begin(), ret.end());
-		Cauchy c( mu, 0.5 * sampleStdDev( ret.begin(), ret.end(), mu ) );
-		plot(("returns-hist2-" + ticker + ".csv").c_str(),-1.0,1.0,1000,c);
-
+		auto sigma = sampleStdDev( ret.begin(), ret.end(), mu );
+		Cauchy cauchy( mu, 0.5 * sigma );
+		plot(("returns-histc-" + ticker + ".csv").c_str(),-1.0,1.0,1000,cauchy);
+		auto k = sampleExKurtosis( ret.begin(), ret.end(), mu );
+		auto nu = 6.0 / k + 4.0;
+		cout << ticker << " nu = " << nu << "\n";
+		StudentsTLS student( nu, mu, sigma*sigma * (nu - 2.0)/nu );
+		plot(("returns-histt-" + ticker + ".csv").c_str(),-1.0,1.0,1000,student);
 	}
-	{
+	/*{
 		DifferentialEvolution<double,2> de;
 		de.bounds.minBounds[0] = -0.2;
 		de.bounds.maxBounds[0] = 0.2;
@@ -88,7 +94,7 @@ void test( const string& ticker ) {
 		ofstream out("params-ma-" + ticker + ".txt");
 		out << r << endl;
 		res.print( out );
-	}
+	}*/
 	/*{
 		BruteForce<double,2> bf;
 		bf.grid.size[0] = 21;

@@ -8,13 +8,19 @@
 namespace mqf {
 
 	template<typename T>
-	inline T square( T&& x ) {
+	inline auto square( T&& x ) {
 		return x * x;
 	}
 
 	template<typename T>
-	inline T cube( T&& x ) {
+	inline auto cube( T&& x ) {
 		return x * x * x;
+	}
+	
+	template<typename T>
+	inline auto quad( T&& x ) {
+		auto x2 = x * x;
+		return x2 * x2;
 	}
 
 	inline double binomial( uint32_t n, uint32_t k ) {
