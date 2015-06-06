@@ -100,7 +100,12 @@ namespace Distributions {
 
 		double operator()( double x ) const {
 			double p = (nu + 1.0) * 0.5;
-			return std::tgamma( p ) / ( std::sqrt(nu * Pi * sigma2) * std::tgamma( 0.5 * nu ) ) * std::pow( 1.0 + square(x-mu) / (nu * sigma2), -p );
+			return std::tgamma( p ) / ( std::sqrt(nu * Pi * sigma2) * std::tgamma( 0.5 * nu ) * std::pow( 1.0 + square(x-mu) / (nu * sigma2), p ) );
+		}
+
+		double derivative( double x ) const {
+			auto y = x - mu;
+			return -std::tgamma( 0.5*(nu + 3.0) ) * y / ( std::tgamma( 0.5*(nu + 2.0) ) * sigma2 * std::sqrt( Pi * nu * sigma2 * std::pow( y*y/(nu*sigma2) + 1.0, nu + 3.0 ) ) );
 		}
 
 	};

@@ -4,6 +4,7 @@
 #include <vector>
 #include <random>
 #include "../pde/aabb.h"
+#include "../utility.h"
 
 namespace mqf {
 
@@ -22,6 +23,7 @@ namespace mqf {
 		    max_evals = 1000;
 		double differential_weight = 0.75,
 		       crossover_probability = 0.75;
+		bool constrain = true;
 
 		DifferentialEvolution() : dist(0,N-1) {}
 
@@ -30,7 +32,7 @@ namespace mqf {
 			agents.resize( num_agents );
 			costs.resize( num_agents );
 			for( auto&& x : agents ) {
-				x = bounds.minBounds + diag.cwiseProduct( 0.5 * (Vec::Ones() + Vec::Random()) );
+				x = bounds.lower + diag.cwiseProduct( 0.5 * (Vec::Ones() + Vec::Random()) );
 			}
 		}
 
@@ -100,6 +102,8 @@ namespace mqf {
 							y[i] = x[i];
 						}
 					}
+					if( constrain )
+						clamp( y, bounds );
 					auto costx = costs[j];
 					auto costy = cost(y);
 					if( costy < costx ) {
@@ -113,7 +117,6 @@ namespace mqf {
 			auto best_index = std::distance( costs.begin(), best_agent );
 			return agents[best_index];
 		}
-
 
 	};
 	

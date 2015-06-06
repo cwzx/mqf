@@ -74,7 +74,7 @@ namespace mqf {
 				out << binCentre(i)                   << ','
 				    << frequencies[i]                 << ','
 				    << (double)frequencies[i] / total << ','
-				    << freqDensity / total            << endl;
+				    << freqDensity / total            << '\n';
 			}
 		}
 

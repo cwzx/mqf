@@ -242,7 +242,7 @@ Mathematics for quantitative finance.
 
 * Accumulation factor
 * Discount factor
-* Conversion between oontinuous and non-continuous conversion periods.
+* Conversion between continuous and non-continuous conversion periods.
 
 #### Pricing
 

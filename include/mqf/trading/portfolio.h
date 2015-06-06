@@ -12,14 +12,6 @@ namespace mqf {
 		Vec weights;
 		std::vector<uint32_t> ids;
 
-		double cash;
-
-		void normalize() {
-			double norm = weights.cwiseAbs().sum() + cash;
-			weights /= norm;
-			cash /= norm;
-		}
-
 	};
 
 }

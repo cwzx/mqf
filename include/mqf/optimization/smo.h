@@ -14,7 +14,6 @@ namespace mqf {
 	 *
 	 * Uses WSS3 and Algorithm2 from Fan et. al, Journal of Machine Learning Research 6 (2005) 1889--1918
 	 *
-	 *
 	 */
 	struct SMO {
 		using Veci = Eigen::Matrix<int8_t,-1,1>;
@@ -50,7 +49,7 @@ namespace mqf {
 			}
 		}
 
-		std::pair<int,int> workingSetSelection3( const Vec& gradient, const Vec& alpha ) const {
+		std::pair<int,int> workingSetSelection( const Vec& gradient, const Vec& alpha ) const {
 			
 			auto N = y.size();
 
@@ -104,7 +103,7 @@ namespace mqf {
 			for(int k=0;k<max_its;++k) {
 
 				int i, j;
-				std::tie(i,j) = workingSetSelection3( gradient, alpha );
+				std::tie(i,j) = workingSetSelection( gradient, alpha );
 
 				if( j == -1 )
 					break;

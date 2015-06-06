@@ -9,8 +9,8 @@ namespace Strategies {
 	struct BasicMA {
 		int shortPeriod, longPeriod;
 
-		explicit BasicMA( int shortPeriod = 20,
-		                  int longPeriod = 42 ) :
+		explicit BasicMA( int shortPeriod = 10,
+		                  int longPeriod = 20 ) :
 			shortPeriod(shortPeriod),
 			longPeriod(longPeriod)
 		{}
