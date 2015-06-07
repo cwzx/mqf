@@ -47,7 +47,7 @@ namespace Yahoo {
 		std::ifstream in(file);
 		if( !in ) return {};
 
-		const int buf_size = 16;
+		constexpr int buf_size = 16;
 		char buf[buf_size];
 
 		auto smax = std::numeric_limits<std::streamsize>::max();
@@ -129,6 +129,11 @@ namespace Yahoo {
 				in.ignore(smax,'\n');
 			}
 			
+		}
+
+		// The Yahoo data doesn't list the Google split
+		if( strcmp( file, "GOOGL.csv" ) == 0 ) {
+			data.splits.push_back( { Gregorian::Date( 3, Gregorian::April, 2014 ), 2.0 } );
 		}
 
 		std::reverse( data.dates    .begin(), data.dates    .end() );

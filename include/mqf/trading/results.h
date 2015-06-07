@@ -16,11 +16,11 @@ namespace mqf {
 		DrawDown maxDrawDown;
 
 		void print( std::ostream& os ) const {
-			os << "Annual Log Return: " << annualLogReturn                        << '\n';
-			os << "Annual Return: "     << returnFromLogReturn( annualLogReturn ) << '\n';
-			os << "Annual Volatility: " << annualVolatility                       << '\n';
-			os << "Sharpe Ratio: "      << sharpeRatio                            << '\n';
-			os << "Max Drawdown: "      << maxDrawDown.lossFraction()             << '\n';
+			os << "Annual Log Return: " << annualLogReturn                        << '\n'
+			   << "Annual Return: "     << returnFromLogReturn( annualLogReturn ) << '\n'
+			   << "Annual Volatility: " << annualVolatility                       << '\n'
+			   << "Sharpe Ratio: "      << sharpeRatio                            << '\n'
+			   << "Max Drawdown: "      << maxDrawDown.lossFraction()             << '\n';
 		}
 
 		void print() const {

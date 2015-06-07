@@ -65,7 +65,7 @@ void test( const string& ticker ) {
 			CW1 strat(x[0],(int)x[1]);
 			Backtest<CW1> bt(strat);
 			auto res = bt.runTest( timeseries.begin(), timeseries.end() );
-			return -res.annualLogReturn;
+			return -res.sharpeRatio;
 		};
 
 		auto r = de.optimize( cost );
@@ -92,7 +92,7 @@ void test( const string& ticker ) {
 			BasicMA strat( (int)x[0], (int)x[1] );
 			Backtest<BasicMA> bt(strat);
 			auto res = bt.runTest( timeseries.begin(), timeseries.end() );
-			return -res.annualLogReturn;
+			return -res.sharpeRatio;
 		};
 		
 		auto r = de.optimize( cost );

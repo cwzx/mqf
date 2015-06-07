@@ -35,6 +35,15 @@ namespace mqf {
 			return factor;
 		}
 
+		double computeTotalDividends( const Date& from, const Date& to ) const {
+			double total = 0.0;
+			for( auto&& d : dividends ) {
+				if( d.date > to ) break;
+				if( d.date > from ) total += d.amountPerShare;
+			}
+			return total;
+		}
+
 		Date firstDate() const {
 			return dates.front();
 		}
@@ -48,14 +57,21 @@ namespace mqf {
 			std::vector<double> adj;
 			adj.reserve( N );
 			double factor = 1.0;
+			double shift = 0.0;
 			auto nextSplit = splits.begin();
 			auto endSplit = splits.end();
+			auto nextDiv = dividends.begin();
+			auto endDiv = dividends.end();
 			for(size_t i=0;i<N;++i) {
 				if( nextSplit != endSplit && dates[i] == nextSplit->date ) {
 					factor *= nextSplit->factor;
 					++nextSplit;
 				}
-				adj.push_back( close[i] * factor );
+				if( nextDiv != endDiv && dates[i] == nextDiv->date ) {
+					shift += nextDiv->amountPerShare;
+					++nextDiv;
+				}
+				adj.push_back( close[i] * factor + shift );
 			}
 			return adj;
 		}
