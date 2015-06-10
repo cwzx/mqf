@@ -68,7 +68,7 @@ namespace mqf {
 					++nextSplit;
 				}
 				if( nextDiv != endDiv && dates[i] == nextDiv->date ) {
-					shift += nextDiv->amountPerShare;
+					shift += nextDiv->amountPerShare * factor;
 					++nextDiv;
 				}
 				adj.push_back( close[i] * factor + shift );

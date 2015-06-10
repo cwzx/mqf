@@ -39,7 +39,7 @@ void test( const string& ticker ) {
 	/*{
 		CW1 strat;
 		Backtest<CW1> bt(strat);
-		auto res = bt.runTest( ("strat-1-" + ticker + ".csv").c_str(), timeseries.begin(), timeseries.end() );
+		auto res = bt.run( ("strat-1-" + ticker + ".csv").c_str(), timeseries.begin(), timeseries.end() );
 		res.print();
 		ofstream out("params-1-" + ticker + ".txt");
 		res.print( out );
@@ -48,7 +48,7 @@ void test( const string& ticker ) {
 
 		BasicMA strat;
 		Backtest<BasicMA> bt(strat);
-		auto res = bt.runTest( ("strat-ma-" + ticker + ".csv").c_str(), timeseries.begin(), timeseries.end() );
+		auto res = bt.run( ("strat-ma-" + ticker + ".csv").c_str(), timeseries.begin(), timeseries.end() );
 		res.print();
 		ofstream out("params-ma-" + ticker + ".txt");
 		res.print( out );
@@ -56,25 +56,25 @@ void test( const string& ticker ) {
 	{
 		DifferentialEvolution<double,2> de;
 		de.bounds.lower[0] = 0.0;
-		de.bounds.upper[0] = 0.3;
+		de.bounds.upper[0] = 0.2;
 		de.bounds.lower[1] = 10;
-		de.bounds.upper[1] = 200;
+		de.bounds.upper[1] = 250;
 		de.max_evals = 500;
 
 		auto cost = [&]( auto&& x ) {
-			CW1 strat(x[0],(int)x[1]);
+			CW1 strat( x[0], (int)x[1] );
 			Backtest<CW1> bt(strat);
-			auto res = bt.runTest( timeseries.begin(), timeseries.end() );
-			return -res.sharpeRatio;
+			auto res = bt.run( timeseries.begin(), timeseries.end() );
+			return -res.annualLogReturn;
 		};
 
 		auto r = de.optimize( cost );
 
 		cout << "opt: " << r << '\n';
 		
-		CW1 strat(r[0],(int)r[1]);
+		CW1 strat( r[0], (int)r[1] );
 		Backtest<CW1> bt(strat);
-		auto res = bt.runTest( ("strat-1-" + ticker + ".csv").c_str(), timeseries.begin(), timeseries.end() );
+		auto res = bt.run( ("strat-1-" + ticker + ".csv").c_str(), timeseries.begin(), timeseries.end() );
 		res.print();
 		ofstream out("params-1-" + ticker + ".txt");
 		out << r << '\n';
@@ -83,25 +83,25 @@ void test( const string& ticker ) {
 	{
 		DifferentialEvolution<double,2> de;
 		de.bounds.lower[0] = 1;
-		de.bounds.upper[0] = 30;
-		de.bounds.lower[1] = 30;
-		de.bounds.upper[1] = 200;
+		de.bounds.upper[0] = 50;
+		de.bounds.lower[1] = 20;
+		de.bounds.upper[1] = 250;
 		de.max_evals = 10000;
 		
 		auto cost = [&]( auto&& x ) {
 			BasicMA strat( (int)x[0], (int)x[1] );
 			Backtest<BasicMA> bt(strat);
-			auto res = bt.runTest( timeseries.begin(), timeseries.end() );
-			return -res.sharpeRatio;
+			auto res = bt.run( timeseries.begin(), timeseries.end() );
+			return -res.annualLogReturn;
 		};
 		
 		auto r = de.optimize( cost );
 
 		cout << "opt: " << r << '\n';
 
-		BasicMA strat((int)r[0],(int)r[1]);
+		BasicMA strat( (int)r[0], (int)r[1] );
 		Backtest<BasicMA> bt(strat);
-		auto res = bt.runTest( ("strat-ma-" + ticker + ".csv").c_str(), timeseries.begin(), timeseries.end() );
+		auto res = bt.run( ("strat-ma-" + ticker + ".csv").c_str(), timeseries.begin(), timeseries.end() );
 		res.print();
 		ofstream out("params-ma-" + ticker + ".txt");
 		out << r << '\n';
@@ -117,9 +117,9 @@ void test( const string& ticker ) {
 		bf.bounds.upper[1] = 200;
 
 		auto cost = [&](auto&& x) { 
-			CW1 strat(x[0],(int)x[1]);
+			CW1 strat( x[0], (int)x[1] );
 			Backtest<CW1> bt(strat);
-			auto res = bt.runTest( timeseries.begin(), timeseries.end() );
+			auto res = bt.run( timeseries.begin(), timeseries.end() );
 			return -res.annualLogReturn;
 		};
 
@@ -129,9 +129,9 @@ void test( const string& ticker ) {
 
 		cout << "opt: " << r.optimal << '\n';
 		
-		CW1 strat(r.optimal[0],(int)r.optimal[1]);
+		CW1 strat( r.optimal[0], (int)r.optimal[1] );
 		Backtest<CW1> bt(strat);
-		auto res = bt.runTest( ("strat-1-" + ticker + ".csv").c_str(), timeseries.begin(), timeseries.end() );
+		auto res = bt.run( ("strat-1-" + ticker + ".csv").c_str(), timeseries.begin(), timeseries.end() );
 		res.print();
 		ofstream out("params-1-" + ticker + ".txt");
 		out << r.optimal << '\n';
@@ -149,7 +149,7 @@ void test( const string& ticker ) {
 		auto cost = [&](auto&& x) {
 			BasicMA strat( (int)x[0], (int)x[1] );
 			Backtest<BasicMA> bt(strat);
-			auto res = bt.runTest( timeseries.begin(), timeseries.end() );
+			auto res = bt.run( timeseries.begin(), timeseries.end() );
 			return -res.annualLogReturn;
 		};
 		
@@ -159,9 +159,9 @@ void test( const string& ticker ) {
 
 		cout << "opt: " << r.optimal << '\n';
 
-		BasicMA strat((int)r.optimal[0],(int)r.optimal[1]);
+		BasicMA strat( (int)r.optimal[0], (int)r.optimal[1] );
 		Backtest<BasicMA> bt(strat);
-		auto res = bt.runTest( ("strat-ma-" + ticker + ".csv").c_str(), timeseries.begin(), timeseries.end() );
+		auto res = bt.run( ("strat-ma-" + ticker + ".csv").c_str(), timeseries.begin(), timeseries.end() );
 		res.print();
 		ofstream out("params-ma-" + ticker + ".txt");
 		out << r.optimal << '\n';
@@ -171,9 +171,6 @@ void test( const string& ticker ) {
 }
 
 int main() {
-	
-	/*test( "SPY" );
-	return 0;*/
 
 	const char* tickers[] = {
 		"AAPL",
@@ -196,24 +193,12 @@ int main() {
 		"SBUX",
 		"BIDU",
 		"AMOV",
+		"IBM",
 		"SPY"
 	};
 
 	for( auto&& ticker : tickers )
 		test( ticker );
-
-	auto bench = Yahoo::load( "SPY.csv" );
-
-	auto adjclose = bench.computeAdjustedClose();
-
-	auto result = computeTestResults( adjclose.begin(), adjclose.end(), 1.0/252 );
-	result.print();
-
-	auto returns = computeCumulativeLogReturns( adjclose.begin(), adjclose.end() );
-	ofstream out("bench.csv");
-	for( auto x : returns )
-		out << x << '\n';
-
 
 	cout << "Press enter to continue . . . "; cin.get();
 }

@@ -507,5 +507,8 @@
     <ClInclude Include="..\..\..\include\mqf\distributions\negative_binomial.h">
       <Filter>Header Files\Distributions</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\mqf\trading\orders.h">
+      <Filter>Header Files\Trading</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

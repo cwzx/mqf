@@ -154,6 +154,7 @@
     <ClInclude Include="..\..\..\include\mqf\trading\indicators\macd.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\indicators\rsi.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\market.h" />
+    <ClInclude Include="..\..\..\include\mqf\trading\orders.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\portfolio.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\results.h" />
     <ClInclude Include="..\..\..\include\mqf\trading\return.h" />

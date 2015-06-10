@@ -12,6 +12,7 @@ namespace mqf {
 		Vec weights;
 		std::vector<uint32_t> ids;
 
+
 	};
 
 }

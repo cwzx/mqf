@@ -95,6 +95,30 @@ namespace mqf {
 		return ret;
 	}
 
+	template<typename It>
+	double downsideVariance( It p1, It p2, double target ) {
+		auto N = std::distance(p1,p2);
+		double dv = 0.0;
+		for(;p1!=p2;++p1) {
+			auto d = *p1 - target;
+			if( !( d < 0.0 ) )
+				continue;
+			dv += d * d;
+		}
+		return dv / N;
+	}
+
+	template<typename It>
+	double downsideRisk( It p1, It p2, double target ) {
+		return std::sqrt( downsideVariance(p1,p2,target) );
+	}
+
+	template<typename It>
+	double shortfallRisk( It p1, It p2, double target ) {
+		auto N = std::distance(p1,p2);
+		return std::count_if( p1, p2, [=]( double x ){ return x < target; } ) / N;
+	}
+
 }
 
 #endif

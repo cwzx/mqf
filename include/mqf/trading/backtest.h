@@ -24,7 +24,7 @@ namespace mqf {
 		explicit Backtest( const Strat& s ) : strategy(s) {}
 
 		template<typename It>
-		TestResult runTest( const char* file, It p1, It p2 ) {
+		TestResult run( const char* file, It p1, It p2 ) {
 
 			std::vector<double> totals;
 			totals.reserve( std::distance(p1,p2) );
@@ -38,9 +38,9 @@ namespace mqf {
 
 				double x = *q;
 		
-				auto action = strategy.compute( p1, std::next(q) );
+				Action action = strategy.compute( p1, std::next(q) );
 				if( action.type == Action::Buy ) {
-					double buy = std::fmin( cash /** action.amount*/, cash ) / x;
+					double buy = std::fmin( cash * action.amount, cash ) / x;
 					cash -= x * buy;
 					portfolio += buy;
 				}
@@ -56,7 +56,7 @@ namespace mqf {
 				double bench = stock;
 				double perf = logReturn(investment,total);
 				double diff = perf - bench;
-				out << t << ',' << stock << ',' << x << ',' << action.amount << ',' << portfolio << ',' << cash << ',' << perf << ',' << diff << endl;
+				out << t << ',' << stock << ',' << x << ',' << action.amount << ',' << portfolio << ',' << cash << ',' << perf << ',' << diff << '\n';
 				t += dt;
 			}
 
@@ -64,7 +64,7 @@ namespace mqf {
 		}
 
 		template<typename It>
-		TestResult runTest( It p1, It p2 ) {
+		TestResult run( It p1, It p2 ) {
 
 			std::vector<double> totals;
 			totals.reserve( std::distance(p1,p2) );
@@ -74,10 +74,10 @@ namespace mqf {
 			for(auto q = p1; q != p2; ++q) {
 
 				double x = *q;
-		
-				auto action = strategy.compute( p1, std::next(q) );
+
+				Action action = strategy.compute( p1, std::next(q) );
 				if( action.type == Action::Buy ) {
-					double buy = std::fmin( cash /** action.amount*/, cash ) / x;
+					double buy = std::fmin( cash * action.amount, cash ) / x;
 					cash -= x * buy;
 					portfolio += buy;
 				}
