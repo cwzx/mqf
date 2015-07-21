@@ -41,15 +41,19 @@ namespace mqf {
 					prices.push_back(x);
 
 					auto action = strategy.compute( prices.begin(), prices.end() );
+					cash += x * portfolio;
+					portfolio = 0;
 
-					if( action.type == Action::Buy ) {
-						double buy = std::fmin( cash /** action.amount*/, cash ) / x;
+					if( action.type == Action::Long ) {
+						double buy = std::fmax( cash, 0.0 ) / x;
 						cash -= x * buy;
 						portfolio += buy;
 					}
-					if( action.type == Action::Sell ) {
-						cash += x * portfolio;
-						portfolio = 0;
+				
+					if( action.type == Action::Short ) {
+						double sell = std::fmax( cash, 0.0 ) / x;
+						cash += x * sell;
+						portfolio -= sell;
 					}
 					x = dynamics.advance( x, dt );
 					t += dt;

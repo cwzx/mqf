@@ -39,15 +39,22 @@ namespace mqf {
 				double x = *q;
 		
 				Action action = strategy.compute( p1, std::next(q) );
-				if( action.type == Action::Buy ) {
-					double buy = std::fmin( cash * action.amount, cash ) / x;
+				
+				cash += x * portfolio;
+				portfolio = 0;
+
+				if( action.type == Action::Long ) {
+					double buy = std::fmax( cash, 0.0 ) / x;
 					cash -= x * buy;
 					portfolio += buy;
 				}
-				if( action.type == Action::Sell ) {
-					cash += x * portfolio;
-					portfolio = 0;
+				
+				if( action.type == Action::Short ) {
+					double sell = std::fmax( cash, 0.0 ) / x;
+					cash += x * sell;
+					portfolio -= sell;
 				}
+				
 
 				double total = cash + portfolio * x;
 				totals.push_back( total );
@@ -76,15 +83,22 @@ namespace mqf {
 				double x = *q;
 
 				Action action = strategy.compute( p1, std::next(q) );
-				if( action.type == Action::Buy ) {
-					double buy = std::fmin( cash * action.amount, cash ) / x;
+				
+				cash += x * portfolio;
+				portfolio = 0;
+
+				if( action.type == Action::Long ) {
+					double buy = std::fmax( cash, 0.0 ) / x;
 					cash -= x * buy;
 					portfolio += buy;
 				}
-				if( action.type == Action::Sell ) {
-					cash += x * portfolio;
-					portfolio = 0;
+				
+				if( action.type == Action::Short ) {
+					double sell = std::fmax( cash, 0.0 ) / x;
+					cash += x * sell;
+					portfolio -= sell;
 				}
+				
 
 				double total = cash + portfolio * x;
 				totals.push_back( total );

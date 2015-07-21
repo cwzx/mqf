@@ -4,10 +4,10 @@
 namespace mqf {
 
 	struct Action {
-		enum actionType { Hold, Buy, Sell } type;
+		enum actionType { Out, Long, Short } type;
 		double amount;
 
-		explicit Action( actionType type = Hold, double amount = 1.0 ) : type(type), amount(amount) {}
+		explicit Action( actionType type = Out, double amount = 1.0 ) : type(type), amount(amount) {}
 	};
 
 }

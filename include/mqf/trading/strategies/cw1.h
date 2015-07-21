@@ -7,13 +7,13 @@ namespace mqf {
 namespace Strategies {
 
 	struct CW1 {
-		double limit;
+		double longLimit;
 
 		Indicators::CW1 indicator;
 
-		explicit CW1( double limit = 0.1875,
-					  int period = 95 ) :
-			limit(limit),
+		explicit CW1( double longLimit = 0.01,
+					  int period = 100 ) :
+			longLimit(longLimit),
 			indicator(period)
 		{}
 
@@ -22,17 +22,14 @@ namespace Strategies {
 			auto count = std::distance(p1,p2);
 
 			if( count < indicator.period )
-				return Action( Action::Hold );
+				return Action( Action::Out );
 
 			auto h = indicator.compute(p1,p2);
 
-			if( h.sharpe > limit ) {
-				return Action( Action::Buy );
+			if( h.sharpe > longLimit ) {
+				return Action( Action::Long );
 			}
-			if( h.sharpe < limit ) {
-				return Action( Action::Sell );
-			}
-			return Action( Action::Hold );
+			return Action( Action::Out );
 		}
 
 	};

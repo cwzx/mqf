@@ -9,8 +9,8 @@ namespace Strategies {
 	struct BasicMA {
 		int shortPeriod, longPeriod;
 
-		explicit BasicMA( int shortPeriod = 10,
-		                  int longPeriod = 20 ) :
+		explicit BasicMA( int shortPeriod = 50,
+		                  int longPeriod = 100 ) :
 			shortPeriod(shortPeriod),
 			longPeriod(longPeriod)
 		{}
@@ -19,18 +19,15 @@ namespace Strategies {
 		Action compute( It p1, It p2 ) const {
 			auto count = std::distance(p1,p2);
 			if( count < std::max(shortPeriod,longPeriod) )
-				return Action( Action::Hold );
+				return Action( Action::Out );
 		
 			auto shortMA = WMA(shortPeriod).back(p1,p2);
 			auto longMA = WMA(longPeriod).back(p1,p2);
 
 			if( shortMA > longMA ) {
-				return Action( Action::Buy );
+				return Action( Action::Long );
 			}
-			if( shortMA < longMA ) {
-				return Action( Action::Sell );
-			}
-			return Action( Action::Hold );
+			return Action( Action::Out );
 		}
 
 	};

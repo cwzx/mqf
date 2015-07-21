@@ -7,6 +7,7 @@
 #include <mqf/trading/strategies/cw1.h>
 #include <mqf/trading/strategies/moving_average.h>
 #include <mqf/trading/backtest.h>
+#include <mqf/trading/stochastic_test.h>
 #include <mqf/data/yahoo.h>
 #include <mqf/optimization/differential_evolution.h>
 #include <mqf/optimization/brute_force.h>
@@ -15,11 +16,13 @@
 #include <mqf/stats/histogram.h>
 #include <mqf/stats/mle.h>
 #include <mqf/distributions/students_t.h>
+#include <mqf/processes/gbm.h>
 
 using namespace std;
 using namespace mqf;
 using namespace mqf::Strategies;
 using namespace mqf::Distributions;
+using namespace mqf::Processes;
 
 void test( const string& ticker ) {
 
